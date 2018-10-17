@@ -3,39 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/materialize.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/materialize.css') }}" type="text/css"/>
     <title>Amphora</title>
 </head>
 
 <body>
 
-        <nav class="nav-wrapper blue">
+<nav class="nav-wrapper blue">
+    <ul>
+        <li><a href="{{url_for('main.index')}}">Home</a></li>
+        <li><a href="{{url_for('main.repo')}}">Repository</a>
             <ul>
-                <li><a href="{{url_for('main.index')}}">Home</a></li>
-                <li><a href="{{url_for('main.repo')}}">Repository</a>
-                </li>
-                <li><a href="{{url_for('main.about')}}">About</a></li>
-                <li><a href="{{url_for('main.contact')}}">Contact</a></li>
+                <li class="blue-text text-darken-2">Search Entries</li>
+                <li class="blue-text text-darken-2">Legends</li>
+                <li class="blue-text text-darken-2">Mythical Beings</li>
             </ul>
-        </nav>
+        </li>
+        <li><a href="{{url_for('main.about')}}">About</a></li>
+        <li><a href="{{url_for('main.contact')}}">Contact</a></li>
+        <li><a href="#">User</a>
+            <ul>
+                <li class="blue-text text-darken-2">Login</li>
+                <li class="blue-text text-darken-2">Logout</li>
+                <li class="blue-text text-darken-2">Register</li>
+                <li class="blue-text text-darken-2">Account</li>
+            </ul>
+        </li>
+    </ul>
+</nav>
 
 
+<div class="row">
+    {% block content %} {% endblock %}
+
+</div>
+
+
+<div class="page-footer blue-grey">
+    This is the footer.
+    <div class="footer-copyright">
         <div class="container">
-            <div class="row">
-                {% block content %} {% endblock %}
-
-            </div>
+            veronique savard - nuagesdencre.com
         </div>
-
-    <div class="page-footer blue-grey">
-        This is the footer.
-        <div class="footer-copyright">
-            <div class="container">
-                veronique savard - nuagesdencre.com
-            </div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="{{ url_for('static', filename='js/vendors/materialize.js') }}"></script>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/vendors/materialize.js') }}"></script>
 </body>
 
 </html>
