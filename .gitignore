@@ -289,3 +289,5 @@ fabric.properties
 config.py
 
 \.idea/
+
+amphora/__pycache__/
