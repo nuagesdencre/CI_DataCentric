@@ -6,23 +6,29 @@
     <title>Amphora</title>
 </head>
 <body>
+<nav class="nav-wrapper">
+    <ul>
+        <li><a href="{{url_for('main.index')}}">Home</a></li>
+        <li><a href="{{url_for('main.repo')}}">Repository</a>
+        </li>
+        <li><a href="{{url_for('main.about')}}">About</a></li>
+        <li><a href="{{url_for('main.contact')}}">Contact</a></li>
+    </ul>
+</nav>
+
 <div class="container">
+    <div class="row">
+    {% block content %}
+    {% endblock %}
 
-    <nav class="nav-wrapper">
 
-    </nav>
 
-    <div class="col s12 m4 l3">
+</div>
+</div>
+<div class="footer">
+    This is the footer.
     </div>
-
-    <div class="col s12 m8 l9">
-    </div>
-
-    <div class="footer">
-    </div>
-  </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{ url_for('static', filename='js/vendors/materialize.js') }}"></script>
 </body>
 </html>
