@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/materialize.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/materialize.css') }}" type="text/css" />
     <title>Amphora</title>
 </head>
+
 <body>
-<nav class="nav-wrapper">
-    <ul>
-        <li><a href="{{url_for('main.index')}}">Home</a></li>
-        <li><a href="{{url_for('main.repo')}}">Repository</a>
-        </li>
-        <li><a href="{{url_for('main.about')}}">About</a></li>
-        <li><a href="{{url_for('main.contact')}}">Contact</a></li>
-    </ul>
-</nav>
 
-<div class="container">
-    <div class="row">
-    {% block content %}
-    {% endblock %}
+        <nav class="nav-wrapper blue">
+            <ul>
+                <li><a href="{{url_for('main.index')}}">Home</a></li>
+                <li><a href="{{url_for('main.repo')}}">Repository</a>
+                </li>
+                <li><a href="{{url_for('main.about')}}">About</a></li>
+                <li><a href="{{url_for('main.contact')}}">Contact</a></li>
+            </ul>
+        </nav>
 
 
+        <div class="container">
+            <div class="row">
+                {% block content %} {% endblock %}
 
-</div>
-</div>
-<div class="footer">
-    This is the footer.
-    </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{{ url_for('static', filename='js/vendors/materialize.js') }}"></script>
+            </div>
+        </div>
+
+    <div class="page-footer blue-grey">
+        This is the footer.
+        <div class="footer-copyright">
+            <div class="container">
+                veronique savard - nuagesdencre.com
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='js/vendors/materialize.js') }}"></script>
 </body>
+
 </html>
