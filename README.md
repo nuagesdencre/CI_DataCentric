@@ -31,12 +31,14 @@ Provide code examples and explanations of how to get the project.
     - Lorem.
 - [Flask]()
     - [Flask Blueprints](http://flask.pocoo.org/docs/1.0/blueprints/)
+    - [Flask-SQLAlchemy ](http://flask-sqlalchemy.pocoo.org)
     - Flask plugins? (requirements...)
 - [Jinja2]()
     - Lorem.
 - [Html & CSS]()
     - Lorem.
-
+- [Materialize](https://materializecss.com/)
+Both js and css files.
 ## Tests
 
 Describe and show how to run the tests with code examples.
