@@ -23,9 +23,19 @@ A short description of the motivation behind the creation and maintenance of the
 
 Provide code examples and explanations of how to get the project.
 
-## API Reference
-
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+## Technologies Used
+> In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
+- [JQuery](https://jquery.com)
+    - The project uses **JQuery** to simplify DOM manipulation.
+- [Python version 3]()
+    - Lorem.
+- [Flask]()
+    - [Flask Blueprints](http://flask.pocoo.org/docs/1.0/blueprints/)
+    - Flask plugins? (requirements...)
+- [Jinja2]()
+    - Lorem.
+- [Html & CSS]()
+    - Lorem.
 
 ## Tests
 
