@@ -1,27 +1,31 @@
 # Code Institute Data Centric
-One Paragraph of project description goes here
-## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-### Prerequisites
-What things you need to install the software and how to install them
-```
-Give examples
-```
-## Synopsis
+Project Amphora
+- Repository of knowledge
+- Discover Myths, Legends and fantastic creatures
 
+## Purpose
+A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+## Features
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+## UX
+- Wireframe
+- Planning board
+- User stories
 At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
 
-## Code Example
+## Functionality
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
-## Motivation
+## Installation & Deployment
+**How did you do it**
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku). 
+In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
 
-## Installation
-
-Provide code examples and explanations of how to get the project.
+Different values for environment variables (Heroku Config Vars)?
+Different configuration files?
+Separate git branch? In addition, if it is not obvious, you should also describe how to run your code locally
 
 ## Technologies Used
 > In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
@@ -40,17 +44,17 @@ Provide code examples and explanations of how to get the project.
     - Lorem.
 - [Materialize](https://materializecss.com/)
 Both js and css files.
+-[SQLite](https://sqlite.org/) SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
 ## Tests
 
 Describe and show how to run the tests with code examples.
+## Hurdles
 
-## Contributors
+## Credits
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
-
-## License
-
-A short snippet describing the license (MIT, Apache, etc.)
+- Disclosure
+- Content
+- Media
 
 ## Acknowledgments
 * Hat tip to anyone who's code was used
