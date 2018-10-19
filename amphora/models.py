@@ -60,6 +60,7 @@ class Story():
     def __repr__(self):
         return "Story title: {}".format(self.title)
 
+
 class Being():
 
     __tablename__ = 'beings'
