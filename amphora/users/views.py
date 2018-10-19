@@ -37,6 +37,7 @@ def login():
         if user.psw_check(form.password.data) and user is not None:
             login_user(user)
             flash('You are now logged in!')
+    return render_template('login.html', form=form)
 
 
 @users.route('/logout')
