@@ -1,9 +1,7 @@
 from flask_wtf import FlaskForm
-
+from flask_wtf.file import FileAllowed, FileField
 from wtforms import StringField, PasswordField, SubmitField, ValidationError
 from wtforms.validators import DataRequired, Email, EqualTo,Length
-# DataRequired vs InputRequired.... to check
-
 from flask_login import current_user
 from amphora.models import User
 
@@ -23,6 +21,23 @@ class Register(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Register now!')
 
+    # check if methods can be inherited or something similar to avoid repetition
+    def unique_email(self, field):
+        if User.query.filter_by(email=field.data).first():
+            raise ValidationError('Email has already been registered!')
+
+    def unique_username(self, field):
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('Username has already been registered!')
+
+
+class Update(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    username = StringField('Username', validators=[DataRequired()])
+    profile_pic = FileField('Picture!', validators=[FileAllowed(['png','jpg'])])
+    submit = SubmitField('Update your info!')
+
+    # check if methods can be inherited or something similar to avoid repetition
     def unique_email(self, field):
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('Email has already been registered!')
