@@ -1,10 +1,15 @@
-from amphora import db
+from amphora import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 # 3 tables:
 # user
 # story
 # being
+
+
+@login_manager.user_loader()
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 class User(db.Model, UserMixin):

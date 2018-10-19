@@ -37,6 +37,7 @@ Separate git branch? In addition, if it is not obvious, you should also describe
     - [Flask Blueprints](http://flask.pocoo.org/docs/1.0/blueprints/)
     - [Flask-SQLAlchemy ](http://flask-sqlalchemy.pocoo.org)
     - [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/) Flask-Migrate is an extension that handles SQLAlchemy database migrations for Flask applications using Alembic. 
+    - [Flask-Login](https://flask-login.readthedocs.io/en/latest/) Flask-Login provides user session management for Flask. It handles the common tasks of logging in, logging out, and remembering your users’ sessions over extended periods of time.     
     - Flask plugins? (requirements...)
 - [Jinja2]()
     - Lorem.
