@@ -1,10 +1,10 @@
-from flask import render_template, url_for,flash,Blueprint,redirect,request
-from flask_login import current_user,login_user,logout_user, login_required
+from flask import render_template, url_for, flash, Blueprint, redirect, request
+from flask_login import current_user, login_user, logout_user, login_required
 from amphora import db
 from amphora.models import User, Story, Being
 from amphora.users.forms import Login, Register, Update
 
-#login, logout, account, user entries
+# login, logout, account, user entries
 
 users = Blueprint('users', __name__)
 
@@ -17,13 +17,12 @@ def register():
     form = Register()
     if form.validate_on_submit():
         user = User(email=form.email.data,
-                  username=form.username.data,
-                  password=form.password.data)
-
+                    username=form.username.data,
+                    password=form.password.data)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('users.login'))
-    return render_template('register.html', form=form)
+    return render_template('users/register.html', form=form)
 
 
 @users.route('/login', methods=['GET', 'POST'])
@@ -37,7 +36,7 @@ def login():
         if user.psw_check(form.password.data) and user is not None:
             login_user(user)
             flash('You are now logged in!')
-    return render_template('login.html', form=form)
+    return render_template('users/login.html', form=form)
 
 
 @users.route('/logout')

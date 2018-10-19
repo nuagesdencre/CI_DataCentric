@@ -2,5 +2,14 @@
 {% block content%}
     <div>
         <h1>Register</h1>
+<form method="POST">
+    {{form.hidden_tag()}}
+<!-- hidden_tag protects the form against CSRF attacks.-->
+    {{form.username.label}}{{form.username}}
+    {{form.email.label}}{{form.email}}
+    {{form.password.label}}{{form.password}}
+    {{form.psw_again.label}}{{form.psw_again}}
+    {{form.submit()}}
+</form>
     </div>
 {% endblock %}
