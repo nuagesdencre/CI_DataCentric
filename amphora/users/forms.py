@@ -7,12 +7,18 @@ from amphora.models import User
 
 
 class Login(FlaskForm):
+    """
+    Login Form
+    """
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log in!')
 
 
 class Register(FlaskForm):
+    """
+    Registration Form
+    """
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6,
                                                                             max=30, message='Minimum 6 characters'),
@@ -32,6 +38,9 @@ class Register(FlaskForm):
 
 
 class Update(FlaskForm):
+    """
+    Update Information on Account Form
+    """
     email = StringField('Email', validators=[DataRequired(), Email()])
     username = StringField('Username', validators=[DataRequired()])
     profile_pic = FileField('Picture!', validators=[FileAllowed(['png','jpg'])])
