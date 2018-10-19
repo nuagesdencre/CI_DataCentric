@@ -39,8 +39,6 @@ Separate git branch? In addition, if it is not obvious, you should also describe
     - [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/) Flask-Migrate is an extension that handles SQLAlchemy database migrations for Flask applications using Alembic. 
     - [Flask-Login](https://flask-login.readthedocs.io/en/latest/) Flask-Login provides user session management for Flask. It handles the common tasks of logging in, logging out, and remembering your users’ sessions over extended periods of time.     
     - [Flask-WTF](https://flask-wtf.readthedocs.io/en/stable/) Simple integration of Flask and WTForms, including CSRF, file upload, and reCAPTCHA.
-    - [Pillow](https://pillow.readthedocs.io/en/5.3.x/index.html) Fork from PIL - Python Imaging Library. The Python Imaging Library adds image processing capabilities to the Python interpreter.
-
     - Flask plugins? (requirements...)
 - [Jinja2]()
     - Lorem.
