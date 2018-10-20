@@ -36,12 +36,12 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash, psw)
 
     # look for all authored entries
-    def list_entries(self):
-        print("Entries for this username:")
-        for story in self.stories:
-            return story
-        for being in self.beings:
-            return being
+    # def list_entries(self):
+    #     print("Entries for this username:")
+    #     for story in self.stories:
+    #         return story
+    #     for being in self.beings:
+    #         return being
 
 
 class Story(db.Model):
