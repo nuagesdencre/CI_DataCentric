@@ -65,3 +65,14 @@ def account():
     form.email.data = current_user.email
     profile_pic = url_for('static', filename='img/'+current_user.profile_pic)
     return render_template('users/account.html', profile_pic=profile_pic, form=form)
+
+
+@users.route('/<username>')
+def user_entries(username):
+    """
+     Where we can see entries authored by a specific user
+    """
+    user = User.query.filter_by(username=username).first()
+    stories = Story.query.filter_by(user)
+    beings = Being.query.filter_by(user)
+    return render_template('users/entries.html', user=user, stories=stories, beings=beings)
