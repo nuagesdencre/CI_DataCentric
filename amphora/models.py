@@ -1,10 +1,7 @@
 from amphora import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-# 3 tables:
-# user
-# story
-# being
+
 
 
 @login_manager.user_loader
@@ -20,9 +17,9 @@ class User(db.Model, UserMixin):
     psw_hash = db.Column(db.String(128))
     profile_pic = db.Column(db.String(72), nullable=False, default='amphora_profile.png')
     # relationships
-    stories = db.relationship('Story', backref='author', lazy=True)
+    stories = db.relationship('Story', backref='user', lazy=True)
     # One author for many stories & beings
-    beings = db.relationship('Being', backref='author', lazy=True)
+    beings = db.relationship('Being', backref='user', lazy=True)
 
     # user set up
     def __init__(self, username, email, psw):
@@ -38,6 +35,14 @@ class User(db.Model, UserMixin):
     def psw_check(self, psw):
         return check_password_hash(self.password_hash, psw)
 
+    # look for all authored entries
+    def list_entries(self):
+        print("Entries for this username:")
+        for story in self.stories:
+            return story
+        for being in self.beings:
+            return being
+
 
 class Story(db.Model):
 
@@ -45,16 +50,15 @@ class Story(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(60), nullable=False, unique=True, index=True)
     country = db.Column(db.String(60), nullable=False, index=True)
-    text = db.Column(db.Text, nullable=False)
+    text = db.Column(db.Text)
     category = db.Column(db.String(60), index=True)
     # relationships
     users = db.relationship('User', backref='user', lazy=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, title, country, text, category):
+    def __init__(self, title, country, category):
         self.title = title
         self.country = country
-        self.text = text
         self.category = category
 
     def __repr__(self):
@@ -67,16 +71,15 @@ class Being(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), nullable=False, unique=True, index=True)
     country = db.Column(db.String(60), nullable=False, index=True)
-    text = db.Column(db.Text, nullable=False)
+    text = db.Column(db.Text)
     category = db.Column(db.String(60), index=True)
     # relationships
     users = db.relationship('User', backref='user', lazy=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, name, country, text, category):
+    def __init__(self, name, country, category):
         self.name = name
         self.country = country
-        self.text = text
         self.category = category
 
     def __repr__(self):
