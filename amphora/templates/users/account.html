@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content%}
+<div>
+    <div class="container">
+    <h1>Account</h1>
+<img src="{{ profile_pic }}">
+        <form method="POST">
+            {{form.hidden_tag()}}
+            <!-- hidden_tag protects the form against CSRF attacks.-->
+            {{form.username.label}}{{form.username}}
+            {{form.email.label}}{{form.email}}
+            {{form.submit(class="btn waves-effect accent")}}
+        </form>
+ </div>
+</div>
+{% endblock %}

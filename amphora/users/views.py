@@ -47,3 +47,21 @@ def logout():
     """
     logout_user()
     return redirect(url_for('main.index'))
+
+
+@users.route('/account', methods=['GET', 'POST'])
+@login_required
+def account():
+    """
+    Where users can view their details and update them, once logged in
+    """
+    form = Update()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit
+        return redirect(url_for('users.account'))
+    form.username.data = current_user.username
+    form.email.data = current_user.email
+    profile_pic = url_for('static', filename='img/'+current_user.profile_pic)
+    return render_template('users/account.html', profile_pic=profile_pic, form=form)
