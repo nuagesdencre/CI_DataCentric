@@ -5,10 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 
-# amphora
-from amphora.main.views import main
-from amphora.users.views import users
-from amphora.error.handlers import error_pages
+
 
 app = Flask(__name__)
 
@@ -24,6 +21,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 Migrate(app, db)
 
+# amphora
+from amphora.main.views import main
+from amphora.users.views import users
+from amphora.error.handlers import error_pages
 
 # Registering blueprints
 app.register_blueprint(main)

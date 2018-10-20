@@ -7,7 +7,7 @@ from flask_login import UserMixin
 # being
 
 
-@login_manager.user_loader()
+@login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
@@ -39,7 +39,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash, psw)
 
 
-class Story():
+class Story(db.Model):
 
     __tablename__ = 'stories'
     id = db.Column(db.Integer, primary_key=True)
@@ -61,7 +61,7 @@ class Story():
         return "Story title: {}".format(self.title)
 
 
-class Being():
+class Being(db.Model):
 
     __tablename__ = 'beings'
     id = db.Column(db.Integer, primary_key=True)
