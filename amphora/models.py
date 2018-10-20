@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
     profile_pic = db.Column(db.String(72), nullable=False, default='amphora_profile.png')
     # relationships
     stories = db.relationship('Story', backref='author', lazy=True)
+    # One author for many stories & beings
     beings = db.relationship('Being', backref='author', lazy=True)
 
     # user set up
@@ -32,7 +33,6 @@ class User(db.Model, UserMixin):
     # user self-representation
     def __repr__(self):
         return "Username {}".format(self.username)
-
 
     # password check
     def psw_check(self, psw):

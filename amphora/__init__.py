@@ -8,6 +8,8 @@ from flask_login import LoginManager
 
 
 app = Flask(__name__)
+# must create a secret key in a config file or .env!!
+app.secret_key = 'thisistemporary'
 
 # preparing user view management
 login_manager = LoginManager()
