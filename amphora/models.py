@@ -54,7 +54,7 @@ class Story(db.Model):
     text = db.Column(db.Text)
     category = db.Column(db.String(60), index=True)
     # relationships
-    # user = db.relationship('User', backref='users', lazy=True)
+    users = db.relationship('User')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __init__(self, title, country, category):
@@ -75,7 +75,7 @@ class Being(db.Model):
     text = db.Column(db.Text)
     category = db.Column(db.String(60), index=True)
     # relationships
-    # user = db.relationship('User', backref='users', lazy=True)
+    users = db.relationship('User')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __init__(self, name, country, category):

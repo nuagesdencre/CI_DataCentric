@@ -60,7 +60,7 @@ def account():
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.email = form.email.data
-        db.session.commit
+        db.session.commit()
         return redirect(url_for('users.account'))
     form.username.data = current_user.username
     form.email.data = current_user.email
@@ -73,7 +73,7 @@ def user_entries(username):
     """
      Where we can see entries authored by a specific user
     """
-    user = User.query.filter_by(username=username).first()
-    stories = Story.query.filter_by(user)
-    beings = Being.query.filter_by(user)
-    return render_template('users/entries.html', user=user, stories=stories, beings=beings)
+    user = User.query.filter_by(username=username).first_or_404()
+    stories = Story.query.filter_by(user=user)
+    beings = Being.query.filter_by(user=user)
+    return render_template('users/entries.html', user=user, beings=beings, stories=stories)
