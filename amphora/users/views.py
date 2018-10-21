@@ -19,7 +19,7 @@ def register():
     if form.validate_on_submit():
         user = User(email=form.email.data,
                     username=form.username.data,
-                    password=form.password.data)
+                    psw=form.password.data)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('users.login'))
@@ -37,6 +37,7 @@ def login():
         if user.psw_check(form.password.data) and user is not None:
             login_user(user)
             flash('You are now logged in!')
+            return redirect(url_for('users.account'))
     return render_template('users/login.html', form=form)
 
 

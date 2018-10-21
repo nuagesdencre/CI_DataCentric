@@ -33,7 +33,7 @@ class User(db.Model, UserMixin):
 
     # password check
     def psw_check(self, psw):
-        return check_password_hash(self.password_hash, psw)
+        return check_password_hash(self.psw_hash, psw)
 
     # look for all authored entries
     # def list_stories(self):
