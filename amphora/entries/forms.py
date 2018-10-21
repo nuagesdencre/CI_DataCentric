@@ -3,8 +3,15 @@ from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
 
 
-class Entry(FlaskForm):
+class Story(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
+    text = TextAreaField('Text', validators=[DataRequired()])
+    country = StringField('Associated Country', validators=[DataRequired()])
+    submit = SubmitField("Done!")
+
+
+class Being(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
     text = TextAreaField('Text', validators=[DataRequired()])
     country = StringField('Associated Country', validators=[DataRequired()])
     submit = SubmitField("Done!")
