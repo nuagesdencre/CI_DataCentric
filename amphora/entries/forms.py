@@ -1,4 +1,10 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileAllowed, FileField
-from wtforms import StringField, PasswordField, SubmitField, ValidationError
-from wtforms.validators import DataRequired, Email, EqualTo,Length
+from wtforms import StringField, TextAreaField, SubmitField
+from wtforms.validators import DataRequired
+
+
+class Entry(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    text = TextAreaField('Text', validators=[DataRequired()])
+    country = StringField('Associated Country', validators=[DataRequired()])
+    submit = SubmitField("Done!")
