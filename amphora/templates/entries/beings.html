@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content%}
+    <div>
+        <h1>Beings MAIN</h1>
+                <div class="row">
+            <div class="col"><h3>Beings</h3>
+                {% for being in beings.items %}
+                <li>{{ being.name }}</li>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content%}
+    <div>
+        <h1>Stories MAIN</h1>
+                <div class="row">
+            <div class="col"><h3>Stories</h3>
+                {% for story in stories.items %}
+                <li>{{ story.title }}</li>
+                {% endfor %}
+            </div>
 
-</body>
-</html>
+        </div>
+    </div>
+{% endblock %}
