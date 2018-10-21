@@ -16,7 +16,14 @@
         </li>
         <li><a href="{{url_for('main.about')}}">About</a></li>
         <li><a href="{{url_for('main.contact')}}">Contact</a></li>
-        <li><a href="{{url_for('users.login')}}">User</a>
+        <li><a href="{{url_for('users.login')}}">Login</a>
+        </li>
+        <li><a href="{{url_for('users.register')}}">Register</a>
+        </li>
+        <li><a href="{{url_for('users.account')}}">Account</a>
+        </li>
+        <!--merge account and logged in user entries view?-->
+        <li><a href="{{url_for('users.logout')}}">Logout</a>
         </li>
     </ul>
 </nav>
