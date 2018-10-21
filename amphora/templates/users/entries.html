@@ -2,17 +2,19 @@
 {% block content%}
 <div>
     <div class="container">
-    <h1>Entries</h1>
-<h2>Username: {{ user.username }}</h2>
-        <div><h3>Stories</h3>
-            {% for story in stories.items %}
-            <li>{{ story.title }}</li>
-            {% endfor %}
-        </div>
-        <div><h3>Beings</h3>
-            {% for being in beings.items %}
-            <li>{{ being.name }}</li>
-            {% endfor %}
+        <h1>Entries</h1>
+        <h2>Username: {{ user.username }}</h2>
+        <div class="row">
+            <div class="col s6"><h3>Stories</h3>
+                {% for story in stories.items %}
+                <li>{{ story.title }}</li>
+                {% endfor %}
+            </div>
+            <div class="col s6"><h3>Beings</h3>
+                {% for being in beings.items %}
+                <li>{{ being.name }}</li>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

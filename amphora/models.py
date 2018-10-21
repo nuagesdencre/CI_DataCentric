@@ -36,10 +36,11 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash, psw)
 
     # look for all authored entries
-    # def list_entries(self):
+    # def list_stories(self):
     #     print("Entries for this username:")
     #     for story in self.stories:
     #         return story
+    # def list_beings(self):
     #     for being in self.beings:
     #         return being
 
@@ -53,7 +54,7 @@ class Story(db.Model):
     text = db.Column(db.Text)
     category = db.Column(db.String(60), index=True)
     # relationships
-    users = db.relationship('User', backref='user', lazy=True)
+    # user = db.relationship('User', backref='users', lazy=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __init__(self, title, country, category):
@@ -74,7 +75,7 @@ class Being(db.Model):
     text = db.Column(db.Text)
     category = db.Column(db.String(60), index=True)
     # relationships
-    users = db.relationship('User', backref='user', lazy=True)
+    # user = db.relationship('User', backref='users', lazy=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __init__(self, name, country, category):
