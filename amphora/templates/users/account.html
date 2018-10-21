@@ -11,6 +11,7 @@
             {{form.email.label}}{{form.email}}
             {{form.submit(class="btn waves-effect accent")}}
         </form>
+        <a href="{{url_for('users.user_entries', username=username)}}" class="waves-effect waves-light btn ">Entries</a>
  </div>
 </div>
 {% endblock %}

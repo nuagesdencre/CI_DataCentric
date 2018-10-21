@@ -63,9 +63,10 @@ def account():
         db.session.commit()
         return redirect(url_for('users.account'))
     form.username.data = current_user.username
+    username = current_user.username
     form.email.data = current_user.email
     profile_pic = url_for('static', filename='img/'+current_user.profile_pic)
-    return render_template('users/account.html', profile_pic=profile_pic, form=form)
+    return render_template('users/account.html', username=username, profile_pic=profile_pic, form=form)
 
 
 @users.route('/<username>')
