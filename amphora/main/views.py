@@ -1,4 +1,5 @@
 from flask import render_template, request, Blueprint, abort
+from amphora.models import Story, Being
 
 
 main = Blueprint('main', __name__)
@@ -17,7 +18,9 @@ def repo():
     """
     Accessing the repository
     """
-    return render_template('repo.html')
+    stories = Story.query.order_by(Story.title)
+    beings = Being.query.order_by(Being.name)
+    return render_template('repo.html', stories=stories, beings=beings)
 
 
 @main.route('/about')

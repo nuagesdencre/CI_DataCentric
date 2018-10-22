@@ -1,6 +1,39 @@
 {% extends "base.html" %}
 {% block content%}
-    <div>
+    <div class="container">
         <h1>REPO</h1>
+<ul>
+    <li><a href="{{url_for('entries.new_story')}}">New Entry: Story</a></li>
+    <li><a href="{{url_for('entries.new_being')}}">New Entry: Being</a></li>
+</ul>
+       <h3>Stories</h3>
+        <div class="row">
+        {% for story in stories.items%}
+
+      <div class="card">
+          <span class="card-title" >{{story.title}}</span>
+          <a href="{{ url_for('entries.stories', story_id=story.id)}}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">More</i></a>
+        </div>
+        <div class="card-content">
+          <p>{{story.category}}</p>
+        </div>
+      </div>
+    </div>
+
+        {% endfor %}
+        <h3>Beings</h3>
+        {% for being in beings.items%}
+
+      <div class="card">
+          <span class="card-title" >{{being.title}}</span>
+          <a href="{{ url_for('entries.beings', being_id=being.id)}}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">More</i></a>
+        </div>
+        <div class="card-content">
+          <p>{{being.category}}</p>
+        </div>
+      </div>
+    </div>
+
+        {% endfor %}
     </div>
 {% endblock %}

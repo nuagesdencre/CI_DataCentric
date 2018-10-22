@@ -44,10 +44,10 @@ def new_being():
 
     if form.validate_on_submit():
         being = Being(name=form.name.data,
-                      text=form.text.data,
+                      text = form.text.data,
                       country=form.country.data,
                       category=form.category.data,
-                      user_id=current_user.id)
+                      user_id = current_user.id)
 
         db.session.add(being)
         db.session.commit()
@@ -63,7 +63,7 @@ def story(story_id):
      View a specific story
      """
     story = Story.query.get_or_404(story_id)
-    return render_template('stories.html', title=story.title,
+    return render_template('entries/stories.html', title=story.title,
                            text=story.text, country=story.country,
                            category=story.category)
 
@@ -74,7 +74,7 @@ def being(being_id):
      View a specific being
      """
     being = Being.query.get_or_404(being_id)
-    return render_template('beings.html', title=being.title,
+    return render_template('entries/beings.html', title=being.title,
                            text=being.text, country=being.country,
                            category=being.category)
 
@@ -140,7 +140,7 @@ def delete_story(story_id):
         db.session.delete(story)
         db.session.commit()
         print('Deleted the entry.')
-        return redirect(url_for('main,repo'))
+        return redirect(url_for('main.repo'))
 
 
 @entries.route('/<int:being_id>/delete', methods=['GET', 'POST'])
@@ -156,4 +156,4 @@ def delete_being(being_id):
         db.session.delete(being)
         db.session.commit()
         print('Deleted the entry.')
-        return redirect(url_for('main,repo'))
+        return redirect(url_for('main.repo'))
