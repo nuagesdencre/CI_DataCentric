@@ -8,6 +8,7 @@
 </ul>
        <h3>Stories</h3>
         <div class="row">
+            <div class="col s6">
         {% for story in stories.items%}
 
       <div class="card">
@@ -20,7 +21,8 @@
       </div>
     </div>
 
-        {% endfor %}
+        {% endfor %}</div>
+<div class="col s6">
         <h3>Beings</h3>
         {% for being in beings.items%}
 
@@ -35,5 +37,5 @@
     </div>
 
         {% endfor %}
-    </div>
+    </div> </div>
 {% endblock %}
