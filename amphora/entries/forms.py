@@ -3,7 +3,7 @@ from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
 
 
-class Story(FlaskForm):
+class EntryStory(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     text = TextAreaField('Text', validators=[DataRequired()])
     category = StringField('Category')
@@ -11,7 +11,7 @@ class Story(FlaskForm):
     submit = SubmitField("Done!")
 
 
-class Being(FlaskForm):
+class EntryBeing(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     text = TextAreaField('Text', validators=[DataRequired()])
     category = StringField('Category')

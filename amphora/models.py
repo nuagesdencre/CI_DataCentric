@@ -57,10 +57,12 @@ class Story(db.Model):
     users = db.relationship('User')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, title, country, category):
+    def __init__(self, title, text, country, category, user_id):
         self.title = title
+        self.text = text
         self.country = country
         self.category = category
+        self.user_id = user_id
 
     def __repr__(self):
         return "Story title: {}".format(self.title)
@@ -78,10 +80,12 @@ class Being(db.Model):
     users = db.relationship('User')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, name, country, category):
+    def __init__(self, name, text, country, category, user_id):
         self.name = name
+        self.text = text
         self.country = country
         self.category = category
+        self.user_id = user_id
 
     def __repr__(self):
         return "Being name: {}".format(self.name)

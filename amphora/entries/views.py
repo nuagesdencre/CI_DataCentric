@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 
 from amphora import db
 from amphora.models import Story, Being
-from amphora.entries.forms import Story, Being
+from amphora.entries.forms import EntryStory, EntryBeing
 
 entries = Blueprint('entries', __name__)
 
@@ -14,11 +14,11 @@ entries = Blueprint('entries', __name__)
 
 @entries.route('/new_story', methods=['GET', 'POST'])
 @login_required
-def new_story():
+def create_story():
     """
     Creating a new entry of type story
     """
-    form = Story()
+    form = EntryStory()
 
     if form.validate_on_submit():
         story = Story(title=form.title.data,
@@ -36,16 +36,16 @@ def new_story():
 
 @entries.route('/new_being', methods=['GET', 'POST'])
 @login_required
-def new_being():
+def create_being():
     """
     Creating a new entry of type being
     """
-    form = Being()
+    form = EntryBeing()
 
     if form.validate_on_submit():
         being = Being(name=form.name.data,
-                      text = form.text.data,
                       country=form.country.data,
+                      text=form.text.data,
                       category=form.category.data,
                       user_id = current_user.id)
 
