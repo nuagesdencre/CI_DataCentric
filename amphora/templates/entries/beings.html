@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% block content%}
-    <div>
-        <h1>Beings MAIN</h1>
-                <div class="row">
-            <div class="col"><h3>Beings</h3>
-                {% for being in beings.items %}
-                <li>{{ being.name }}</li>
-                {% endfor %}
-            </div>
-        </div>
+<div>
+    <h1>Beings MAIN</h1>
+    <div class="container">
+        <h3>{{being.title}}</h3>
+        <h4>{{being.country}}</h4>
+        <p>Written by {{ being.user.username}}</p>
+        <p>
+            {{text}}
+        </p>
+        {% if being.user == current_user %}
+        <a href="">Update</a> <a href="">Delete</a>
+
     </div>
+</div>
 {% endblock %}

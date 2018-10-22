@@ -1,4 +1,4 @@
-from flask import render_template, url_for, Blueprint, redirect, abort
+from flask import render_template, url_for, Blueprint, redirect, abort, request
 from flask_login import current_user, login_required
 
 from amphora import db
@@ -79,7 +79,7 @@ def being(being_id):
                            category=being.category)
 
 
-@entries.route('/<int:story_id/update>', methods=['GET', 'POST'])
+@entries.route('/<int:story_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_story(story_id):
     """
@@ -103,7 +103,7 @@ def update_story(story_id):
         return redirect(url_for('story.story', story_id=story_id))
 
 
-@entries.route('/<int:being_id/update>', methods=['GET', 'POST'])
+@entries.route('/<int:being_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_being(being_id):
     """
@@ -125,3 +125,35 @@ def update_being(being_id):
         db.session.commit()
         print('Update successful!')
         return redirect(url_for('being.being', being_id=being_id))
+
+
+@entries.route('/<int:story_id>/delete', methods=['GET', 'POST'])
+@login_required
+def delete_story(story_id):
+    """
+     Delete an existing story entry, only possible if
+     user is the author of the entry
+     """
+    story = Story.query.get_or_404(story_id)
+    if story.user != current_user:
+        abort(403)
+        db.session.delete(story)
+        db.session.commit()
+        print('Deleted the entry.')
+        return redirect(url_for('main,repo'))
+
+
+@entries.route('/<int:being_id>/delete', methods=['GET', 'POST'])
+@login_required
+def delete_being(being_id):
+    """
+     Delete an existing being entry, only possible if
+     user is the author of the entry
+     """
+    being = Being.query.get_or_404(being_id)
+    if being.user != current_user:
+        abort(403)
+        db.session.delete(being)
+        db.session.commit()
+        print('Deleted the entry.')
+        return redirect(url_for('main,repo'))

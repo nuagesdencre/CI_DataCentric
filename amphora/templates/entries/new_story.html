@@ -2,5 +2,15 @@
 {% block content%}
     <div>
         <h1>Create Story</h1>
+                <div class="container">
+            <form method="POST">
+            {{form.hidden_tag()}}
+                {{form.title.label}}{{form.name}}
+                {{form.text.label}}{{form.text}}
+                {{form.country.label}}{{form.country}}
+                {{form.category.label}}{{form.category}}
+                {{form.submit}}
+            </form>
+        </div>
     </div>
 {% endblock %}
