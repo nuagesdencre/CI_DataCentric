@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content%}
 <div>
-    <h1>Create Story</h1>
     <div class="container">
+        <h1>Create Story</h1>
         <form method="POST">
             {{form.hidden_tag()}}
-            {{form.title.label}}{{form.title}}
-            {{form.text.label}}{{form.text}}
+            {{form.title.label}}{{form.title(class="validate")}}
+            {{form.text.label}}{{form.text(class="materialize-textarea")}}
             {{form.country.label}}{{form.country}}
             {{form.category.label}}{{form.category}}
-            {{form.submit}}
+            {{form.submit(class="waves-effect btn")}}
         </form>
     </div>
 </div>

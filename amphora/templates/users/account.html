@@ -4,14 +4,17 @@
     <div class="container">
     <h1>Account</h1>
 <img src="{{ profile_pic }}">
+
+        <p><a href="{{url_for('users.user_entries', username=username)}}" class="waves-effect waves-light btn ">View Entries</a></p>
+
         <form method="POST" action="">
             {{form.hidden_tag()}}
             <!-- hidden_tag protects the form against CSRF attacks.-->
             {{form.username.label}}{{form.username}}
             {{form.email.label}}{{form.email}}
-            {{form.submit(class="btn waves-effect accent")}}
+            {{form.submit(class="btn waves-effect waves-light")}}
         </form>
-        <a href="{{url_for('users.user_entries', username=username)}}" class="waves-effect waves-light btn ">Entries</a>
+
  </div>
 </div>
 {% endblock %}

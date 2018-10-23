@@ -12,28 +12,48 @@
 
 <body>
 
-<nav class="nav-wrapper blue">
-    <ul>
-        <li><a href="{{url_for('main.index')}}">Home</a></li>
-        <li><a href="{{url_for('main.repo')}}">Repository</a>
-        </li>
-        <!--all entries, search option and filter option-->
-        <li><a href="{{url_for('main.about')}}">About</a></li>
-        <li><a href="{{url_for('main.contact')}}">Contact</a></li>
-        {% if current_user.is_authenticated %}
-        <li><a href="{{url_for('users.account')}}">Account</a>
-        </li>
-        <!--merge account and logged in user entries view?-->
-        <li><a href="{{url_for('users.logout')}}">Logout</a></li>
-            {% else %}
-        <li><a href="{{url_for('users.login')}}">Login</a>
-        </li>
-        <li><a href="{{url_for('users.register')}}">Register</a>
-            {% endif %}
-        </li>
 
-    </ul>
+<nav>
+    <div class="nav-wrapper light-blue">
+        <a href="#" class="brand-logo center">Amphora</a>
+        <a href="#" data-target="amphora_navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{{url_for('main.index')}}">Home</a></li>
+            <li><a href="{{url_for('main.repo')}}">Repository</a>
+            </li>
+            <li><a href="{{url_for('main.about')}}">About</a></li>
+            <li><a href="{{url_for('main.contact')}}">Contact</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
+            </li>
+            <li><a href="{{url_for('users.logout')}}" class="waves-light grey lighten">Logout</a></li>
+            {% else %}
+            <li><a href="{{url_for('users.login')}} " class="waves-light grey lighten-2">Login</a>
+            </li>
+            <li><a href="{{url_for('users.register')}}" class="waves-light blue lighten-3">Register</a>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
 </nav>
+
+<ul class="sidenav" id="amphora_navbar">
+    <li><a href="{{url_for('main.index')}}">Home</a></li>
+    <li><a href="{{url_for('main.repo')}}">Repository</a>
+    </li>
+    <li><a href="{{url_for('main.about')}}">About</a></li>
+    <li><a href="{{url_for('main.contact')}}">Contact</a></li>
+    {% if current_user.is_authenticated %}
+    <li><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
+    </li>
+    <li><a href="{{url_for('users.logout')}}" class="waves-light grey lighten">Logout</a></li>
+    {% else %}
+    <li><a href="{{url_for('users.login')}}" class="waves-light grey lighten-2">Login</a>
+    </li>
+    <li><a href="{{url_for('users.register')}}" class="waves-light blue lighten-3">Register</a>
+        {% endif %}
+    </li>
+</ul>
 
 
 <div class="row">
@@ -50,8 +70,14 @@
         </div>
     </div>
 </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='js/vendors/materialize.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/vendors/materialize.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
+</script>
 </body>
 
 </html>

@@ -1,41 +1,49 @@
 {% extends "base.html" %}
 {% block content%}
-    <div class="container">
-        <h1>REPO</h1>
-<ul>
-    <li><a href="{{url_for('entries.create_story')}}">New Entry: Story</a></li>
-    <li><a href="{{url_for('entries.create_being')}}">New Entry: Being</a></li>
-</ul>
-       <h3>Stories</h3>
-        <div class="row">
-            <div class="col s6">
-        {% for story in stories.items%}
+<div class="container">
+    <h1>REPO</h1>
+    <div class="row">
+        <div class="col s6">
+            <h3>Stories</h3>
+            <ul>
+                <li><a href="{{url_for('entries.create_story')}}" class="btn waves-light waves-effect light-blue">New
+                    Entry:
+                    Story</a></li>
+            </ul>
+            {% for story in stories.items%}
 
-      <div class="card">
-          <span class="card-title" >{{story.title}}</span>
-          <a href="{{ url_for('entries.stories', story_id=story.id)}}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">More</i></a>
+            <div class="card">
+                <span class="card-title">{{story.title}}</span>
+                <a href="{{ url_for('entries.stories', story_id=story.id)}}}"
+                   class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">More</i></a>
+            </div>
+            <div class="card-content">
+                <p>{{story.category}}</p>
+            </div>
         </div>
-        <div class="card-content">
-          <p>{{story.category}}</p>
-        </div>
-      </div>
     </div>
 
-        {% endfor %}</div>
+    {% endfor %}
+</div>
 <div class="col s6">
-        <h3>Beings</h3>
-        {% for being in beings.items%}
+    <h3>Beings</h3>
+    <ul>
+        <li><a href="{{url_for('entries.create_being')}}" class="btn waves-light waves-effect light-blue">New Entry:
+            Being</a></li>
+    </ul>
+    {% for being in beings.items%}
 
-      <div class="card">
-          <span class="card-title" >{{being.title}}</span>
-          <a href="{{ url_for('entries.beings', being_id=being.id)}}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">More</i></a>
-        </div>
-        <div class="card-content">
-          <p>{{being.category}}</p>
-        </div>
-      </div>
+    <div class="card">
+        <span class="card-title">{{being.title}}</span>
+        <a href="{{ url_for('entries.beings', being_id=being.id)}}}"
+           class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">More</i></a>
     </div>
+    <div class="card-content">
+        <p>{{being.category}}</p>
+    </div>
+</div>
+</div>
 
-        {% endfor %}
-    </div> </div>
+{% endfor %}
+</div> </div>
 {% endblock %}
