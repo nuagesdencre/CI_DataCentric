@@ -4,14 +4,18 @@
     <div class="container">
     <h1>Login</h1>
 
+
         <form method="POST">
             {{form.hidden_tag()}}
             <!-- hidden_tag protects the form against CSRF attacks.-->
             {{form.email.label}}{{form.email(class="validate")}}
             {{form.password.label}}{{form.password}}
-            {{form.submit(class="btn waves-effect accent")}}
+            {{form.submit(class="btn waves-effect blue")}}
         </form>
-        <a href="{{url_for('users.register')}}" class="btn waves-effect lighten-3 ">Register</a>
+        <p>
+            First time visitor?
+        <a href="{{url_for('users.register')}}" class="">Register</a>
+        </p>
     </div>
 </div>
 {% endblock %}

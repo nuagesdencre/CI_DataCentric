@@ -3,6 +3,8 @@
 <div>
     <div class="container">
     <h1>Register</h1>
+
+
         <form method="POST">
             {{form.hidden_tag()}}
             <!-- hidden_tag protects the form against CSRF attacks.-->
@@ -10,9 +12,12 @@
             {{form.email.label}}{{form.email(class="validate")}}
             {{form.password.label}}{{form.password}}
             {{form.psw_again.label}}{{form.psw_again}}
-            {{form.submit(class="btn waves-effect accent")}}
+            {{form.submit(class="btn waves-effect blue")}}
         </form>
-        <a href="{{url_for('users.login')}}" class="btn waves-effect">Login</a></div>
+        <p>
+            Already registered?
+         <a href="{{url_for('users.login')}}" class="">Login</a></div>
+        </p>
 
 </div>
 {% endblock %}

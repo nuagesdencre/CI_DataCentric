@@ -6,44 +6,46 @@
         <div class="col s6">
             <h3>Stories</h3>
             <ul>
-                <li><a href="{{url_for('entries.create_story')}}" class="btn waves-light waves-effect light-blue">New
-                    Entry:
-                    Story</a></li>
+                <li><a href="{{url_for('entries.create_story')}}" class="btn waves-light waves-effect light-blue">
+                    Add Entry: Story</a></li>
             </ul>
-            {% for story in stories.items%}
-
-            <div class="card">
+            {% for story in stories%}
+            <div class="card center">
                 <span class="card-title">{{story.title}}</span>
-                <a href="{{ url_for('entries.stories', story_id=story.id)}}}"
-                   class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">More</i></a>
-            </div>
-            <div class="card-content">
+            <div class="card-content blue lighten-5">
                 <p>{{story.category}}</p>
+                <p>
+                    <a href="{{ url_for('entries.story', story_id=story.id)}}}"> Read more</a>
+                </p>
             </div>
         </div>
-    </div>
+        {% endfor %}
+        </div>
 
-    {% endfor %}
-</div>
-<div class="col s6">
-    <h3>Beings</h3>
-    <ul>
-        <li><a href="{{url_for('entries.create_being')}}" class="btn waves-light waves-effect light-blue">New Entry:
-            Being</a></li>
-    </ul>
-    {% for being in beings.items%}
+        <div class="col s6">
+            <h3>Beings</h3>
+            <ul>
+                <li>
+                    <a href="{{url_for('entries.create_being')}}" class="btn waves-light waves-effect light-blue">
+                        Add Entry: Being</a>
+                </li>
+            </ul>
 
-    <div class="card">
-        <span class="card-title">{{being.title}}</span>
-        <a href="{{ url_for('entries.beings', being_id=being.id)}}}"
-           class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">More</i></a>
+            {% for being in beings%}
+            <div class="card center">
+                <span class="card-title">{{being.name}}</span>
+            <div class="card-content blue lighten-5">
+                <p>{{being.category}}</p>
+                <p><a href="{{ url_for('entries.being', being_id=being.id)}}}">
+                   Read more</a>
+                </p>
+            </div>
+            </div>
+            {% endfor %}
+
     </div>
-    <div class="card-content">
-        <p>{{being.category}}</p>
-    </div>
-</div>
 </div>
 
-{% endfor %}
-</div> </div>
+
+</div>
 {% endblock %}

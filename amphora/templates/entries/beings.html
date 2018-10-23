@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content%}
 <div>
-    <h1>Beings MAIN</h1>
+    <h1>{{being.title}}</h1>
     <div class="container">
-        <h3>{{being.title}}</h3>
+        <img src="{{ image }}">
+
         <h4>{{being.country}}</h4>
         <p>Written by {{ being.user.username}}</p>
         <p>
