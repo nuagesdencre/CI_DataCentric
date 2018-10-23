@@ -24,3 +24,6 @@ a > .material-icons {
 }
 
 /* ENDMaterial Icons*/
+.card {
+    padding:10px;
+}

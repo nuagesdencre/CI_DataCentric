@@ -35,7 +35,7 @@ class Register(FlaskForm, ValidationMixin):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6,
                                                                             max=30, message='Minimum 6 characters'),
-                                                     EqualTo('psw_again')])
+                                                     EqualTo('psw_again', message='Password does not match.')])
     psw_again = PasswordField('Confirm Password', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Register now!')

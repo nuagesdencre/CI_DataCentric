@@ -1,4 +1,4 @@
-from flask import render_template, url_for, Blueprint, redirect, abort, request
+from flask import render_template, url_for, Blueprint, redirect, abort, request,flash
 from flask_login import current_user, login_required
 
 from amphora import db
@@ -7,11 +7,7 @@ from amphora.entries.forms import EntryStory, EntryBeing
 
 entries = Blueprint('entries', __name__)
 
-
-# CRUD Story, Being
-# NEW
-
-
+# Create Story - Tested!
 @entries.route('/new_story', methods=['GET', 'POST'])
 @login_required
 def create_story():
@@ -30,10 +26,11 @@ def create_story():
         db.session.add(story)
         db.session.commit()
         print('Story created!')
+        flash('New story created!')
         return redirect(url_for('main.repo'))
     return render_template('entries/new_story.html', form=form)
 
-
+# Create Being - Tested!
 @entries.route('/new_being', methods=['GET', 'POST'])
 @login_required
 def create_being():
@@ -52,34 +49,36 @@ def create_being():
         db.session.add(being)
         db.session.commit()
         print('New being created!')
+        flash('New being created!')
         return redirect(url_for('main.repo'))
     return render_template('entries/new_being.html', form=form)
 
 
 # VIEW
-@entries.route('/<int:story_id>')
-def story(story_id):
+@entries.route('/story/<int:story_id>')
+def view_story(story_id):
     """
-     View a specific story
+     View a specific story entry
      """
     story = Story.query.get_or_404(story_id)
-    return render_template('entries/stories.html', title=story.title,
+    return render_template('entries/stories.html', story=story, title=story.title,
                            text=story.text, country=story.country,
                            category=story.category)
 
 
-@entries.route('/<int:being_id>')
-def being(being_id):
+@entries.route('/being/<int:being_id>')
+def view_being(being_id):
     """
-     View a specific being
+     View a specific being entry
      """
     being = Being.query.get_or_404(being_id)
-    return render_template('entries/beings.html', title=being.title,
+
+    return render_template('entries/beings.html', being=being, name=being.name,
                            text=being.text, country=being.country,
                            category=being.category)
 
 
-@entries.route('/<int:story_id>/update', methods=['GET', 'POST'])
+@entries.route('/story/<int:story_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_story(story_id):
     """
@@ -89,21 +88,25 @@ def update_story(story_id):
     story = Story.query.get_or_404(story_id)
     if story.user != current_user:
         abort(403)
-        # forbidden action
-        # possibly allow for certain fields to be updated by other people?
-    form = Story()
+
+    form = EntryStory()
     if form.validate_on_submit():
-        story.name = form.name.data,
-        story.text = form.text.data,
-        story.country = form.country.data,
+        story.title = form.title.data
+        story.text = form.text.data
+        story.country = form.country.data
         story.category = form.category.data
-        db.session.add(story)
         db.session.commit()
+        flash('Update successful!')
         print('Update successful!')
-        return redirect(url_for('story.story', story_id=story_id))
+        return redirect(url_for('entries.view_story', story_id=story_id))
+    form.title.data = story.title
+    form.text.data = story.text
+    form.country.data =story.country
+    form.category.data=story.category
+    return render_template('entries/new_story.html', form=form)
 
 
-@entries.route('/<int:being_id>/update', methods=['GET', 'POST'])
+@entries.route('/being/<int:being_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_being(being_id):
     """
@@ -113,21 +116,26 @@ def update_being(being_id):
     being = Being.query.get_or_404(being_id)
     if being.user != current_user:
         abort(403)
-        # forbidden action
-        # possibly allow for certain fields to be updated by other people?
-    form = Being()
+
+    form = EntryBeing()
     if form.validate_on_submit():
-        being.name = form.name.data,
-        being.text = form.text.data,
-        being.country = form.country.data,
+        being.name = form.name.data
+        being.text = form.text.data
+        being.country = form.country.data
         being.category = form.category.data
-        db.session.add(being)
         db.session.commit()
+        flash('Update successful!')
         print('Update successful!')
-        return redirect(url_for('being.being', being_id=being_id))
+        return redirect(url_for('entries.view_being', being_id=being_id))
+    form.name.data=being.name
+    form.text.data= being.text
+    form.country.data=being.country
+    form.category.data=being.category
+    return render_template('entries/new_being.html', form=form)
 
 
-@entries.route('/<int:story_id>/delete', methods=['GET', 'POST'])
+# Delete Story - Tested!
+@entries.route('/story/<int:story_id>/delete', methods=['GET', 'POST'])
 @login_required
 def delete_story(story_id):
     """
@@ -137,13 +145,14 @@ def delete_story(story_id):
     story = Story.query.get_or_404(story_id)
     if story.user != current_user:
         abort(403)
-        db.session.delete(story)
-        db.session.commit()
-        print('Deleted the entry.')
-        return redirect(url_for('main.repo'))
+        flash('Permission denied')
+    db.session.delete(story)
+    db.session.commit()
+    print('Deleted the entry.')
+    return redirect(url_for('main.repo'))
 
-
-@entries.route('/<int:being_id>/delete', methods=['GET', 'POST'])
+# Delete Being - Tested!
+@entries.route('/being/<int:being_id>/delete', methods=['GET', 'POST'])
 @login_required
 def delete_being(being_id):
     """
@@ -153,7 +162,8 @@ def delete_being(being_id):
     being = Being.query.get_or_404(being_id)
     if being.user != current_user:
         abort(403)
-        db.session.delete(being)
-        db.session.commit()
-        print('Deleted the entry.')
-        return redirect(url_for('main.repo'))
+        flash('Permission denied')
+    db.session.delete(being)
+    db.session.commit()
+    print('Deleted the entry.')
+    return redirect(url_for('main.repo'))

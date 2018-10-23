@@ -1,37 +1,34 @@
 {% extends "base.html" %}
 {% block content%}
 <div>
-    <h1>{{being.title}}</h1>
-    <div class="container">
-        <img src="{{ image }}">
 
+    <div class="container">
+        <h1>{{being.name}}</h1>
+        <img src="{{ url_for('static', filename='img/amphora_profile.png') }}">
         <h4>{{being.country}}</h4>
         <p>Written by {{ being.user.username}}</p>
         <p>
             {{text}}
         </p>
         {% if being.user == current_user %}
-        <a href="{{url_for('beings.update_being', being_id=being.id)}}" class="waves-effect waves-light btn">Update</a>
-        <a href="#" class="waves-effect waves-light btn pink modal-trigger" href="#delete_modal">Delete</a>
+        <a href="{{url_for('entries.update_being', being_id=being.id)}}" class="waves-effect waves-light btn">Update</a>
+        <a class="waves-effect waves-light btn pink modal-trigger" href="#delete_modal">Delete</a>
         {% endif %}
     </div>
            <div id="delete_modal" class="modal">
             <div class="modal-content">
-                <h2>Delete Entry</h2>
-                <h3>Do you really want to delete this entry?</h3>
+                <h3>Delete Entry</h3>
+                <h5>Do you really want to delete this entry?</h5>
             </div>
             <div class="modal-footer">
 
-                <form  action="{{url_for('beings.delete_being', being_id=being_id}}" method="POST">
+                <form  action="{{url_for('entries.delete_being', being_id=being.id)}}" method="POST">
                     <input type="submit" class="modal-close waves-effect waves-pink btn-flat" value="Delete entry">
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat">Go Back</a>
                 </form>
-                <a href="#" class="modal-close waves-effect waves-green btn-flat">Go Back</a>
+
             </div>
         </div>
-    <script>
-        $(document).ready(function () {
-            $('.modal').modal();
-        })
-    </script>
+
 </div>
 {% endblock %}
