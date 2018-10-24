@@ -14,9 +14,8 @@
                 <span class="card-title">{{story.title}}</span>
             <div class="card-content blue lighten-5">
                 <p>{{story.category}}</p>
-                <p>{{story.id}}</p>
                 <p>
-                    <a href="{{ url_for('entries.view_story', story_id=story.id)}}}"> Read more</a>
+                    <a href="{{ url_for('entries.view_story', story_id=story.id)}}" class="btn-flat blue-text"> Read more</a>
                 </p>
             </div>
         </div>
@@ -30,6 +29,7 @@
                     <a href="{{url_for('entries.create_being')}}" class="btn waves-light waves-effect light-blue">
                         Add Entry: Being</a>
                 </li>
+
             </ul>
 
             {% for being in beings%}
@@ -37,8 +37,7 @@
                 <span class="card-title">{{being.name}}</span>
             <div class="card-content blue lighten-5">
                 <p>{{being.category}}</p>
-                <p>{{being.id}}</p>
-                <p><a href="{{ url_for('entries.view_being', being_id=being.id)}}}">
+                <p> <a href="{{ url_for('entries.view_being', being_id=being.id)}}" class="btn-flat blue-text">
                    Read more</a>
                 </p>
             </div>

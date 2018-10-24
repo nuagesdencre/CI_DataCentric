@@ -1,3 +1,11 @@
+/*Special Font*/
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+.brand-logo {
+    font-family: 'Abel';
+    letter-spacing: 0.4em;
+}
+
 /* Material Icons */
 
 @font-face {
@@ -24,6 +32,32 @@ a > .material-icons {
 }
 
 /* ENDMaterial Icons*/
-.card {
-    padding:10px;
+
+/* Body */
+body {
+    background-image: url("../../static/img/rockywall.png");
 }
+
+.container {
+    margin: auto;
+    max-width: 800px;
+}
+
+.card .card-content, .card {
+    padding: 10px;
+}
+
+img {
+    max-width: 50%;
+}
+
+.collection, .collection .collection-item.avatar,
+.collection .collection-item {
+    min-height: 64px;
+    background-color: transparent;
+    border: none;
+}
+
+/* ENDBody */
+
+

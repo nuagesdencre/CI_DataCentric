@@ -1,4 +1,4 @@
-from flask import render_template, url_for, Blueprint, redirect, abort, request,flash
+from flask import render_template, url_for, Blueprint, redirect, abort, request, flash
 from flask_login import current_user, login_required
 
 from amphora import db
@@ -6,6 +6,7 @@ from amphora.models import Story, Being
 from amphora.entries.forms import EntryStory, EntryBeing
 
 entries = Blueprint('entries', __name__)
+
 
 # Create Story - Tested!
 @entries.route('/new_story', methods=['GET', 'POST'])
@@ -21,6 +22,7 @@ def create_story():
                       text=form.text.data,
                       country=form.country.data,
                       category=form.category.data,
+                      source=form.source.data,
                       user_id=current_user.id)
 
         db.session.add(story)
@@ -29,6 +31,7 @@ def create_story():
         flash('New story created!')
         return redirect(url_for('main.repo'))
     return render_template('entries/new_story.html', form=form)
+
 
 # Create Being - Tested!
 @entries.route('/new_being', methods=['GET', 'POST'])
@@ -44,7 +47,8 @@ def create_being():
                       country=form.country.data,
                       text=form.text.data,
                       category=form.category.data,
-                      user_id = current_user.id)
+                      source=form.source.data,
+                      user_id=current_user.id)
 
         db.session.add(being)
         db.session.commit()
@@ -63,7 +67,7 @@ def view_story(story_id):
     story = Story.query.get_or_404(story_id)
     return render_template('entries/stories.html', story=story, title=story.title,
                            text=story.text, country=story.country,
-                           category=story.category)
+                           category=story.category, source=story.source)
 
 
 @entries.route('/being/<int:being_id>')
@@ -75,7 +79,7 @@ def view_being(being_id):
 
     return render_template('entries/beings.html', being=being, name=being.name,
                            text=being.text, country=being.country,
-                           category=being.category)
+                           category=being.category, source=being.source)
 
 
 @entries.route('/story/<int:story_id>/update', methods=['GET', 'POST'])
@@ -94,6 +98,7 @@ def update_story(story_id):
         story.title = form.title.data
         story.text = form.text.data
         story.country = form.country.data
+        story.source = form.source.data
         story.category = form.category.data
         db.session.commit()
         flash('Update successful!')
@@ -101,8 +106,9 @@ def update_story(story_id):
         return redirect(url_for('entries.view_story', story_id=story_id))
     form.title.data = story.title
     form.text.data = story.text
-    form.country.data =story.country
-    form.category.data=story.category
+    form.country.data = story.country
+    form.category.data = story.category
+    form.source.data = story.source
     return render_template('entries/new_story.html', form=form)
 
 
@@ -123,14 +129,16 @@ def update_being(being_id):
         being.text = form.text.data
         being.country = form.country.data
         being.category = form.category.data
+        being.source = form.source.data
         db.session.commit()
         flash('Update successful!')
         print('Update successful!')
         return redirect(url_for('entries.view_being', being_id=being_id))
-    form.name.data=being.name
-    form.text.data= being.text
-    form.country.data=being.country
-    form.category.data=being.category
+    form.name.data = being.name
+    form.text.data = being.text
+    form.country.data = being.country
+    form.category.data = being.category
+    form.source.data = being.source
     return render_template('entries/new_being.html', form=form)
 
 
@@ -150,6 +158,7 @@ def delete_story(story_id):
     db.session.commit()
     print('Deleted the entry.')
     return redirect(url_for('main.repo'))
+
 
 # Delete Being - Tested!
 @entries.route('/being/<int:being_id>/delete', methods=['GET', 'POST'])
