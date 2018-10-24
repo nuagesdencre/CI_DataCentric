@@ -37,7 +37,13 @@ a > .material-icons,.material-icons {
 /* Body */
 body {
     background-image: url("../../static/img/rockywall.png");
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+main {
+    flex: 1 0 auto;
+  }
 
 .container {
     margin: auto;
@@ -71,7 +77,7 @@ img {
 
 @media (min-width: 768px) {
     .brand-logo, h1 {
-        letter-spacing: 0.3em;
+        letter-spacing: 0.2em;
     }
 
     .btn-flat {
@@ -81,7 +87,7 @@ img {
 
 @media (min-width: 992px) {
     .brand-logo, h1 {
-        letter-spacing: 0.4em;
+        letter-spacing: 0.3em;
     }
 }
 
