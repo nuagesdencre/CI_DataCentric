@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 {% block content%}
 <div class="container">
-    <h1> INDEX
-    </h1> ipsum dolor sit amet, consectetur adipisicing elit. Ad, animi blanditiis distinctio dolorum earum error, ex
-    expedita fugit ipsam molestiae, optio rerum saepe suscipit! Esse maiores minus nobis sed sit.
+    <h1> Amphora</h1>
+        <div class="row">
+            <div class="col s12 m4 l4"><p> Welcome to this repository of knowledge!</p></div>
+            <div class="col s12 m4 l4 center">
+                <img src="{{ url_for('static', filename='img/amphora_main.png') }}" class="circle">
+                <img src="{{ url_for('static', filename='img/amphora_default.png') }}" class="circle"></div>
+            <div class="col s12 m4 l4">
+                <p class="flow-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At doloremque dolores in,
+                    inventore, ipsa maxime modi officiis quasi quia quibusdam quidem reprehenderit unde! Eaque possimus
+                    quo repellat rerum sit voluptate?
+            </p></div>
+        </div>
+
 </div>
 {% endblock %}
