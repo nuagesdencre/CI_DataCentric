@@ -18,9 +18,10 @@ def repo():
     """
     Accessing the repository
     """
-    stories = Story.query.order_by(Story.title)
-    beings = Being.query.order_by(Being.name)
-    return render_template('repo.html', stories=stories, beings=beings)
+    page = request.args.get('page', 1, type=int)
+    stories = Story.query.order_by(Story.id.desc()).paginate(page,3,False)
+    beings = Being.query.order_by(Being.id.desc()).paginate(page, 3,False)
+    return render_template('repo.html', stories=stories,page=page, beings=beings)
 
 
 @main.route('/about')

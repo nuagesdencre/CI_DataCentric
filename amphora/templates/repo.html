@@ -9,17 +9,33 @@
                 <li><a href="{{url_for('entries.create_story')}}" class="btn waves-light waves-effect light-blue">
                     Add Entry: Story</a></li>
             </ul>
-            {% for story in stories%}
+            {% for story in stories.items%}
             <div class="card center">
                 <span class="card-title">{{story.title}}</span>
-            <div class="card-content blue lighten-5">
-                <p>{{story.category}}</p><i class="material-icons">art_track</i>
-                <p>
-                    <a href="{{ url_for('entries.view_story', story_id=story.id)}}" class="btn-flat blue-text"> Read more</a>
-                </p>
+                <div class="card-content blue lighten-5">
+                    <p>{{story.category}}</p><i class="material-icons">art_track</i>
+                    <p>
+                        <a href="{{ url_for('entries.view_story', story_id=story.id)}}" class="btn-flat blue-text"> Read
+                            more</a>
+                    </p>
+                </div>
             </div>
-        </div>
-        {% endfor %}
+
+            {% endfor %}
+            <ul class="pagination ">
+                {% for page_num in stories.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if stories.page == page_num %}
+                <li class="page-item disabled">
+                    <a class="page-link  blue lighten-5" href="{{ url_for('main.repo', page=page_num) }}">{{ page_num
+                        }}</a></li>
+                </li>
+                {% else %}
+                <li class="page-item waves-effect waves-light blue lighten-5"><a class="page-link"
+                                                                                 href="{{ url_for('main.repo', page=page_num) }}">{{
+                    page_num }}</a></li>
+                {% endif %}
+                {% endfor %}
+
         </div>
 
         <div class="col s6">
@@ -32,20 +48,33 @@
 
             </ul>
 
-            {% for being in beings%}
+            {% for being in beings.items%}
             <div class="card center">
                 <span class="card-title">{{being.name}}</span>
-            <div class="card-content blue lighten-5">
-                <p>{{being.category}}</p><i class="material-icons">art_track</i>
-                <p> <a href="{{ url_for('entries.view_being', being_id=being.id)}}" class="btn-flat blue-text">
-                   Read more</a>
-                </p>
-            </div>
+                <div class="card-content blue lighten-5">
+                    <p>{{being.category}}</p><i class="material-icons">art_track</i>
+                    <p><a href="{{ url_for('entries.view_being', being_id=being.id)}}" class="btn-flat blue-text">
+                        Read more</a>
+                    </p>
+                </div>
             </div>
             {% endfor %}
 
+            <ul class="pagination">
+                {% for page_num in beings.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if beings.page == page_num %}
+                <li class="page-item disabled">
+                    <a class="page-link  blue lighten-5" href="{{ url_for('main.repo', page=page_num) }}">{{ page_num
+                        }}</a></li>
+                </li>
+                {% else %}
+                <li class="page-item waves-effect  blue lighten-5"><a class="page-link"
+                                                                      href="{{ url_for('main.repo', page=page_num) }}">{{
+                    page_num }}</a></li>
+                {% endif %}
+                {% endfor %}
+        </div>
     </div>
-</div>
 
 
 </div>
