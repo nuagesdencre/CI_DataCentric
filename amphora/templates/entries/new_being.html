@@ -6,10 +6,11 @@
             <form method="POST">
             {{form.hidden_tag()}}
                 {{form.name.label}}{{form.name}}
-                {{form.text.label}}{{form.text(class="materialize-textarea")}}
+                {{form.text.label}}{{form.text(maxlength=950, class="materialize-textarea")}}
                 {{form.country.label}}{{form.country}}
                 {{form.category.label}}{{form.category}}
-                {{form.submit(class="waves-effect btn")}}
+                {{form.source.label}}{{form.source}}
+                {{form.submit(onclick="alert('All done!')", class="waves-effect btn")}}
             </form>
         </div>
     </div>
