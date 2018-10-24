@@ -49,8 +49,6 @@ class Update(FlaskForm, ValidationMixin):
     """
     Update Information on Account Form
     """
-    email = StringField('Email', validators=[DataRequired(), Email()])
     username = StringField('Username', validators=[DataRequired()])
-    profile_pic = FileField('Picture!', validators=[FileAllowed(['png','jpg'])])
     submit = SubmitField('Update your info!')
 

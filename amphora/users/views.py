@@ -59,14 +59,12 @@ def account():
     form = Update()
     if form.validate_on_submit():
         current_user.username = form.username.data
-        current_user.email = form.email.data
         db.session.commit()
         return redirect(url_for('users.account'))
     form.username.data = current_user.username
     username = current_user.username
-    form.email.data = current_user.email
-    profile_pic = url_for('static', filename='img/'+current_user.profile_pic)
-    return render_template('users/account.html', username=username, profile_pic=profile_pic, form=form)
+    email = current_user.email
+    return render_template('users/account.html', username=username, email=email, form=form)
 
 
 @users.route('/<username>')
