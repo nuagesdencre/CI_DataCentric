@@ -4,12 +4,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-
+from flask_mail import Mail
+from amphora.config import Config
 
 
 app = Flask(__name__)
-# must create a secret key in a config file or .env!!
-app.secret_key = 'thisistemporary'
+app.config.from_object(Config)
+#flask-mail
+mail = Mail(app)
 
 # preparing user view management
 login_manager = LoginManager()
@@ -34,3 +36,5 @@ app.register_blueprint(main)
 app.register_blueprint(error_pages)
 app.register_blueprint(users)
 app.register_blueprint(entries)
+
+

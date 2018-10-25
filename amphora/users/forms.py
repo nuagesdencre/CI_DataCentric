@@ -52,3 +52,14 @@ class Update(FlaskForm, ValidationMixin):
     username = StringField('Username', validators=[DataRequired()])
     submit = SubmitField('Update your info!')
 
+
+class ResetPswReq(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
+
+
+class ResetPsw(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    psw_again = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Request Password Reset')
