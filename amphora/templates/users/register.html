@@ -24,8 +24,11 @@
              {% for error in form.psw_again.errors %}
             <span style="color: red;">{{ error }}</span>
             {% endfor %}<br>
-            {{form.submit(onclick="alert('All done!')", class="btn waves-effect blue")}}
+            {{form.submit(onclick="$('.progress').toggle()", class="btn waves-effect blue")}}
         </form>
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
         <p>
             Already registered?
          <a href="{{url_for('users.login')}}" class="">Login</a></div>

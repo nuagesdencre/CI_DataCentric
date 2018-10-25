@@ -6,12 +6,24 @@
         <form method="POST">
             {{form.hidden_tag()}}
             {{form.title.label}}{{form.title(class="validate")}}
+            {% for error in form.title.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
             {{form.text.label}}{{form.text(maxlength=950, class="materialize-textarea")}}
+            {% for error in form.text.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
             {{form.country.label}}{{form.country}}
+            {% for error in form.country.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
             {{form.category.label}}{{form.category}}
             {{form.source.label}}{{form.source}}
-            {{form.submit(onclick="alert('All done!')", class="waves-effect btn")}}
+            {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn")}}
         </form>
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
     </div>
 </div>
 {% endblock %}
