@@ -12,6 +12,10 @@
             {{form.password.label}}{{form.password}}
             {{form.submit(class="btn waves-effect blue")}}
         </form>
+         <p>
+        Forgot Your Password?
+        <a href="{{ url_for('users.reset_psw_req') }}">Click to Reset It</a>
+    </p>
         <p>
             First time visitor?
         <a href="{{url_for('users.register')}}" class="">Register</a>

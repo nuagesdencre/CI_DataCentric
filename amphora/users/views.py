@@ -3,7 +3,8 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 from amphora import db
 from amphora.models import User, Story, Being
-from amphora.users.forms import Login, Register, Update
+from amphora.users.forms import Login, Register, Update, ResetPsw, ResetPswReq
+from amphora.users.email import send_password_reset_email
 
 # login, logout, account, user entries
 
@@ -76,3 +77,34 @@ def user_entries(username):
     stories = Story.query.filter_by(user=user)
     beings = Being.query.filter_by(user=user)
     return render_template('users/entries.html', user=user, beings=beings, stories=stories)
+
+
+@users.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_psw_req():
+    if current_user.is_authenticated:
+        return redirect(url_for('users.account'))
+    form = ResetPswReq()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash('Your password reset has been requested.')
+        return redirect(url_for('users.login'))
+    return render_template('users/reset_psw_req.html',
+                           title='Reset Password', form=form)
+
+
+@users.route('/reset_psw/<token>', methods=['GET', 'POST'])
+def reset_psw(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('users.account'))
+    user = User.verify_reset_password_token(token)
+    if not user:
+        return redirect(url_for('main.index'))
+    form = ResetPsw()
+    if form.validate_on_submit():
+        user.set_password(form.password.data)
+        db.session.commit()
+        flash('Your password has been reset.')
+        return redirect(url_for('users.login'))
+    return render_template('users/psw_reset.html', form=form)
