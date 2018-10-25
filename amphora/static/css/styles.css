@@ -66,6 +66,11 @@ img {
     background-color: transparent;
     border: none;
 }
+
+.textarea{
+    height:5rem;
+    margin: 5px 0;
+}
 .progress{
     display:none;
 }
