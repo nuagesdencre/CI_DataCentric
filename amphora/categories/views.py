@@ -1,6 +1,4 @@
 from flask import render_template, url_for, Blueprint, redirect, abort, request, flash
-from flask_login import current_user, login_required
-
 from amphora import db
 from amphora.models import Category, Story, Being
 from amphora.categories.forms import CatForm
@@ -23,7 +21,7 @@ def create_category():
         db.session.commit()
         print('Category created!')
         return redirect(url_for('categories.all_categories'))
-    return render_template('categories/new_cat.html', form=form)
+    return render_template('categories/new_category.html', form=form)
 
 
 @categories.route('/category/<int:category_id>')
@@ -67,4 +65,4 @@ def all_categories():
     View all categories
     """
     all_cats = Category.query.order_by(Category.id.desc())
-    return render_template('repo.html', all_cats=all_cats)
+    return render_template('categories/all_categories.html', all_cats=all_cats)

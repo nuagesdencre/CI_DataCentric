@@ -156,20 +156,20 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), nullable=False, unique=True, index=True)
     description = db.Column(db.Text)
+    # picture to be set up once everything works
     picture = db.Column(db.String(72), default='amphora_default.png')
     # relationships
     # many entries(story, being) per category
     stories = db.relationship('Story', backref='category', lazy=True)
     beings = db.relationship('Being', backref='category', lazy=True)
 
-    def __init__(self, name, description, picture, user_id):
+    def __init__(self, name, description, picture):
         """
         Initialize being object
         """
         self.name = name
         self.description =description
         self.picture = picture
-        self.user_id = user_id
 
     def __repr__(self):
         """

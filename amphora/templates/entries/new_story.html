@@ -17,7 +17,7 @@
             {% for error in form.country.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
-            {{form.category.label}}{{form.category}}
+            {{form.category_id.label}}{{form.category_id}}
             {{form.source.label}}{{form.source}}
             {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn deep-purple accent-2")}}
         </form>

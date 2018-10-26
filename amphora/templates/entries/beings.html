@@ -17,7 +17,7 @@
                     </li>
                 </ul>
                 <h5>Country affiliated: </h5>{{being.country}}
-                <h5>Category: </h5>{{being.category}}
+                <h5>Category: </h5><a href="{{ url_for('categories.view_category', category_id=category.id)}}">{{being.category.category_id}}</a>
                 <h5>Source:</h5>
                 <a href="{{source}}" target="blank"> Click here (external link)</a>
                 </div>
