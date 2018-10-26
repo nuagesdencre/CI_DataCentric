@@ -64,8 +64,7 @@ def view_story(story_id):
      """
     story = Story.query.get_or_404(story_id)
     return render_template('entries/stories.html', story=story, title=story.title,
-                           text=story.text, country=story.country,
-                           category=story.categories.name, source=story.source)
+                           text=story.text, country=story.country,source=story.source)
 
 
 @entries.route('/being/<int:being_id>')
@@ -77,7 +76,7 @@ def view_being(being_id):
 
     return render_template('entries/beings.html', being=being, name=being.name,
                            text=being.text, country=being.country,
-                           category=being.categories.name, source=being.source)
+                           source=being.source)
 
 
 @entries.route('/story/<int:story_id>/update', methods=['GET', 'POST'])

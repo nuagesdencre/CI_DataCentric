@@ -32,7 +32,7 @@ def view_category(category_id):
     category = Category.query.get_or_404(category_id)
     stories = Story.query.filter_by(category=category)
     beings = Being.query.filter_by(category=category)
-    return render_template('categories/view_category.html', stories=stories, biengs=beings,
+    return render_template('categories/view_category.html', stories=stories, beings=beings,
                            category=category, name=category.name,
                            picture=category.picture, description=category.description
                            )

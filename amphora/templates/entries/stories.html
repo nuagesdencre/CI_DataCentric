@@ -3,6 +3,7 @@
 <div>
 
     <div class="container">
+
         <h1>{{story.title}}</h1>
         <div class="row">
             <div class="col s12 m6"><img src="{{ url_for('static', filename='img/amphora_default.png') }}"></div>
@@ -16,7 +17,8 @@
                         </p>
                     </li>
                 </ul>
-                <h5>Category: </h5>{{story.category}}
+                <i class="large material-icons">chrome_reader_mode</i>
+                <h5>Category: </h5><a href="{{ url_for('categories.view_category', category_id=story.category.id)}}">{{story.categories.name}}</a>
                 <h5>Country affiliated: </h5>{{story.country}}
                 <h5>Source:</h5>
                 <a href="{{source}}" target="blank"> Click here (external link)</a>

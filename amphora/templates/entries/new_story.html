@@ -18,7 +18,7 @@
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
             {{form.category_id.label}}
-            {{form.category_id(class="input-field",placeholder="--select--")}}
+            {{form.category_id(class="input-field")}}
             {% for error in form.category_id.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}<br>

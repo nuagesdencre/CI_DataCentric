@@ -17,7 +17,8 @@
             {% for error in form.country.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
-            {{form.category_id.label}}{{form.category_id(placeholder="--select--")}}<br>
+            {{form.category_id.label}}
+            {{form.category_id(class="input-field")}}<br>
             {% for error in form.category_id.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}<br>
