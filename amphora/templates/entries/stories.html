@@ -1,12 +1,55 @@
-{% extends "base.html" %}
-{% block content%}
+{% extends "base.html" %} {% block content%}
 <div>
 
     <div class="container">
+
         <h1>{{story.title}}</h1>
         <div class="row">
-            <div class="col s12 m6"><img src="{{ url_for('static', filename='img/amphora_default.png') }}"></div>
-            <div class="col s12 m6">
+            <div class="col s12 m6"><img src="{{ url_for('static', filename='img/amphora_default.png') }}">
+            </div>
+            <div class="col s12 m6 ">
+                <div class="entry">
+                    <div class="entry--content">
+                        <i class="medium material-icons card-image">chrome_reader_mode</i>
+                        <ul>
+                            <li>
+                                Category: <a
+                                    href="{{ url_for('categories.view_category', category_id=story.category.id)}}">{{story.categories.name}}</a>
+                            </li>
+                            <li>
+                                Country affiliated: {{story.country}}
+                            </li>
+                            <li>
+                                Source:
+                                <a href="{{source}}" target="blank"> Click here (external link)</a></li>
+                            <p>{% if story.user == current_user %}
+
+                                <a href="{{url_for('entries.update_story', story_id=story.id)}}"
+                                   class="waves-effect waves-light btn">Update</a>
+                                <a class="waves-effect waves-light btn pink modal-trigger"
+                                   href="#delete_modal">Delete</a> {% endif %}</p>
+                            <ul class="collection">
+                                <li class="collection-item avatar">
+                                    <img src="{{ story.user.avatar(36) }}" class="circle">
+                                    <p> Entry provided by<br>
+                                        <a href="{{url_for('users.user_entries', username=story.user.username)}}">{{
+                                            story.user.username}}</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <p class="flow-text">
+
+
+                    {{text}}
+                </p>
                 <ul class="collection">
                     <li class="collection-item avatar">
                         <img src="{{ story.user.avatar(36) }}" class="circle">
@@ -16,32 +59,15 @@
                         </p>
                     </li>
                 </ul>
-                <h5>Category: </h5>{{story.category}}
-                <h5>Country affiliated: </h5>{{story.country}}
-                <h5>Source:</h5>
-                <a href="{{source}}" target="blank"> Click here (external link)</a>
-                </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <p class="flow-text">
-                <h4>About:</h4>
-                {{text}}
-                </p>
             </div>
             <div class="col s12">
-                <p> <a href="{{url_for('main.repo')}}" class="btn waves-light waves-effect light-grey">
-                        Return to Repo</a>
-
-                    {% if story.user == current_user %}
-
-                    <a href="{{url_for('entries.update_story', story_id=story.id)}}"
-                       class="waves-effect waves-light btn right">Update</a>
-                    <a class="waves-effect waves-light btn pink modal-trigger right" href="#delete_modal">Delete</a>
-                    {% endif %}
-
-                </p>
             </div>
+            <p>
+                <a href="{{url_for('main.repo')}}"
+                   class="btn waves-light waves-effect deep-purple accent-2">
+                    Return</a>
+
+            </p>
         </div>
     </div>
     <div id="delete_modal" class="modal">
@@ -57,7 +83,6 @@
             <a href="#" class="modal-close waves-effect waves-green btn-flat">Go Back</a>
         </div>
     </div>
-
 
 </div>
 {% endblock %}

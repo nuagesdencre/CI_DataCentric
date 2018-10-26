@@ -1,19 +1,55 @@
 {% extends "base.html" %}
 {% block content%}
 <div class="container">
-    <h1>REPO</h1>
+    <h1>REPOSITORY</h1>
     <div class="row">
-        <div class="col s6">
-            <h3>Stories</h3>
-            <ul>
-                <li><a href="{{url_for('entries.create_story')}}" class="btn waves-light waves-effect light-blue">
-                    Add Entry: Story</a></li>
+        <div class="col s12 m6 l6">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header blue lighten-4"><i class="material-icons">subject</i><h5>Definition
+                        of repository</h5>
+                    </div>
+                    <div class="collapsible-body blue lighten-5">
+                        <blockquote><a href="https://www.merriam-webster.com/dictionary/repository" target="_blank">Merriam-Webster</a>
+                        </blockquote>
+                        <ul>
+                            <li>1 : a place, room, or container where something is deposited or stored : DEPOSITORY</li>
+                            <li><strong>...</strong></li>
+                            <li>3 : one that contains or stores something nonmaterial<br>
+                                <em>// considered the book a repository of knowledge</em></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
+
+        </div>
+
+        <div class="col s12 m3 l3">
+             <!-- Dropdown Trigger -->
+  <a class='dropdown-trigger btn waves-light waves-effect blue' href='#' data-target='dropdown1'>Add a New Entry</a>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="{{url_for('entries.create_story')}}">
+                    Add Entry: Story</a></li>
+    <li><a href="{{url_for('entries.create_being')}}">
+                        Add Entry: Being</a></li>
+  </ul>
+        </div>
+        <div class="col s12 m3 l3">
+            <a href="{{url_for('categories.all_categories')}}"
+                                                    class="btn waves-light waves-effect deep-purple lighten-1">
+                   All Categories</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6">
+            <h3>Stories</h3>
             {% for story in stories.items%}
             <div class="card center">
                 <span class="card-title">{{story.title}}</span>
                 <div class="card-content blue lighten-5">
-                    <p>{{story.category}}</p><i class="material-icons">art_track</i>
+                    <p>{{story.category}}</p><i class="material-icons">chrome_reader_mode</i>
                     <p>
                         <a href="{{ url_for('entries.view_story', story_id=story.id)}}" class="btn-flat blue-text"> Read
                             more</a>
@@ -33,26 +69,20 @@
                 <li class="page-item waves-effect waves-light blue lighten-5"><a class="page-link"
                                                                                  href="{{ url_for('main.repo', page=page_num) }}">{{
                     page_num }}</a></li>
-                {% endif %}
-                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endfor %}
 
         </div>
 
-        <div class="col s6">
+        <div class="col s12 m6">
             <h3>Beings</h3>
-            <ul>
-                <li>
-                    <a href="{{url_for('entries.create_being')}}" class="btn waves-light waves-effect light-blue">
-                        Add Entry: Being</a>
-                </li>
-
-            </ul>
 
             {% for being in beings.items%}
             <div class="card center">
                 <span class="card-title">{{being.name}}</span>
                 <div class="card-content blue lighten-5">
-                    <p>{{being.category}}</p><i class="material-icons">art_track</i>
+                    <p>{{being.category}}</p><i class="material-icons">accessibility</i>
                     <p><a href="{{ url_for('entries.view_being', being_id=being.id)}}" class="btn-flat blue-text">
                         Read more</a>
                     </p>
@@ -71,8 +101,9 @@
                 <li class="page-item waves-effect  blue lighten-5"><a class="page-link"
                                                                       href="{{ url_for('main.repo', page=page_num) }}">{{
                     page_num }}</a></li>
-                {% endif %}
-                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 

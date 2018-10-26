@@ -22,8 +22,8 @@ class User(db.Model, UserMixin):
     psw_hash = db.Column(db.String(128))
     profile_pic = db.Column(db.String(72), nullable=False, default='amphora_default.png')
     # relationships
-    stories = db.relationship('Story', backref='user', lazy=True)
     # One author for many stories & beings
+    stories = db.relationship('Story', backref='user', lazy=True)
     beings = db.relationship('Being', backref='user', lazy=True)
 
 
@@ -92,20 +92,22 @@ class Story(db.Model):
     title = db.Column(db.String(60), nullable=False, unique=True, index=True)
     country = db.Column(db.String(60), nullable=False)
     text = db.Column(db.Text)
-    category = db.Column(db.String(60), index=True)
     source = db.Column(db.String(100), default='None provided')
     # relationships
     users = db.relationship('User')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    # one category per entry(story, being)
+    categories = db.relationship('Category')
+    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
 
-    def __init__(self, title, text, country, category, source, user_id):
+    def __init__(self, title, text, country, category_id, source, user_id):
         """
         Initialize story object
         """
         self.title = title
         self.text = text
         self.country = country
-        self.category = category
+        self.category_id = category_id
         self.source = source
         self.user_id = user_id
 
@@ -122,21 +124,23 @@ class Being(db.Model):
     name = db.Column(db.String(60), nullable=False, unique=True, index=True)
     country = db.Column(db.String(60), nullable=False)
     text = db.Column(db.Text)
-    category = db.Column(db.String(60), index=True)
     picture = db.Column(db.String(72), default='amphora_default.png')
     source = db.Column(db.String(100), default='None provided')
     # relationships
     users = db.relationship('User')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    # one category per entry(story, being)
+    categories = db.relationship('Category')
+    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
 
-    def __init__(self, name, text, country, category, source, user_id):
+    def __init__(self, name, text, country, category_id, source, user_id):
         """
         Initialize being object
         """
         self.name = name
         self.text = text
         self.country = country
-        self.category = category
+        self.category_id = category_id
         self.source = source
         self.user_id = user_id
 
@@ -145,3 +149,30 @@ class Being(db.Model):
         Set being self-representation
         """
         return "Being name: {}".format(self.name)
+
+
+class Category(db.Model):
+    __tablename__ = 'categories'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60), nullable=False, unique=True, index=True)
+    description = db.Column(db.Text)
+    # picture to be set up once everything works
+    picture = db.Column(db.String(72), default='amphora_default.png')
+    # relationships
+    # many entries(story, being) per category
+    stories = db.relationship('Story', backref='category', lazy=True)
+    beings = db.relationship('Being', backref='category', lazy=True)
+
+    def __init__(self, name, description, picture):
+        """
+        Initialize being object
+        """
+        self.name = name
+        self.description =description
+        self.picture = picture
+
+    def __repr__(self):
+        """
+        Set category self-representation
+        """
+        return "Category name: {}".format(self.name)

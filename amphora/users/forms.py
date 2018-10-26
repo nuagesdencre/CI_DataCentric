@@ -48,8 +48,8 @@ class Update(FlaskForm, ValidationMixin):
     """
     Update Information on Account Form
     """
-    username = StringField('Username', validators=[DataRequired()])
-    submit = SubmitField('Update your info!')
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Update Email')
 
 
 class ResetPswReq(FlaskForm):
@@ -61,4 +61,4 @@ class ResetPsw(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     psw_again = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Request Password Reset')
+    submit = SubmitField('Reset Password')
