@@ -98,7 +98,7 @@ def update_story(story_id):
         story.text = form.text.data
         story.country = form.country.data
         story.source = form.source.data
-        story.categories.name = form.category_id.data
+        story.category_id = form.category_id.data
         db.session.commit()
         flash('Update successful!')
         print('Update successful!')
@@ -106,7 +106,7 @@ def update_story(story_id):
     form.title.data = story.title
     form.text.data = story.text
     form.country.data = story.country
-    form.category_id.data = story.categories.name
+    form.category_id.data = story.category_id
     form.source.data = story.source
     return render_template('entries/new_story.html', form=form)
 
