@@ -23,14 +23,26 @@
             </ul>
 
         </div>
+
+
+        <div class="col s12 l12">
+            <ul>
+                <li style="display:inline-block"><a href="{{url_for('categories.all_categories')}}"
+                                                    class="btn waves-light waves-effect deep-purple lighten-1">
+                    Filter by Category</a></li>
+                <li style="display:inline-block"><a href="{{url_for('entries.create_story')}}"
+                                                    class="btn waves-light waves-effect light-blue">
+                    Add Entry: Story</a></li>
+                <li style="display:inline-block">
+                    <a href="{{url_for('entries.create_being')}}" class="btn waves-light waves-effect blue ">
+                        Add Entry: Being</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="row">
         <div class="col s6">
             <h3>Stories</h3>
-            <ul>
-                <li><a href="{{url_for('entries.create_story')}}" class="btn waves-light waves-effect light-blue">
-                    Add Entry: Story</a></li>
-            </ul>
             {% for story in stories.items%}
             <div class="card center">
                 <span class="card-title">{{story.title}}</span>
@@ -54,21 +66,15 @@
                 {% else %}
                 <li class="page-item waves-effect waves-light blue lighten-5"><a class="page-link"
                                                                                  href="{{ url_for('main.repo', page=page_num) }}">{{
-                    page_num }}</a></li></ul>
-                {% endif %}
-                {% endfor %}
+                    page_num }}</a></li>
+            </ul>
+            {% endif %}
+            {% endfor %}
 
         </div>
 
         <div class="col s6">
             <h3>Beings</h3>
-            <ul>
-                <li>
-                    <a href="{{url_for('entries.create_being')}}" class="btn waves-light waves-effect light-blue">
-                        Add Entry: Being</a>
-                </li>
-
-            </ul>
 
             {% for being in beings.items%}
             <div class="card center">
@@ -92,9 +98,10 @@
                 {% else %}
                 <li class="page-item waves-effect  blue lighten-5"><a class="page-link"
                                                                       href="{{ url_for('main.repo', page=page_num) }}">{{
-                    page_num }}</a></li></ul>
-                {% endif %}
-                {% endfor %}
+                    page_num }}</a></li>
+            </ul>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 

@@ -2,20 +2,22 @@ from flask import render_template, url_for, Blueprint, redirect, abort, request,
 from flask_login import current_user, login_required
 
 from amphora import db
-from amphora.models import Story, Being
+from amphora.models import Story, Being, Category
 from amphora.entries.forms import EntryStory, EntryBeing
 
 entries = Blueprint('entries', __name__)
 
 
-# Create Story - Tested!
 @entries.route('/new_story', methods=['GET', 'POST'])
 @login_required
 def create_story():
     """
     Creating a new entry of type story
     """
+    cat_groups = db.session.query(Category).order_by(Category.name)
+    cat_list = [(i.id, i.name) for i in cat_groups]
     form = EntryStory()
+    form.category_id.choices = cat_list
     if form.validate_on_submit():
         story = Story(title=form.title.data,
                       text=form.text.data,
@@ -32,7 +34,6 @@ def create_story():
     return render_template('entries/new_story.html', form=form)
 
 
-# Create Being - Tested!
 @entries.route('/new_being', methods=['GET', 'POST'])
 @login_required
 def create_being():
@@ -40,6 +41,7 @@ def create_being():
     Creating a new entry of type being
     """
     form = EntryBeing()
+    form.category_id.choices = [(i.id, i.name) for i in Category.query.all()]
     if form.validate_on_submit():
         being = Being(name=form.name.data,
                       country=form.country.data,
@@ -105,7 +107,7 @@ def update_story(story_id):
     form.title.data = story.title
     form.text.data = story.text
     form.country.data = story.country
-    form.category_id.data =story.categories.name
+    form.category_id.data = story.categories.name
     form.source.data = story.source
     return render_template('entries/new_story.html', form=form)
 
