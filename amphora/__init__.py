@@ -10,7 +10,7 @@ from amphora.config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
-#flask-mail
+# flask-mail
 mail = Mail(app)
 
 # preparing user view management
