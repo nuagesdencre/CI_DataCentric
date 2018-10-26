@@ -29,6 +29,7 @@ Migrate(app, db)
 from amphora.main.views import main
 from amphora.users.views import users
 from amphora.entries.views import entries
+from amphora.categories.views import categories
 from amphora.error.handlers import error_pages
 
 # Registering blueprints
@@ -36,5 +37,6 @@ app.register_blueprint(main)
 app.register_blueprint(error_pages)
 app.register_blueprint(users)
 app.register_blueprint(entries)
+app.register_blueprint(categories)
 
 
