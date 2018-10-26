@@ -3,7 +3,7 @@
 <div class="container">
     <h1>REPOSITORY</h1>
     <div class="row">
-        <div class="col s12 l6">
+        <div class="col s12 m6 l6">
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header blue lighten-4"><i class="material-icons">subject</i><h5>Definition
@@ -24,24 +24,26 @@
 
         </div>
 
+        <div class="col s12 m3 l3">
+             <!-- Dropdown Trigger -->
+  <a class='dropdown-trigger btn waves-light waves-effect blue' href='#' data-target='dropdown1'>Add a New Entry</a>
 
-        <div class="col s12 l12">
-            <ul>
-                <li style="display:inline-block"><a href="{{url_for('categories.all_categories')}}"
-                                                    class="btn waves-light waves-effect deep-purple lighten-1">
-                    Filter by Category</a></li>
-                <li style="display:inline-block"><a href="{{url_for('entries.create_story')}}"
-                                                    class="btn waves-light waves-effect light-blue">
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="{{url_for('entries.create_story')}}">
                     Add Entry: Story</a></li>
-                <li style="display:inline-block">
-                    <a href="{{url_for('entries.create_being')}}" class="btn waves-light waves-effect blue ">
-                        Add Entry: Being</a>
-                </li>
-            </ul>
+    <li><a href="{{url_for('entries.create_being')}}">
+                        Add Entry: Being</a></li>
+  </ul>
+        </div>
+        <div class="col s12 m3 l3">
+            <a href="{{url_for('categories.all_categories')}}"
+                                                    class="btn waves-light waves-effect deep-purple lighten-1">
+                   All Categories</a>
         </div>
     </div>
     <div class="row">
-        <div class="col s6">
+        <div class="col s12 m6">
             <h3>Stories</h3>
             {% for story in stories.items%}
             <div class="card center">
@@ -73,7 +75,7 @@
 
         </div>
 
-        <div class="col s6">
+        <div class="col s12 m6">
             <h3>Beings</h3>
 
             {% for being in beings.items%}

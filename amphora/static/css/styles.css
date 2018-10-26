@@ -5,15 +5,28 @@
     font-family: 'Abel';
 }
 
-input[type="submit" i]{
-    color:#fff;
+input[type="submit" i] {
+    color: #fff;
 }
 
 .title--acct {
-text-transform: uppercase;
+    text-transform: uppercase;
     font-weight: bold;
 }
 
+.entry--content span {
+    font-weight: bold;
+}
+
+.card .card-title {
+    font-size: 20px;
+    overflow-x: auto;
+}
+
+.entry--content {
+    text-transform: uppercase;
+
+}
 
 /* ENDTypography*/
 
@@ -65,13 +78,21 @@ main {
 
 /* Components */
 blockquote {
-    border-left: 5px solid #7c4dff ;
+    border-left: 5px solid #7c4dff;
     background-color: rgba(245, 245, 245, 0.51);
 }
 
-.btn--right {
-    margin: 10px 5px;
-    width: 80px;
+.entry {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.waves-effect {
     display:block;
 }
 
@@ -82,16 +103,17 @@ blockquote {
 img {
     max-width: 100%;
 }
-#circle--acct{
-    top:39px;
+
+#circle--acct {
+    top: 39px;
 }
 
-.lemon--left{
+.lemon--left {
     border-top-left-radius: 50%;
     border-bottom-right-radius: 50%;
 }
 
-.lemon--right{
+.lemon--right {
     border-top-right-radius: 50%;
     border-bottom-left-radius: 50%;
 }
@@ -118,14 +140,14 @@ img {
 
 /* ENDComponents */
 
-
 /* Media Queries*/
 @media (min-width: 380px) {
-.btn--right {
-    float:right;
-    margin: 0 5px;
+
+    .card .card-title {
+        font-size: 26px;
+    }
 }
-}
+
 @media (min-width: 768px) {
     .brand-logo, h1 {
         letter-spacing: 0.2em;
@@ -134,6 +156,9 @@ img {
     .btn-flat {
         padding: 0 16px;
     }
+    .waves-effect {
+    width:250px;
+}
 }
 
 @media (min-width: 992px) {

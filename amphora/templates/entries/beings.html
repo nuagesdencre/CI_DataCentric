@@ -8,39 +8,53 @@
         <div class="row">
             <div class="col s12 m6 "><img src="{{ url_for('static', filename='img/amphora_main.png') }}"></div>
             <div class="col s12 m6">
-                <ul class="collection">
-                    <li class="collection-item avatar">
-                        <img src="{{ being.user.avatar(36) }}" class="circle">
-                        <p> Entry provided by<br>
-                            <a href="{{url_for('users.user_entries', username=being.user.username)}}">{{
-                                being.user.username}}</a>
-                        </p>
-                    </li>
-                </ul>
-                <i class="large material-icons">accessibility</i>
-                <h5>Country affiliated: </h5>{{being.country}}
-                <h5>Category: </h5><a href="{{ url_for('categories.view_category', category_id=being.category.id)}}">{{being.categories.name}}</a>
-                <h5>Source:</h5>
-                <a href="{{source}}" target="blank"> Click here (external link)</a>
+                <div class="entry">
+                    <div class="entry--content">
+                        <i class="medium material-icons card-image">accessibility</i>
+                        <ul>
+                            <li>Country affiliated: {{being.country}}</li>
+                            <li>Category: <a
+                                    href="{{ url_for('categories.view_category', category_id=being.category.id)}}">{{being.categories.name}}</a>
+                            </li>
+                            <li>Source:
+                                <a href="{{source}}" target="blank"> Click here (external link)</a></li>
+                            <p>
+                                {% if being.user == current_user %}
+                                <a href="{{url_for('entries.update_being', being_id=being.id)}}"
+                                   class="waves-effect waves-light btn">Update</a>
+                                <a class="waves-effect waves-light btn pink modal-trigger"
+                                   href="#delete_modal">Delete</a>
+                                {% endif %}
+                            </p>
+                            <ul class="collection">
+                                <li class="collection-item avatar">
+                                    <img src="{{ being.user.avatar(36) }}" class="circle">
+                                    <p> Entry provided by<br>
+                                        <a href="{{url_for('users.user_entries', username=being.user.username)}}">{{
+                                            being.user.username}}</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+
                 </div>
+
+            </div>
         </div>
 
         <div class="row">
             <div class="col s12">
                 <p class="flow-text">
-                <h4>About:</h4>
-                {{text}}
+
+                    {{text}}
                 </p>
+
             </div>
             <div class="col s12">
                 <p>
                     <a href="{{url_for('main.repo')}}" class="btn waves-light waves-effect deep-purple accent-2">
-                        Return to Repo</a>
-
-                {% if being.user == current_user %}
-                <a href="{{url_for('entries.update_being', being_id=being.id)}}" class="waves-effect waves-light btn btn--right">Update</a>
-                <a class="waves-effect waves-light btn pink modal-trigger btn--right" href="#delete_modal">Delete</a>
-                {% endif %}
+                        Return</a>
 
 
                 </p>
