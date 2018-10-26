@@ -14,10 +14,8 @@ def create_story():
     """
     Creating a new entry of type story
     """
-    cat_groups = db.session.query(Category).order_by(Category.name)
-    cat_list = [(i.id, i.name) for i in cat_groups]
     form = EntryStory()
-    form.category_id.choices = cat_list
+    form.category_id.choices = [(i.id, i.name) for i in Category.query.all()]
     if form.validate_on_submit():
         story = Story(title=form.title.data,
                       text=form.text.data,
@@ -94,6 +92,7 @@ def update_story(story_id):
         abort(403)
 
     form = EntryStory()
+    form.category_id.choices = [(i.id, i.name) for i in Category.query.all()]
     if form.validate_on_submit():
         story.title = form.title.data
         story.text = form.text.data
@@ -124,6 +123,7 @@ def update_being(being_id):
         abort(403)
 
     form = EntryBeing()
+    form.category_id.choices = [(i.id, i.name) for i in Category.query.all()]
     if form.validate_on_submit():
         being.name = form.name.data
         being.text = form.text.data
