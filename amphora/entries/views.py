@@ -16,12 +16,11 @@ def create_story():
     Creating a new entry of type story
     """
     form = EntryStory()
-
     if form.validate_on_submit():
         story = Story(title=form.title.data,
                       text=form.text.data,
                       country=form.country.data,
-                      category_id=form.category.data,
+                      category_id=form.category_id.data,
                       source=form.source.data,
                       user_id=current_user.id)
 
@@ -41,12 +40,11 @@ def create_being():
     Creating a new entry of type being
     """
     form = EntryBeing()
-
     if form.validate_on_submit():
         being = Being(name=form.name.data,
                       country=form.country.data,
                       text=form.text.data,
-                      category_id=form.category.data,
+                      category_id=form.category_id.data,
                       source=form.source.data,
                       user_id=current_user.id)
 
@@ -99,7 +97,7 @@ def update_story(story_id):
         story.text = form.text.data
         story.country = form.country.data
         story.source = form.source.data
-        story.categories.name = form.category.data
+        story.categories.name = form.category_id.data
         db.session.commit()
         flash('Update successful!')
         print('Update successful!')
@@ -107,7 +105,7 @@ def update_story(story_id):
     form.title.data = story.title
     form.text.data = story.text
     form.country.data = story.country
-    form.category.data =story.categories.name
+    form.category_id.data =story.categories.name
     form.source.data = story.source
     return render_template('entries/new_story.html', form=form)
 
@@ -128,7 +126,7 @@ def update_being(being_id):
         being.name = form.name.data
         being.text = form.text.data
         being.country = form.country.data
-        being.categories.name = form.category.data
+        being.categories.name = form.category_id.data
         being.source = form.source.data
         db.session.commit()
         flash('Update successful!')
@@ -137,7 +135,7 @@ def update_being(being_id):
     form.name.data = being.name
     form.text.data = being.text
     form.country.data = being.country
-    form.category.data = being.categories.name
+    form.category_id.data = being.categories.name
     form.source.data = being.source
     return render_template('entries/new_being.html', form=form)
 

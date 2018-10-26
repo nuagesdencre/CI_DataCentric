@@ -64,5 +64,5 @@ def all_categories():
     """
     View all categories
     """
-    all_cats = Category.query.order_by(Category.id.desc())
-    return render_template('categories/all_categories.html', all_cats=all_cats)
+    categories = Category.query.order_by(Category.name)
+    return render_template('categories/all_categories.html', categories=categories)

@@ -8,7 +8,7 @@ class EntryStory(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     text = TextAreaField('Text', validators=[DataRequired(), Length(min=6,
                                                                     max=950, message='Minimum 6 characters')])
-    category_id = SelectField('Category', coerce=int)
+    category_id = SelectField('Category', choices = [(g.id, g.name) for g in Category.query.order_by('name')], coerce=str)
     source = StringField('Reference (URL)')
     country = StringField('Associated Country', validators=[DataRequired()])
     submit = SubmitField("Done!")
@@ -19,15 +19,10 @@ class EntryBeing(FlaskForm):
                                                                   max=60, message='Minimum 6 characters')])
     text = TextAreaField('Text', validators=[DataRequired(), Length(min=6,
                                                                     max=950, message='Minimum 6 characters')])
-    category_id = SelectField('Category', coerce=int)
+    category_id = SelectField('Category', choices = [(g.id, g.name) for g in Category.query.order_by('name')], coerce=str)
     source = StringField('Reference (URL)')
     country = StringField('Associated Country', validators=[DataRequired(), Length(min=6,
                                                                                    max=60,
                                                                                    message='Minimum 6 characters')])
     submit = SubmitField("Done!")
 
-
-def generate_choices(request, id):
-    category = Category.query.get(id)
-    form = EntryStory(request.POST, obj=category)
-    form.category_id.choices = [(g.id, g.name) for g in Category.query.order_by('name')]
