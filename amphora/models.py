@@ -92,7 +92,6 @@ class Story(db.Model):
     title = db.Column(db.String(60), nullable=False, unique=True, index=True)
     country = db.Column(db.String(60), nullable=False)
     text = db.Column(db.Text)
-    category = db.Column(db.String(60), index=True)
     source = db.Column(db.String(100), default='None provided')
     # relationships
     users = db.relationship('User')
@@ -101,14 +100,14 @@ class Story(db.Model):
     categories = db.relationship('Category')
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
 
-    def __init__(self, title, text, country, category, source, user_id):
+    def __init__(self, title, text, country, category_id, source, user_id):
         """
         Initialize story object
         """
         self.title = title
         self.text = text
         self.country = country
-        self.category = category
+        self.category_id = category_id
         self.source = source
         self.user_id = user_id
 
@@ -125,7 +124,6 @@ class Being(db.Model):
     name = db.Column(db.String(60), nullable=False, unique=True, index=True)
     country = db.Column(db.String(60), nullable=False)
     text = db.Column(db.Text)
-    category = db.Column(db.String(60), index=True)
     picture = db.Column(db.String(72), default='amphora_default.png')
     source = db.Column(db.String(100), default='None provided')
     # relationships
@@ -135,14 +133,14 @@ class Being(db.Model):
     categories = db.relationship('Category')
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
 
-    def __init__(self, name, text, country, category, source, user_id):
+    def __init__(self, name, text, country, category_id, source, user_id):
         """
         Initialize being object
         """
         self.name = name
         self.text = text
         self.country = country
-        self.category = category
+        self.category_id = category_id
         self.source = source
         self.user_id = user_id
 

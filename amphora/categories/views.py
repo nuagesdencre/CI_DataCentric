@@ -2,7 +2,7 @@ from flask import render_template, url_for, Blueprint, redirect, abort, request,
 from flask_login import current_user, login_required
 
 from amphora import db
-from amphora.models import Category
+from amphora.models import Category, Story, Being
 from amphora.categories.forms import CatForm
 
 categories = Blueprint('categories', __name__)
@@ -22,66 +22,49 @@ def create_category():
         db.session.add(category)
         db.session.commit()
         print('Category created!')
-        return redirect(url_for('main.repo'))
+        return redirect(url_for('categories.all_categories'))
     return render_template('categories/new_cat.html', form=form)
 
 
-# VIEW
 @categories.route('/category/<int:category_id>')
 def view_category(category_id):
     """
      View a specific category details
      """
-    story = Story.query.get_or_404(story_id)
-    return render_template('entries/stories.html', story=story, title=story.title,
-                           text=story.text, country=story.country,
-                           category=story.category, source=story.source)
+    category = Category.query.get_or_404(category_id)
+    stories = Story.query.filter_by(category=category)
+    beings = Being.query.filter_by(category=category)
+    return render_template('categories/view_category.html', stories=stories, biengs=beings,
+                           category=category, name=category.name,
+                           picture=category.picture, description=category.description
+                           )
 
 
-@entries.route('/being/<int:being_id>/update', methods=['GET', 'POST'])
-@login_required
-def update_being(being_id):
+@categories.route('/category/<int:category_id>/update', methods=['GET', 'POST'])
+def update_category(category_id):
     """
-     Update an existing being entry, only possible if
-     user is the author of the entry
+     Update an existing category
      """
-    being = Being.query.get_or_404(being_id)
-    if being.user != current_user:
-        abort(403)
-
-    form = EntryBeing()
+    category = Category.query.get_or_404(category_id)
+    form = CatForm()
     if form.validate_on_submit():
-        being.name = form.name.data
-        being.text = form.text.data
-        being.country = form.country.data
-        being.category = form.category.data
-        being.source = form.source.data
+        category.name = form.name.data
+        category.description = form.description.data
+        category.picture = form.picture.data
         db.session.commit()
         flash('Update successful!')
         print('Update successful!')
-        return redirect(url_for('entries.view_being', being_id=being_id))
-    form.name.data = being.name
-    form.text.data = being.text
-    form.country.data = being.country
-    form.category.data = being.category
-    form.source.data = being.source
-    return render_template('entries/new_being.html', form=form)
+        return redirect(url_for('categories.view_category', category_id=category_id))
+    form.name.data = category.name
+    form.description.data = category.description
+    form.picture.data = category.picture
+    return render_template('categories/new_category.html', form=form)
 
 
-# Delete Story - Tested!
-@entries.route('/story/<int:story_id>/delete', methods=['GET', 'POST'])
-@login_required
-def delete_story(story_id):
+@categories.route('/all_categories')
+def all_categories():
     """
-     Delete an existing story entry, only possible if
-     user is the author of the entry
-     """
-    story = Story.query.get_or_404(story_id)
-    if story.user != current_user:
-        abort(403)
-        flash('Permission denied')
-    db.session.delete(story)
-    db.session.commit()
-    print('Deleted the entry.')
-    return redirect(url_for('main.repo'))
-
+    View all categories
+    """
+    all_cats = Category.query.order_by(Category.id.desc())
+    return render_template('repo.html', all_cats=all_cats)
