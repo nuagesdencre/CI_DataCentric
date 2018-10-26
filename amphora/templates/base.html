@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/materialize.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
@@ -63,13 +63,12 @@
 
     </main>
 
-    <footer class="transparent">
+    <footer class="page-footer transparent">
+        <div class="footer-copyright light-blue">
             <div class="container text-darken-3 center">
-                <hr>
-                <caption>veronique savard - nuagesdencre.com</caption>
-                <p>  <a href="https://github.com/nuagesdencre" target="_blank"><img src="{{ url_for('static', filename='img/GitHub-Mark-32px.png') }}"></a></p>
+                <p> <a href="https://github.com/nuagesdencre" target="_blank"><img src="{{ url_for('static', filename='img/GitHub-Mark-32px.png') }}"></a></p>
 
-            </div>
+            </div></div>
         </footer>
     </div>
 

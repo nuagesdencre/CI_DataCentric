@@ -59,10 +59,10 @@ def account():
     """
     form = Update()
     if form.validate_on_submit():
-        current_user.username = form.username.data
+        current_user.email = form.email.data
         db.session.commit()
         return redirect(url_for('users.account'))
-    form.username.data = current_user.username
+    form.email.data = current_user.email
     username = current_user.username
     email = current_user.email
     return render_template('users/account.html', username=username, email=email, form=form)

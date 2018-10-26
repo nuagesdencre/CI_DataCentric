@@ -1,11 +1,21 @@
-/*Special Font*/
+/*Typography*/
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
-.brand-logo, h1 {
+.brand-logo, h1, .title--acct {
     font-family: 'Abel';
-    letter-spacing: 0.05em;
 }
-/* ENDSpecial Font*/
+
+input[type="submit" i]{
+    color:#fff;
+}
+
+.title--acct {
+text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+/* ENDTypography*/
 
 /* Material Icons */
 
@@ -16,7 +26,7 @@
     src: url(https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
 }
 
-a > .material-icons,.material-icons {
+a > .material-icons, .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
@@ -34,30 +44,56 @@ a > .material-icons,.material-icons {
 
 /* ENDMaterial Icons*/
 
-/* Body */
+/* Sections */
 body {
     background-image: url("../../static/img/rockywall.png");
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
+
 main {
     flex: 1 0 auto;
-  }
+}
 
 .container {
     margin: auto;
     max-width: 800px;
 }
-.right{
-    margin:0 5px;
+
+/* ENDSections */
+
+/* Components */
+blockquote {
+    border-left: 5px solid #7c4dff ;
+    background-color: rgba(245, 245, 245, 0.51);
 }
+
+.btn--right {
+    margin: 10px 5px;
+    width: 80px;
+    display:block;
+}
+
 .card .card-content, .card {
     padding: 10px;
 }
 
 img {
     max-width: 100%;
+}
+#circle--acct{
+    top:39px;
+}
+
+.lemon--left{
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.lemon--right{
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
 }
 
 .collection, .collection .collection-item.avatar,
@@ -67,21 +103,29 @@ img {
     border: none;
 }
 
-.textarea{
-    height:5rem;
+.textarea {
+    height: 5rem;
     margin: 5px 0;
 }
-.progress{
-    display:none;
+
+.progress {
+    display: none;
 }
+
 .btn-flat {
     padding: 0;
 }
 
-/* ENDBody */
+/* ENDComponents */
+
 
 /* Media Queries*/
-
+@media (min-width: 380px) {
+.btn--right {
+    float:right;
+    margin: 0 5px;
+}
+}
 @media (min-width: 768px) {
     .brand-logo, h1 {
         letter-spacing: 0.2em;

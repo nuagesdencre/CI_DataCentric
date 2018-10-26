@@ -30,14 +30,14 @@
                 </p>
             </div>
             <div class="col s12">
-                <p> <a href="{{url_for('main.repo')}}" class="btn waves-light waves-effect light-grey">
+                <p> <a href="{{url_for('main.repo')}}" class="btn waves-light waves-effect deep-purple accent-2">
                         Return to Repo</a>
 
                     {% if story.user == current_user %}
 
                     <a href="{{url_for('entries.update_story', story_id=story.id)}}"
-                       class="waves-effect waves-light btn right">Update</a>
-                    <a class="waves-effect waves-light btn pink modal-trigger right" href="#delete_modal">Delete</a>
+                       class="waves-effect waves-light btn btn--right">Update</a>
+                    <a class="waves-effect waves-light btn pink modal-trigger btn--right" href="#delete_modal">Delete</a>
                     {% endif %}
 
                 </p>

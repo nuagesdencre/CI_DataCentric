@@ -59,6 +59,11 @@ Describe and show how to run the tests with code examples.
 - Disclosure
 - Content
 - Media
+    - The background pattern was found on [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/).
+    - All original pictures were found on Pixabay. Images and Videos on Pixabay are released under Creative Commons CC0.
+        - [Amphoras](https://pixabay.com/en/amphora-historically-jugs-3700525/)
+        - [Amphora](https://pixabay.com/en/amphora-poppy-still-life-2780802/)
+        - [Amphora](https://pixabay.com/en/greece-santorini-amphora-2116470/)
 
 ## Acknowledgments
 * Hat tip to anyone who's code was used
