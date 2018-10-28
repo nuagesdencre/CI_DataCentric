@@ -1,8 +1,8 @@
-"""initial migration
+"""first migration
 
-Revision ID: 4812d6a243fc
+Revision ID: 716a330cc92c
 Revises: 
-Create Date: 2018-10-28 14:59:12.771528
+Create Date: 2018-10-28 18:38:10.624271
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4812d6a243fc'
+revision = '716a330cc92c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,7 +22,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=60), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('picture', sa.String(length=72), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_categories_name'), 'categories', ['name'], unique=True)
@@ -39,7 +38,7 @@ def upgrade():
     op.create_table('beings',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=60), nullable=False),
-    sa.Column('meaning', sa.String(length=60), nullable=False),
+    sa.Column('meaning', sa.Text(), nullable=False),
     sa.Column('text', sa.Text(), nullable=True),
     sa.Column('picture', sa.String(length=72), nullable=True),
     sa.Column('source', sa.String(length=100), nullable=True),
@@ -53,7 +52,7 @@ def upgrade():
     op.create_table('stories',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=60), nullable=False),
-    sa.Column('meaning', sa.String(length=60), nullable=False),
+    sa.Column('meaning', sa.Text(), nullable=False),
     sa.Column('text', sa.Text(), nullable=True),
     sa.Column('source', sa.String(length=100), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),

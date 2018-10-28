@@ -30,6 +30,7 @@ input[type="submit" i] {
 
 ul li>span{
     font-weight: bold;
+    display:block;
 }
 /* ENDTypography*/
 

@@ -48,14 +48,12 @@ def update_category(category_id):
     if form.validate_on_submit():
         category.name = form.name.data
         category.description = form.description.data
-        category.picture = form.picture.data
         db.session.commit()
         flash('Update successful!')
         print('Update successful!')
         return redirect(url_for('categories.view_category', category_id=category_id))
     form.name.data = category.name
     form.description.data = category.description
-    form.picture.data = category.picture
     return render_template('categories/new_category.html', form=form)
 
 
