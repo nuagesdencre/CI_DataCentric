@@ -127,7 +127,7 @@ def update_being(being_id):
         being.name = form.name.data
         being.text = form.text.data
         being.meaning = form.meaning.data
-        being.categories.name = form.category_id.data
+        being.category_id = form.category_id.data
         being.source = form.source.data
         db.session.commit()
         flash('Update successful!')
@@ -136,7 +136,7 @@ def update_being(being_id):
     form.name.data = being.name
     form.text.data = being.text
     form.meaning.data = being.meaning
-    form.category_id.data = being.categories.name
+    form.category_id.data = being.category_id
     form.source.data = being.source
     return render_template('entries/new_being.html', form=form)
 

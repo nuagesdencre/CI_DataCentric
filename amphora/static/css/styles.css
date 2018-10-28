@@ -28,6 +28,9 @@ input[type="submit" i] {
 
 }
 
+ul li>span{
+    font-weight: bold;
+}
 /* ENDTypography*/
 
 /* Material Icons */
