@@ -2,28 +2,32 @@
 {% block content%}
 <div class="container">
     <h1>CATEGORIES</h1>
-<div class="row">
-    <div class="col s12 l6">
-        <ul>
-                <li><a href="{{url_for('categories.create_category')}}" class="btn waves-light waves-effect light-blue">
-                    Add New Category</a></li>
-            </ul>
-    </div>
-        <div class="col s12 l6">
-            <h3>Categories</h3>
+    <div class="row">
+        <div class="col s12 m6">
+            <a href="{{url_for('categories.create_category')}}" class="btn waves-light waves-effect light-blue">
+                Add New Category</a>
+        </div>
+        <div class="col s12 m6">
+            <a href="{{url_for('main.repo')}}" class="btn waves-light waves-effect deep-purple accent-2">
+                View All Entries</a>
+        </div>
+
+        <div class="col s12">
+
             {% for category in categories %}
             <div class="card center">
                 <span class="card-title">{{category.name}}</span>
                 <div class="card-content blue lighten-5">
                     <i class="material-icons">book</i>
                     <p>
-                        <a href="{{ url_for('categories.view_category', category_id=category.id)}}" class="btn-flat blue-text"> Read
+                        <a href="{{ url_for('categories.view_category', category_id=category.id)}}"
+                           class="btn-flat blue-text"> Read
                             more</a>
                     </p>
                 </div>
             </div>
             {% endfor %}
-             </div>
+        </div>
 
     </div>
 </div>

@@ -17,7 +17,7 @@
                                     href="{{ url_for('categories.view_category', category_id=story.category.id)}}">{{story.categories.name}}</a>
                             </li>
                             <li>
-                                Country affiliated: {{story.country}}
+                                Meaning and values associated: {{story.meaning}}
                             </li>
                             <li>
                                 Source:
@@ -50,15 +50,7 @@
 
                     {{text}}
                 </p>
-                <ul class="collection">
-                    <li class="collection-item avatar">
-                        <img src="{{ story.user.avatar(36) }}" class="circle">
-                        <p> Entry provided by<br>
-                            <a href="{{url_for('users.user_entries', username=story.user.username)}}">{{
-                                story.user.username}}</a>
-                        </p>
-                    </li>
-                </ul>
+
             </div>
             <div class="col s12">
             </div>

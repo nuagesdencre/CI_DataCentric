@@ -90,7 +90,7 @@ class Story(db.Model):
     __tablename__ = 'stories'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(60), nullable=False, unique=True, index=True)
-    country = db.Column(db.String(60), nullable=False)
+    meaning = db.Column(db.String(60), nullable=False)
     text = db.Column(db.Text)
     source = db.Column(db.String(100), default='None provided')
     # relationships
@@ -100,13 +100,13 @@ class Story(db.Model):
     categories = db.relationship('Category')
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
 
-    def __init__(self, title, text, country, category_id, source, user_id):
+    def __init__(self, title, text, meaning, category_id, source, user_id):
         """
         Initialize story object
         """
         self.title = title
         self.text = text
-        self.country = country
+        self.meaning = meaning
         self.category_id = category_id
         self.source = source
         self.user_id = user_id
@@ -122,7 +122,7 @@ class Being(db.Model):
     __tablename__ = 'beings'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), nullable=False, unique=True, index=True)
-    country = db.Column(db.String(60), nullable=False)
+    meaning = db.Column(db.String(60), nullable=False)
     text = db.Column(db.Text)
     picture = db.Column(db.String(72), default='amphora_default.png')
     source = db.Column(db.String(100), default='None provided')
@@ -133,13 +133,13 @@ class Being(db.Model):
     categories = db.relationship('Category')
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
 
-    def __init__(self, name, text, country, category_id, source, user_id):
+    def __init__(self, name, text, meaning, category_id, source, user_id):
         """
         Initialize being object
         """
         self.name = name
         self.text = text
-        self.country = country
+        self.meaning = meaning
         self.category_id = category_id
         self.source = source
         self.user_id = user_id

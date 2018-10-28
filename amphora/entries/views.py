@@ -42,7 +42,7 @@ def create_being():
     form.category_id.choices = [(i.id, i.name) for i in Category.query.all()]
     if form.validate_on_submit():
         being = Being(name=form.name.data,
-                      country=form.country.data,
+                      country=form.meaning.data,
                       text=form.text.data,
                       category_id=form.category_id.data,
                       source=form.source.data,
@@ -126,7 +126,7 @@ def update_being(being_id):
     if form.validate_on_submit():
         being.name = form.name.data
         being.text = form.text.data
-        being.country = form.country.data
+        being.country = form.meaning.data
         being.categories.name = form.category_id.data
         being.source = form.source.data
         db.session.commit()
@@ -135,7 +135,7 @@ def update_being(being_id):
         return redirect(url_for('entries.view_being', being_id=being_id))
     form.name.data = being.name
     form.text.data = being.text
-    form.country.data = being.country
+    form.meaning.data = being.country
     form.category_id.data = being.categories.name
     form.source.data = being.source
     return render_template('entries/new_being.html', form=form)

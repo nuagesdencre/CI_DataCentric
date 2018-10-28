@@ -1,7 +1,7 @@
 /*Typography*/
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
-.brand-logo, h1, .title--acct {
+.brand-logo, h1, .title--acct, h2, h3 {
     font-family: 'Abel';
 }
 
@@ -157,11 +157,14 @@ img {
         padding: 0 16px;
     }
     .waves-effect {
-    width:250px;
+    width:200px;
 }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1100px) {
+        .waves-effect {
+    width:240px;
+}
     .brand-logo, h1 {
         letter-spacing: 0.3em;
     }

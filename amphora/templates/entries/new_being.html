@@ -13,16 +13,19 @@
             {% for error in form.text.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
-            {{form.country.label}}{{form.country}}
-            {% for error in form.country.errors %}
+            {{form.meaning.label}}{{form.meaning}}
+            {% for error in form.meaning.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
+            {{form.source.label}}{{form.source}}
+            {% for error in form.category_id.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}<br>
             {{form.category_id.label}}
             {{form.category_id(class="input-field")}}<br>
             {% for error in form.category_id.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}<br>
-            {{form.source.label}}{{form.source}}
             {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn deep-purple accent-2")}}
         </form>
         <div class="progress">
