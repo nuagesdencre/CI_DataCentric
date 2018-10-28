@@ -3,22 +3,25 @@
 <div class="container">
     <h1>SEARCH RESULTS</h1>
                 <div class="row">
-                     <div class="col s12 m3"><h3>Users</h3><ul>
+
+                     <div class="col s12 m6"><h3>Users</h3><ul>
                         {% for user in users %}
-                        <li><a href="{{url_for('users.entries', username=user.name)}}">{{ user.name }}</a></li>
+                        <li><a href="{{url_for('users.user_entries', username=user.username)}}">{{ user.username }}</a></li>
                         {% endfor %}</ul>
                     </div>
-                    <div class="col s12 m3"><h3>Stories</h3><ul>
+
+                    <div class="col s12 m6"><h3>Stories</h3><ul>
                         {% for story in stories %}
                         <li><a href="{{url_for('entries.view_story', story_id=story.id)}}">{{ story.title }}</a></li>
                         {% endfor %}</ul>
-                    </div>
-                    <div class="col s12 m3"><h3>Beings</h3><ul>
+                    </div></div>
+                    <div class="row">
+                    <div class="col s12 m6"><h3>Beings</h3><ul>
                         {% for being in beings %}
                         <li><a href="{{url_for('entries.view_being', being_id=being.id)}}">{{ being.name }}</a></li>
                         {% endfor %}</ul>
                     </div>
-                                        <div class="col s12 m3"><h3>Categories</h3><ul>
+                                        <div class="col s12 m6"><h3>Categories</h3><ul>
                         {% for category in categories %}
                         <li><a href="{{url_for('categories.view_category', category_id=category.id)}}">{{ category.name }}</a></li>
                         {% endfor %}</ul>

@@ -22,10 +22,12 @@
         <div class="nav-wrapper light-blue">
             <a href="{{ url_for('main.index')}}" class="brand-logo">Amphora <i class="material-icons">local_library</i></a>
             <a href="#" data-target="amphora_navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{url_for('main.index')}}">Home</a></li>
                 <li><a href="{{url_for('main.repo')}}">Repository</a>
                 </li>
+                <li><a href="{{url_for('searchdb.search')}}">Search</a></li>
                 <li><a href="{{url_for('main.about')}}">About</a></li>
                 <li><a href="{{url_for('main.contact')}}">Contact</a></li>
                 {% if current_user.is_authenticated %}
@@ -45,6 +47,7 @@
         <li><a href="{{url_for('main.index')}}">Home</a></li>
         <li><a href="{{url_for('main.repo')}}">Repository</a>
         </li>
+        <li><a href="{{url_for('searchdb.search')}}">Search</a></li>
         <li><a href="{{url_for('main.about')}}">About</a></li>
         <li><a href="{{url_for('main.contact')}}">Contact</a></li>
         {% if current_user.is_authenticated %}
