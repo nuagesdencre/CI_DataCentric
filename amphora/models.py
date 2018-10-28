@@ -26,7 +26,6 @@ class User(db.Model, UserMixin):
     stories = db.relationship('Story', backref='user', lazy=True)
     beings = db.relationship('Being', backref='user', lazy=True)
 
-
     def __init__(self, username, email, psw):
         """
         Initialize user object
@@ -40,7 +39,6 @@ class User(db.Model, UserMixin):
         Set user self-representation
         """
         return "Username {}".format(self.username)
-
 
     def set_password(self, psw):
         """
@@ -90,7 +88,7 @@ class Story(db.Model):
     __tablename__ = 'stories'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(60), nullable=False, unique=True, index=True)
-    meaning = db.Column(db.String(60), nullable=False)
+    meaning = db.Column(db.Text, nullable=False)
     text = db.Column(db.Text)
     source = db.Column(db.String(100), default='None provided')
     # relationships
@@ -122,7 +120,7 @@ class Being(db.Model):
     __tablename__ = 'beings'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), nullable=False, unique=True, index=True)
-    meaning = db.Column(db.String(60), nullable=False)
+    meaning = db.Column(db.Text, nullable=False)
     text = db.Column(db.Text)
     picture = db.Column(db.String(72), default='amphora_default.png')
     source = db.Column(db.String(100), default='None provided')
@@ -168,7 +166,7 @@ class Category(db.Model):
         Initialize being object
         """
         self.name = name
-        self.description =description
+        self.description = description
         self.picture = picture
 
     def __repr__(self):

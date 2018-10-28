@@ -13,7 +13,7 @@
             {% for error in form.text.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
-            {{form.meaning.label}}{{form.meaning}}
+            {{form.meaning.label}}{{form.meaning(class="materialize-textarea")}}
             {% for error in form.meaning.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}

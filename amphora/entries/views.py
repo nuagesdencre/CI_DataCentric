@@ -19,7 +19,7 @@ def create_story():
     if form.validate_on_submit():
         story = Story(title=form.title.data,
                       text=form.text.data,
-                      country=form.country.data,
+                      meaning=form.meaning.data,
                       category_id=form.category_id.data,
                       source=form.source.data,
                       user_id=current_user.id)
@@ -42,7 +42,7 @@ def create_being():
     form.category_id.choices = [(i.id, i.name) for i in Category.query.all()]
     if form.validate_on_submit():
         being = Being(name=form.name.data,
-                      country=form.meaning.data,
+                      meaning=form.meaning.data,
                       text=form.text.data,
                       category_id=form.category_id.data,
                       source=form.source.data,
@@ -64,7 +64,7 @@ def view_story(story_id):
      """
     story = Story.query.get_or_404(story_id)
     return render_template('entries/stories.html', story=story, title=story.title,
-                           text=story.text, country=story.country,source=story.source)
+                           text=story.text, meaning=story.meaning,source=story.source)
 
 
 @entries.route('/being/<int:being_id>')
@@ -75,7 +75,7 @@ def view_being(being_id):
     being = Being.query.get_or_404(being_id)
 
     return render_template('entries/beings.html', being=being, name=being.name,
-                           text=being.text, country=being.country,
+                           text=being.text, meaning=being.meaning,
                            source=being.source)
 
 
@@ -95,7 +95,7 @@ def update_story(story_id):
     if form.validate_on_submit():
         story.title = form.title.data
         story.text = form.text.data
-        story.country = form.country.data
+        story.meaning = form.meaning.data
         story.source = form.source.data
         story.category_id = form.category_id.data
         db.session.commit()
@@ -104,7 +104,7 @@ def update_story(story_id):
         return redirect(url_for('entries.view_story', story_id=story_id))
     form.title.data = story.title
     form.text.data = story.text
-    form.country.data = story.country
+    form.meaning.data = story.meaning
     form.category_id.data = story.category_id
     form.source.data = story.source
     return render_template('entries/new_story.html', form=form)
@@ -126,7 +126,7 @@ def update_being(being_id):
     if form.validate_on_submit():
         being.name = form.name.data
         being.text = form.text.data
-        being.country = form.meaning.data
+        being.meaning = form.meaning.data
         being.categories.name = form.category_id.data
         being.source = form.source.data
         db.session.commit()
@@ -135,7 +135,7 @@ def update_being(being_id):
         return redirect(url_for('entries.view_being', being_id=being_id))
     form.name.data = being.name
     form.text.data = being.text
-    form.meaning.data = being.country
+    form.meaning.data = being.meaning
     form.category_id.data = being.categories.name
     form.source.data = being.source
     return render_template('entries/new_being.html', form=form)
