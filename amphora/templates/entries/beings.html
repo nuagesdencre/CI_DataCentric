@@ -12,11 +12,11 @@
                     <div class="entry--content">
                         <i class="medium material-icons card-image">accessibility</i>
                         <ul>
-                            <li>Country affiliated: {{being.country}}</li>
-                            <li>Category: <a
+                            <li><span>Meaning and values associated:</span> {{being.meaning}}</li>
+                            <li><span>Category: </span><a
                                     href="{{ url_for('categories.view_category', category_id=being.category.id)}}">{{being.categories.name}}</a>
                             </li>
-                            <li>Source:
+                            <li><span>Source:</span>
                                 <a href="{{source}}" target="blank"> Click here (external link)</a></li>
                             <p>
                                 {% if being.user == current_user %}

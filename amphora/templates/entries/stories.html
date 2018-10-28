@@ -13,14 +13,15 @@
                         <i class="medium material-icons card-image">chrome_reader_mode</i>
                         <ul>
                             <li>
-                                Category: <a
-                                    href="{{ url_for('categories.view_category', category_id=story.category.id)}}">{{story.categories.name}}</a>
+                               <span> Category: </span><a
+                                    href="{{ url_for('categories.view_category', category_id=story.category.id)}}">
+                                {{story.categories.name}}</a>
                             </li>
                             <li>
-                                Country affiliated: {{story.country}}
+                                <span>Meaning and values associated: </span>{{story.meaning}}
                             </li>
-                            <li>
-                                Source:
+                            <li><span>
+                                Source: </span>
                                 <a href="{{source}}" target="blank"> Click here (external link)</a></li>
                             <p>{% if story.user == current_user %}
 
@@ -50,15 +51,7 @@
 
                     {{text}}
                 </p>
-                <ul class="collection">
-                    <li class="collection-item avatar">
-                        <img src="{{ story.user.avatar(36) }}" class="circle">
-                        <p> Entry provided by<br>
-                            <a href="{{url_for('users.user_entries', username=story.user.username)}}">{{
-                                story.user.username}}</a>
-                        </p>
-                    </li>
-                </ul>
+
             </div>
             <div class="col s12">
             </div>

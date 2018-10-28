@@ -9,9 +9,10 @@
             {% for error in form.name.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
-            {{form.description.label}}{{form.description(maxlength=950, class="materialize-textarea")}}
+            {{form.description.label}}{{form.description(maxlength=550, class="materialize-textarea")}}
+            {% for error in form.description.errors %}
             <span style="color: red;">{{ error }}</span><br>
-            {{form.picture.label}}{{form.picture}}
+            {% endfor %}
             {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn deep-purple accent-2")}}
         </form>
         <div class="progress">

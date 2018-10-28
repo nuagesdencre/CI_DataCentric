@@ -13,9 +13,9 @@ class ValidationMixin:
 
 
 class CatForm(FlaskForm, ValidationMixin):
-    name = StringField('Name', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired(), Length(min=6,
+                                                                    max=60)])
     description = TextAreaField('Description', validators=[DataRequired(), Length(min=6,
-                                                                    max=550, message='Minimum 6 characters')])
-    picture = StringField('Picture')
+                                                                    max=550)])
     submit = SubmitField("Done!")
 
