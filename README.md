@@ -1,4 +1,5 @@
-# Code Institute Data Centric
+# Data Centric Development Milestone Project
+
 Project Amphora
 - Repository of knowledge
 - Discover Myths, Legends and fantastic creatures
