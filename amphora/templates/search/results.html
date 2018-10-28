@@ -2,30 +2,35 @@
 {% block content%}
 <div class="container">
     <h1>SEARCH RESULTS</h1>
-                <div class="row">
 
-                     <div class="col s12 m6"><h3>Users</h3><ul>
-                        {% for user in users %}
-                        <li><a href="{{url_for('users.user_entries', username=user.username)}}">{{ user.username }}</a></li>
-                        {% endfor %}</ul>
-                    </div>
-
-                    <div class="col s12 m6"><h3>Stories</h3><ul>
-                        {% for story in stories %}
-                        <li><a href="{{url_for('entries.view_story', story_id=story.id)}}">{{ story.title }}</a></li>
-                        {% endfor %}</ul>
-                    </div></div>
-                    <div class="row">
-                    <div class="col s12 m6"><h3>Beings</h3><ul>
-                        {% for being in beings %}
-                        <li><a href="{{url_for('entries.view_being', being_id=being.id)}}">{{ being.name }}</a></li>
-                        {% endfor %}</ul>
-                    </div>
-                                        <div class="col s12 m6"><h3>Categories</h3><ul>
-                        {% for category in categories %}
-                        <li><a href="{{url_for('categories.view_category', category_id=category.id)}}">{{ category.name }}</a></li>
-                        {% endfor %}</ul>
-                    </div>
-                </div>
+    <ul class="collection">
+        {% for user in users %}
+        <li class="collection-item avatar">
+            <i class="medium material-icons circle">account_circle</i>
+            <a href="{{url_for('users.user_entries', username=user.username)}}" class="Title">{{ user.username }}</a>
+        </li>
+        {% endfor %}
+        {% for story in stories %}
+        <li class="collection-item avatar">
+            <i class="medium material-icons circle">chrome_reader_mode</i>
+            <a href="{{url_for('entries.view_story', story_id=story.id)}}" class="title">{{ story.title }}</a>
+        </li>
+        {% endfor %}
+        {% for being in beings %}
+        <li class="collection-item avatar">
+            <i class="medium material-icons circle blue">accessibility</i>
+            <a href="{{url_for('entries.view_being', being_id=being.id)}}" class="title">{{ being.name }}</a>
+        </li>
+        {% endfor %} {% for category in categories %}
+        <li class="collection-item avatar">
+            <i class="medium material-icons circle deep-purple">book</i>
+            <a href="{{url_for('categories.view_category', category_id=category.id)}}" class="title">{{ category.name
+                }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+<a href="{{url_for('searchdb.search')}}" class="btn waves-effect waves-light deep-purple lighten-2">Search again</a>
 </div>
+
+
 {% endblock %}

@@ -13,7 +13,10 @@ input[type="submit" i] {
     text-transform: uppercase;
     font-weight: bold;
 }
-
+.collection .collection-item.avatar .title {
+    position: absolute;
+    top: 20px;
+}
 .entry--content span {
     font-weight: bold;
 }
