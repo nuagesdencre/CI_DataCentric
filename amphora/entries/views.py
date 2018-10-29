@@ -79,6 +79,7 @@ def view_story(story_id):
                            text=story.text, meaning=story.meaning, source=story.source, comments=comments,
                            form=form)
 
+# Todo: fix anonymoususermixin id or request login for post action
 
 @entries.route('/being/<int:being_id>', methods=['GET', 'POST'])
 def view_being(being_id):
@@ -88,6 +89,7 @@ def view_being(being_id):
     being = Being.query.get_or_404(being_id)
     comments = Comment.query.filter_by(being_id=being_id)
     form = CommentForm()
+
     if form.validate_on_submit():
         comments = Comment(subject=form.subject.data,
                            content=form.content.data,
@@ -201,35 +203,3 @@ def delete_being(being_id):
     return redirect(url_for('main.repo'))
 
 
-@entries.route('/story/<int:story_id>/<int:comment_id>/delete', methods=['POST'])
-@login_required
-def delete_s_comment(story_id, comment_id):
-    """
-     Delete an existing comment
-     """
-    story_id = Story.query.get_or_404(story_id)
-    comment = Comment.query.get_or_404(comment_id)
-    if comment.user != current_user:
-        abort(403)
-        flash('Permission denied')
-    db.session.delete(comment)
-    db.session.commit()
-    print('Deleted the entry.')
-    return redirect(url_for('main.repo'))
-
-
-@entries.route('/being/<int:being_id>/<int:comment_id>/delete', methods=['POST'])
-@login_required
-def delete_b_comment(being_id, comment_id):
-    """
-     Delete an existing comment
-     """
-    being_id = Being.query.get_or_404(being_id)
-    comment = Comment.query.get_or_404(comment_id)
-    if comment.user != current_user:
-        abort(403)
-        flash('Permission denied')
-    db.session.delete(comment)
-    db.session.commit()
-    print('Deleted the entry.')
-    return redirect(url_for('main.repo'))
