@@ -58,7 +58,7 @@ a > .material-icons, .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 30px;
+    font-size: inherit;
     line-height: 1.15em;
     letter-spacing: normal;
     text-transform: none;
