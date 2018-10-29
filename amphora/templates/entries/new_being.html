@@ -2,7 +2,11 @@
 {% block content%}
 <div>
     <div class="container">
+                {% if title is defined %}
+        <h1>{{ title }}</h1>
+        {% else %}
         <h1>Create Being</h1>
+        {% endif %}
         <form method="POST">
             {{form.hidden_tag()}}
             {{form.name.label}}{{form.name}}
@@ -31,6 +35,12 @@
         <div class="progress">
             <div class="indeterminate"></div>
         </div>
+        <p>
+                <a href="{{url_for('main.repo')}}"
+                   class="btn waves-light waves-effect blue">
+                    Cancel</a>
+
+            </p>
     </div>
 </div>
 {% endblock %}

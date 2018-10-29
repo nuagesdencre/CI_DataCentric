@@ -27,7 +27,7 @@ class Login(FlaskForm):
     Login Form
     """
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(message='Password is incorrect.')])
     submit = SubmitField('Log in!')
 
 

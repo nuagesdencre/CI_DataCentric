@@ -107,7 +107,8 @@ def update_story(story_id):
     form.meaning.data = story.meaning
     form.category_id.data = story.category_id
     form.source.data = story.source
-    return render_template('entries/new_story.html', form=form)
+    title = form.title.data
+    return render_template('entries/new_story.html', form=form, title=title)
 
 
 @entries.route('/being/<int:being_id>/update', methods=['GET', 'POST'])
@@ -138,7 +139,8 @@ def update_being(being_id):
     form.meaning.data = being.meaning
     form.category_id.data = being.category_id
     form.source.data = being.source
-    return render_template('entries/new_being.html', form=form)
+    title = form.name.data
+    return render_template('entries/new_being.html', form=form, title=title)
 
 
 # Delete Story - Tested!

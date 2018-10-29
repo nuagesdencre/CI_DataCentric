@@ -153,8 +153,8 @@ img {
     padding: 0;
 }
 
-.btn-floating.btn-large.halfway-fab {
-  bottom: -25px;
+.btn-floating.halfway-fab {
+  right: 44px;
 }
 
 .btn-floating.btn-large {
@@ -166,6 +166,11 @@ img {
     line-height: 46px;
 }
 
+table, th, tbody{
+    border-collapse:separate;
+    box-shadow: none;
+    font-weight: normal;
+}
 /* ENDComponents */
 
 /* Media Queries*/
