@@ -43,6 +43,10 @@ nav .brand-logo {
 nav i, nav i.material-icons{
     font-size: 30px;
 }
+
+p {
+    overflow-wrap: break-word;
+}
 /* ENDTypography*/
 
 /* Material Icons */
