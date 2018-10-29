@@ -8,8 +8,11 @@
         <form method="POST">
             {{form.hidden_tag()}}
             <!-- hidden_tag protects the form against CSRF attacks.-->
-            {{form.email.label}}{{form.email(class="validate")}}
+            {{form.email.label}}{{form.email}}
             {{form.password.label}}{{form.password}}
+            {% for error in form.password.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}<br>
             {{form.submit(class="btn waves-effect blue")}}
         </form>
          <p>

@@ -7,27 +7,30 @@
         <div class="card">
             <div class="card-image"><img src="{{ url_for('static', filename='img/amphora_card.jpg') }}">
                 <ul class="collection">
-    <li class="collection-item avatar">
-      <img src="{{ current_user.avatar(128) }}" class="circle" id="circle--acct">
-      <h3 class=" title--acct"> {{ username }}</h3>
-    </li></ul>
+                    <li class="collection-item avatar">
+                        <img src="{{ current_user.avatar(128) }}" class="circle" id="circle--acct">
+                        <h3 class=" title--acct"> {{ username }}</h3>
+                    </li>
+                </ul>
 
             </div>
             <div class="card-content">
 
-        <form method="POST" action="">
-            {{form.hidden_tag()}}
-            <!-- hidden_tag protects the form against CSRF attacks.-->
-            {{form.email.label}}{{form.email}}
-            {% for error in form.email.errors %}
-            <span style="color: red;">{{ error }}</span>
-            {% endfor %}<br>
+                <form method="POST" action="">
+                    {{form.hidden_tag()}}
+                    <!-- hidden_tag protects the form against CSRF attacks.-->
+                    {{form.email.label}}{{form.email}}
+                    {% for error in form.email.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}<br>
 
-            {{form.submit(class="blue lighten-1 btn waves-effect waves-light")}}
-        </form></div>
+                    {{form.submit(class="blue lighten-1 btn waves-effect waves-light")}}
+                </form>
+                <p><a href="{{url_for('users.user_entries', username=username)}}"
+                      class="waves-effect waves-light grey btn ">View Your Entries</a></p>
+            </div>
         </div>
-        <p><a href="{{url_for('users.user_entries', username=username)}}"
-              class="waves-effect waves-light grey btn ">View Your Entries</a></p>
+
     </div>
 </div>
 {% endblock %}

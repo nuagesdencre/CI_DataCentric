@@ -54,7 +54,8 @@ def update_category(category_id):
         return redirect(url_for('categories.view_category', category_id=category_id))
     form.name.data = category.name
     form.description.data = category.description
-    return render_template('categories/new_category.html', form=form)
+    title = form.name.data
+    return render_template('categories/new_category.html', form=form, title=title)
 
 
 @categories.route('/all_categories')

@@ -9,7 +9,7 @@ class ValidationMixin:
     def validate_name(self, field):
         name = Category.query.filter_by(name=field.data).first()
         if name is not None:
-            raise ValidationError('This category has already been created.')
+            raise ValidationError('This category already exists.')
 
 
 class CatForm(FlaskForm, ValidationMixin):

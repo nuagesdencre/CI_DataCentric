@@ -2,7 +2,11 @@
 {% block content%}
 <div>
     <div class="container">
-        <h1>New Category</h1>
+        {% if title is defined %}
+        <h1>{{ title }}</h1>
+        {% else %}
+        <h1>New category</h1>
+        {% endif %}
         <form method="POST">
             {{form.hidden_tag()}}
             {{form.name.label}}{{form.name}}
@@ -15,6 +19,10 @@
             {% endfor %}
             {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn deep-purple accent-2")}}
         </form>
+
+        <a href="{{ url_for('categories.all_categories' )}}" class="waves-effect btn blue accent-2">
+            Return</a>
+
         <div class="progress">
             <div class="indeterminate"></div>
         </div>

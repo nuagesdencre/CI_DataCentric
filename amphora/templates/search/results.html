@@ -10,7 +10,7 @@
             <a href="{{url_for('users.user_entries', username=user.username)}}" class="Title">{{ user.username }}</a>
         </li>
         {% else %}
-    <li><em>no users found</em></li>
+    <li><em>USERS: No results found.</em></li>
         {% endfor %}
         {% for story in stories %}
         <li class="collection-item avatar">
@@ -18,7 +18,7 @@
             <a href="{{url_for('entries.view_story', story_id=story.id)}}" class="title">{{ story.title }}</a>
         </li>
         {% else %}
-    <li><em>no stories found</em></li>
+    <li><em>STORIES: No results found.</em></li>
         {% endfor %}
         {% for being in beings %}
         <li class="collection-item avatar">
@@ -26,15 +26,16 @@
             <a href="{{url_for('entries.view_being', being_id=being.id)}}" class="title">{{ being.name }}</a>
         </li>
         {% else %}
-    <li><em>no beings found</em></li>
-        {% endfor %} {% for category in categories %}
+    <li><em>BEINGS: No results found.</em></li>
+        {% endfor %}
+        {% for category in categories %}
         <li class="collection-item avatar">
             <i class="medium material-icons circle deep-purple">book</i>
             <a href="{{url_for('categories.view_category', category_id=category.id)}}" class="title">{{ category.name
                 }}</a>
         </li>
         {% else %}
-    <li><em>no categories found</em></li>
+    <li><em>CATEGORIES: No results found.</em></li>
         {% endfor %}
     </ul>
 <a href="{{url_for('searchdb.search')}}" class="btn waves-effect waves-light deep-purple lighten-2">Search again</a>
