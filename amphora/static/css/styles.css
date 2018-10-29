@@ -35,6 +35,14 @@ ul li>span{
     font-weight: bold;
     display:block;
 }
+
+nav .brand-logo {
+    padding: 0 10px;
+}
+
+nav i, nav i.material-icons{
+    font-size: 30px;
+}
 /* ENDTypography*/
 
 /* Material Icons */
@@ -143,6 +151,19 @@ img {
 
 .btn-flat {
     padding: 0;
+}
+
+.btn-floating.btn-large.halfway-fab {
+  bottom: -25px;
+}
+
+.btn-floating.btn-large {
+    width: 46px;
+    height: 46px;
+    padding: 0;
+}
+.line-46 {
+    line-height: 46px;
 }
 
 /* ENDComponents */
