@@ -14,7 +14,7 @@ def create_category():
     form = CatForm()
 
     if form.validate_on_submit():
-        category = Category(name=form.name.data, picture=form.picture.data,
+        category = Category(name=form.name.data,
                             description=form.description.data)
 
         db.session.add(category)
@@ -34,7 +34,7 @@ def view_category(category_id):
     beings = Being.query.filter_by(category=category)
     return render_template('categories/view_category.html', stories=stories, beings=beings,
                            category=category, name=category.name,
-                           picture=category.picture, description=category.description
+                           description=category.description
                            )
 
 

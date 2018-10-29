@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/materialize.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/materialize.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css"/>
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
     <script type="text/javascript">
         (function () {
@@ -18,63 +18,76 @@
 
 <body>
 
-    <nav>
-        <div class="nav-wrapper light-blue">
-            <a href="{{ url_for('main.index')}}" class="brand-logo">Amphora <i class="material-icons">local_library</i></a>
-            <a href="#" data-target="amphora_navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="{{url_for('main.index')}}">Home</a></li>
-                <li><a href="{{url_for('main.repo')}}">Repository</a>
-                </li>
-                <li><a href="{{url_for('main.about')}}">About</a></li>
-                <li><a href="{{url_for('main.contact')}}">Contact</a></li>
-                {% if current_user.is_authenticated %}
-                <li><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
-                </li>
-                <li><a href="{{url_for('users.logout')}}" class="waves-light grey lighten">Logout</a></li>
-                {% else %}
-                <li><a href="{{url_for('users.login')}}" class="waves-light grey lighten-1">Login</a>
-                </li>
-                <li><a href="{{url_for('users.register')}}" class="waves-light blue lighten-3">Register</a> {% endif %}
-                </li>
-            </ul>
-        </div>
-    </nav>
+<nav>
+    <div class="nav-wrapper light-blue">
+        <a href="{{ url_for('main.index')}}" class="brand-logo">Amphora <i class="material-icons">local_library</i></a>
+        <a href="#" data-target="amphora_navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-    <ul class="sidenav" id="amphora_navbar">
-        <li><a href="{{url_for('main.index')}}">Home</a></li>
-        <li><a href="{{url_for('main.repo')}}">Repository</a>
-        </li>
-        <li><a href="{{url_for('main.about')}}">About</a></li>
-        <li><a href="{{url_for('main.contact')}}">Contact</a></li>
-        {% if current_user.is_authenticated %}
-        <li><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
-        </li>
-        <li><a href="{{url_for('users.logout')}}" class="waves-light grey lighten">Logout</a></li>
-        {% else %}
-        <li><a href="{{url_for('users.login')}}" class="waves-light grey lighten-2">Login</a>
-        </li>
-        <li><a href="{{url_for('users.register')}}" class="waves-light blue lighten-3">Register</a> {% endif %}
-        </li>
-    </ul>
-
-    <main>
-        {% block content %} {% endblock %}
-
-    </main>
-
-    <footer class="page-footer transparent">
-        <div class="footer-copyright light-blue">
-            <div class="container text-darken-3 center">
-                <p> <a href="https://github.com/nuagesdencre" target="_blank"><img src="{{ url_for('static', filename='img/GitHub-Mark-32px.png') }}"></a></p>
-
-            </div></div>
-        </footer>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{{url_for('main.index')}}">Home</a></li>
+            <li><a href="{{url_for('main.repo')}}">Repository</a>
+            </li>
+            <li><a href="{{url_for('searchdb.search')}}">Search</a></li>
+            <li><a href="{{url_for('main.about')}}">About</a></li>
+            <li><a href="{{url_for('main.contact')}}">Contact</a></li>
+            <li><a class="btn-floating btn-large halfway-fab deep-purple lighten-2 line-46 dropdown-trigger" href='#'
+                   data-target='user-menu'>
+                <i class="large material-icons">account_circle</i>
+            </a>
+                <ul id='user-menu' class='dropdown-content'>
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
+                    </li>
+                    <li><a href="{{url_for('users.logout')}}" class="waves-light">Logout</a></li>
+                    {% else %}
+                    <li><a href="{{url_for('users.login')}}" class="waves-light">Login</a>
+                    </li>
+                    <li><a href="{{url_for('users.register')}}" class="waves-light blue lighten-3">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
     </div>
+</nav>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='js/vendors/materialize.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<ul class="sidenav" id="amphora_navbar">
+    <li><a href="{{url_for('main.index')}}">Home</a></li>
+    <li><a href="{{url_for('main.repo')}}">Repository</a>
+    </li>
+    <li><a href="{{url_for('searchdb.search')}}">Search</a></li>
+    <li><a href="{{url_for('main.about')}}">About</a></li>
+    <li><a href="{{url_for('main.contact')}}">Contact</a></li>
+    {% if current_user.is_authenticated %}
+    <li><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
+    </li>
+    <li><a href="{{url_for('users.logout')}}" class="waves-light grey lighten">Logout</a></li>
+    {% else %}
+    <li><a href="{{url_for('users.login')}}" class="waves-light grey lighten-2">Login</a>
+    </li>
+    <li><a href="{{url_for('users.register')}}" class="waves-light blue lighten-3">Register</a> {% endif %}
+    </li>
+</ul>
+
+<main>
+    {% block content %} {% endblock %}
+
+</main>
+
+<footer class="page-footer transparent">
+    <div class="footer-copyright light-blue">
+        <div class="container text-darken-3 center">
+            <p><a href="https://github.com/nuagesdencre" target="_blank"><img
+                    src="{{ url_for('static', filename='img/GitHub-Mark-32px.png') }}"></a></p>
+
+        </div>
+    </div>
+</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/vendors/materialize.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 
 </html>

@@ -18,7 +18,7 @@
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
             {{form.source.label}}{{form.source}}
-            {% for error in form.category_id.errors %}
+            {% for error in form.source.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}<br>
             {{form.category_id.label}}

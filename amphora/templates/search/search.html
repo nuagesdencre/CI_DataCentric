@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="container">
+    <h1>SEARCH</h1>
+        <form method="POST">
+            {{form.hidden_tag()}}
+            {{form.query.label}}{{form.query}}
+            {% for error in form.query.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+            {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn blue lighten-3")}}
+        </form>
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+</div>
+{% endblock %}
