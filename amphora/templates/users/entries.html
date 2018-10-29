@@ -8,7 +8,7 @@
                 <ul class="collection">
                     {% for story in stories %}
                     <li class="collection-item avatar">
-                        <i class="medium material-icons circle blue">chrome_reader_mode</i><a
+                        <i class="medium material-icons circle grey">chrome_reader_mode</i><a
                             href="{{url_for('entries.view_story', story_id=story.id)}}" class="title">{{ story.title
                         }}</a></li>
                     {% else %}

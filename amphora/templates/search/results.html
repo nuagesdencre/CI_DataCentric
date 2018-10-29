@@ -37,6 +37,15 @@
         {% else %}
     <li><em>CATEGORIES: No results found.</em></li>
         {% endfor %}
+        {% for comment in comments %}
+        <li class="collection-item avatar">
+            <i class="medium material-icons circle deep-purple">add</i>
+            <a href="}}" class="title">{{ comment.subject
+                }}</a>
+        </li>
+        {% else %}
+    <li><em>COMMENTS: No results found.</em></li>
+        {% endfor %}
     </ul>
 <a href="{{url_for('searchdb.search')}}" class="btn waves-effect waves-light deep-purple lighten-2">Search again</a>
 </div>

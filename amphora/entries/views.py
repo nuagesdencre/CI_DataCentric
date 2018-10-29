@@ -2,8 +2,8 @@ from flask import render_template, url_for, Blueprint, redirect, abort, request,
 from flask_login import current_user, login_required
 
 from amphora import db
-from amphora.models import Story, Being, Category
-from amphora.entries.forms import EntryStory, EntryBeing
+from amphora.models import Story, Being, Category, Comment
+from amphora.entries.forms import EntryStory, EntryBeing, CommentForm
 
 entries = Blueprint('entries', __name__)
 
@@ -57,26 +57,50 @@ def create_being():
 
 
 # VIEW
-@entries.route('/story/<int:story_id>')
+@entries.route('/story/<int:story_id>', methods=['GET', 'POST'])
 def view_story(story_id):
     """
      View a specific story entry
      """
     story = Story.query.get_or_404(story_id)
+    comments = Comment.query.filter_by(story_id=story_id)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comments = Comment(subject=form.subject.data,
+                           content=form.content.data,
+                           story_id=story.id,
+                           being_id=None,
+                           user_id=current_user.id)
+        db.session.add(comments)
+        db.session.commit()
+        print('Comment created!')
+        return redirect(url_for('entries.view_story', story_id=story_id))
     return render_template('entries/stories.html', story=story, title=story.title,
-                           text=story.text, meaning=story.meaning,source=story.source)
+                           text=story.text, meaning=story.meaning, source=story.source, comments=comments,
+                           form=form)
 
 
-@entries.route('/being/<int:being_id>')
+@entries.route('/being/<int:being_id>', methods=['GET', 'POST'])
 def view_being(being_id):
     """
      View a specific being entry
      """
     being = Being.query.get_or_404(being_id)
-
+    comments = Comment.query.filter_by(being_id=being_id)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comments = Comment(subject=form.subject.data,
+                           content=form.content.data,
+                           being_id=being.id,
+                           story_id=None,
+                           user_id=current_user.id)
+        db.session.add(comments)
+        db.session.commit()
+        print('Comment created!')
+        return redirect(url_for('entries.view_being', being_id=being_id))
     return render_template('entries/beings.html', being=being, name=being.name,
                            text=being.text, meaning=being.meaning,
-                           source=being.source)
+                           source=being.source, comments=comments, form=form)
 
 
 @entries.route('/story/<int:story_id>/update', methods=['GET', 'POST'])
@@ -143,7 +167,6 @@ def update_being(being_id):
     return render_template('entries/new_being.html', form=form, title=title)
 
 
-# Delete Story - Tested!
 @entries.route('/story/<int:story_id>/delete', methods=['GET', 'POST'])
 @login_required
 def delete_story(story_id):
@@ -161,7 +184,6 @@ def delete_story(story_id):
     return redirect(url_for('main.repo'))
 
 
-# Delete Being - Tested!
 @entries.route('/being/<int:being_id>/delete', methods=['GET', 'POST'])
 @login_required
 def delete_being(being_id):
@@ -174,6 +196,40 @@ def delete_being(being_id):
         abort(403)
         flash('Permission denied')
     db.session.delete(being)
+    db.session.commit()
+    print('Deleted the entry.')
+    return redirect(url_for('main.repo'))
+
+
+@entries.route('/story/<int:story_id>/<int:comment_id>/delete', methods=['POST'])
+@login_required
+def delete_s_comment(story_id, comment_id):
+    """
+     Delete an existing comment
+     """
+    story_id = Story.query.get_or_404(story_id)
+    comment = Comment.query.get_or_404(comment_id)
+    if comment.user != current_user:
+        abort(403)
+        flash('Permission denied')
+    db.session.delete(comment)
+    db.session.commit()
+    print('Deleted the entry.')
+    return redirect(url_for('main.repo'))
+
+
+@entries.route('/being/<int:being_id>/<int:comment_id>/delete', methods=['POST'])
+@login_required
+def delete_b_comment(being_id, comment_id):
+    """
+     Delete an existing comment
+     """
+    being_id = Being.query.get_or_404(being_id)
+    comment = Comment.query.get_or_404(comment_id)
+    if comment.user != current_user:
+        abort(403)
+        flash('Permission denied')
+    db.session.delete(comment)
     db.session.commit()
     print('Deleted the entry.')
     return redirect(url_for('main.repo'))

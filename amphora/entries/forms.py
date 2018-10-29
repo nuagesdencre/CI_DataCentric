@@ -25,3 +25,10 @@ class EntryBeing(FlaskForm):
     meaning = TextAreaField('Associated Meaning and Values', validators=[DataRequired(), Length(min=20,max=250)])
     submit = SubmitField("Done!")
 
+
+class CommentForm(FlaskForm):
+    subject = StringField('Subject', validators=[DataRequired(), Length(min=10,
+                                                                  max=60)])
+    content = TextAreaField('Comment', validators=[DataRequired(), Length(min=20,
+                                                                    max=950)])
+    submit = SubmitField("Done!")
