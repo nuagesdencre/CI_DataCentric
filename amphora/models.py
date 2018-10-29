@@ -99,9 +99,9 @@ class Story(db.Model):
     categories = db.relationship('Category')
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
     # many comments per entry
-    comments = db.relationship('Comment', backref='comments', lazy=True)
+    comments = db.relationship('Comment', backref='story', lazy=True)
 
-    def __init__(self, title, text, meaning, category_id, source, comments, user_id):
+    def __init__(self, title, text, meaning, category_id, source, user_id):
         """
         Initialize story object
         """
@@ -110,7 +110,6 @@ class Story(db.Model):
         self.meaning = meaning
         self.category_id = category_id
         self.source = source
-        self.comments = comments
         self.user_id = user_id
 
     def __repr__(self):
@@ -135,9 +134,9 @@ class Being(db.Model):
     categories = db.relationship('Category')
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
     # many comments per entry
-    comments = db.relationship('Comment', backref='comments', lazy=True)
+    comments = db.relationship('Comment', backref='being', lazy=True)
 
-    def __init__(self, name, text, meaning, category_id, source, comments,user_id):
+    def __init__(self, name, text, meaning, category_id, source, user_id):
         """
         Initialize being object
         """
@@ -146,7 +145,6 @@ class Being(db.Model):
         self.meaning = meaning
         self.category_id = category_id
         self.source = source
-        self.comments = comments
         self.user_id = user_id
 
     def __repr__(self):
@@ -190,9 +188,9 @@ class Comment(db.Model):
     users = db.relationship('User')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     # one entry per comment
-    stories = db.relationship('Stories')
+    stories = db.relationship('Story')
     story_id = db.Column(db.Integer, db.ForeignKey('stories.id'))
-    beings = db.relationship('Beings')
+    beings = db.relationship('Being')
     being_id = db.Column(db.Integer, db.ForeignKey('beings.id'))
 
     def __init__(self, subject, content, user_id, story_id, being_id):
