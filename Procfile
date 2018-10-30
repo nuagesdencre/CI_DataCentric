@@ -1,1 +1,1 @@
-web: flask db upgrade; gunicorn -w 1 python:app.py 
+web: flask db upgrade; gunicorn -w 1 amphora:app 
