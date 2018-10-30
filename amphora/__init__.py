@@ -5,11 +5,28 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
-from amphora.config import Config
 
 
 app = Flask(__name__)
+
+
+class Config(object):
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',
+        'postgresql+psycopg2://vzjbfzbiijlqzh:c6e1c31b53cf1b19a535933d770fd3e0db62ca24898f09106336fbbf9a9e6607@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4hnbmsb05gm9d')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'potatoes-can-fly-so-high')
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT', 25))
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    ADMINS = ['fizzbones@gmail.com']
+
+
 app.config.from_object(Config)
+
 # flask-mail
 mail = Mail(app)
 
