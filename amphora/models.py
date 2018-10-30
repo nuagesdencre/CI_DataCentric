@@ -20,11 +20,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(36), nullable=False, unique=True, index=True)
     email = db.Column(db.String(72), unique=True, index=True)
     psw_hash = db.Column(db.String(128))
-    profile_pic = db.Column(db.String(72), nullable=False, default='amphora_default.png')
     # relationships
-    # One author for many stories & beings
+    # One author for many entries - stories & beings - and comments
     stories = db.relationship('Story', backref='user', lazy=True)
     beings = db.relationship('Being', backref='user', lazy=True)
+    comments = db.relationship('Comment', backref='user', lazy=True)
 
     def __init__(self, username, email, psw):
         """
@@ -77,7 +77,7 @@ class User(db.Model, UserMixin):
 
     def avatar(self, size):
         """
-        Import user avatars using gravater
+        Import user avatars using gravatar
         """
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
@@ -92,11 +92,14 @@ class Story(db.Model):
     text = db.Column(db.Text)
     source = db.Column(db.String(100), default='None provided')
     # relationships
+    # one user_id per entry
     users = db.relationship('User')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     # one category per entry(story, being)
     categories = db.relationship('Category')
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+    # many comments per entry
+    comments = db.relationship('Comment', backref='story', lazy=True)
 
     def __init__(self, title, text, meaning, category_id, source, user_id):
         """
@@ -122,14 +125,16 @@ class Being(db.Model):
     name = db.Column(db.String(60), nullable=False, unique=True, index=True)
     meaning = db.Column(db.Text, nullable=False)
     text = db.Column(db.Text)
-    picture = db.Column(db.String(72), default='amphora_default.png')
     source = db.Column(db.String(100), default='None provided')
     # relationships
+    # one user_id per entry
     users = db.relationship('User')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     # one category per entry(story, being)
     categories = db.relationship('Category')
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+    # many comments per entry
+    comments = db.relationship('Comment', backref='being', lazy=True)
 
     def __init__(self, name, text, meaning, category_id, source, user_id):
         """
@@ -171,3 +176,35 @@ class Category(db.Model):
         Set category self-representation
         """
         return "Category name: {}".format(self.name)
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    subject = db.Column(db.String(60), nullable=False)
+    content = db.Column(db.Text)
+    # relationships
+    # one user_id per comment
+    users = db.relationship('User')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    # one entry per comment
+    stories = db.relationship('Story')
+    story_id = db.Column(db.Integer, db.ForeignKey('stories.id'))
+    beings = db.relationship('Being')
+    being_id = db.Column(db.Integer, db.ForeignKey('beings.id'))
+
+    def __init__(self, subject, content, user_id, story_id, being_id):
+        """
+        Initialize comment object
+        """
+        self.subject = subject
+        self.content = content
+        self.user_id = user_id
+        self.story_id = story_id if story_id is not None else None
+        self.being_id = being_id if being_id is not None else None
+
+    def __repr__(self):
+        """
+        Set comment self-representation
+        """
+        return "Comment '{}' made by {}".format(self.subject, self.user_id)

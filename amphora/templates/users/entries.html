@@ -4,21 +4,54 @@
     <div class="container">
         <h1>Username: {{ user.username }}</h1>
         <div class="row">
-            <div class="col s6"><h3>Stories</h3>
+            <div class="col s12 m6"><h3>Stories</h3>
                 <ul class="collection">
-                {% for story in stories %}
-                <li class="collection-item avatar">
-            <i class="medium material-icons circle blue">chrome_reader_mode</i><a href="{{url_for('entries.view_story', story_id=story.id)}}" class="title">{{ story.title }}</a></li>
-                {% endfor %}
+                    {% for story in stories %}
+                    <li class="collection-item avatar">
+                        <i class="medium material-icons circle grey">chrome_reader_mode</i><a
+                            href="{{url_for('entries.view_story', story_id=story.id)}}" class="title">{{ story.title
+                        }}</a></li>
+                    {% else %}
+                    <li><em>No stories created yet.</em></li>
+
+                    {% endfor %}
                 </ul>
             </div>
-            <div class="col s6"><h3>Beings</h3>
+            <div class="col s12 m6"><h3>Beings</h3>
                 <ul class="collection">
-                {% for being in beings %}
-                <li class="collection-item avatar">
-            <i class="medium material-icons circle blue">accessibility</i><a href="{{url_for('entries.view_being', being_id=being.id)}}" class="title">{{ being.name }}</a></li>
-                {% endfor %}
-                    </ul>
+                    {% for being in beings %}
+                    <li class="collection-item avatar">
+                        <i class="medium material-icons circle blue">accessibility</i><a
+                            href="{{url_for('entries.view_being', being_id=being.id)}}" class="title">{{ being.name
+                        }}</a></li>
+                    {% else %}
+                    <li><em>No being profiles created yet.</em></li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+                <div class="row">
+            <div class="col s12 m6"><h3>Comments</h3>
+                <ul class="collection">
+                    {% for comment in comments %}
+                    <li class="collection-item avatar">
+                        <i class="medium material-icons circle grey">comment</i>
+            <em>{{ comment.subject }}</em> in
+            {% if comment.story_id != None %}
+            <a href="{{url_for('entries.view_story', story_id=comment.story_id)}}">this entry</a>
+            {% elif comment.being_id != None %}
+            <a href="{{url_for('entries.view_being', being_id=comment.being_id)}}">this entry</a>
+            {% else %}
+            <p> an entry that was deleted by its author</p>
+            {% endif %}
+                    </li>
+
+                    {% else %}
+                    <li><em>No comments posted yet.</em></li>
+
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>

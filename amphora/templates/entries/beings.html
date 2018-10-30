@@ -51,6 +51,62 @@
                 </p>
 
             </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+
+                {% for comment in comments %}
+                <div class="card-panel">
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <img src="{{ comment.user.avatar(36) }}" class="circle">
+                            <p> Comment provided by<br>
+                                <a href="{{url_for('users.user_entries', username=comment.user.username)}}">{{
+                                    comment.user.username}}</a></p>
+                        </li>
+                    </ul>
+
+                    <p>{{ comment.subject }}<br>
+                        {{ comment.content }}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if current_user.is_authenticated %}
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <h3>COMMENTS</h3>
+                    <p>Comments can be viewed by everyone and <strong>CANNOT</strong> be edited or deleted. Post
+                        carefully!</p>
+                    <form method="POST">
+                        {{form.hidden_tag()}}
+                        {{form.subject.label}}{{form.subject}}
+                        {% for error in form.subject.errors %}
+                        <span style="color: red;">{{ error }}</span><br>
+                        {% endfor %}
+                        {{form.content.label}}{{form.content(maxlength=950, class="materialize-textarea")}}
+                        {% for error in form.content.errors %}
+                        <span style="color: red;">{{ error }}</span><br>
+                        {% endfor %}
+                        {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn blue")}}
+                    </form>
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col s12">
+            <div class="card-panel"><h5 class="center"><a href="{{url_for('users.login')}}">
+                Log in</a> to leave a comment.</h5></div>
+            </div>
+        </div>
+{% endif %}
+        <div class="row">
             <div class="col s12">
                 <p>
                     <a href="{{url_for('main.repo')}}" class="btn waves-light waves-effect deep-purple accent-2">
@@ -60,23 +116,25 @@
                 </p>
             </div>
         </div>
+    </div>
 
+
+</div>
+<div id="delete_modal" class="modal">
+    <div class="modal-content">
+        <h3>Delete Entry</h3>
+        <h5>Do you really want to delete this entry?</h5>
+    </div>
+    <div class="modal-footer">
+
+        <form action="{{url_for('entries.delete_being', being_id=being.id)}}" method="POST">
+            <input type="submit" class="modal-close waves-effect waves-pink btn-flat" value="Delete entry">
+            <a href="#" class="modal-close waves-effect waves-green btn-flat">Go Back</a>
+        </form>
 
     </div>
-    <div id="delete_modal" class="modal">
-        <div class="modal-content">
-            <h3>Delete Entry</h3>
-            <h5>Do you really want to delete this entry?</h5>
-        </div>
-        <div class="modal-footer">
+</div>
 
-            <form action="{{url_for('entries.delete_being', being_id=being.id)}}" method="POST">
-                <input type="submit" class="modal-close waves-effect waves-pink btn-flat" value="Delete entry">
-                <a href="#" class="modal-close waves-effect waves-green btn-flat">Go Back</a>
-            </form>
-
-        </div>
-    </div>
 
 </div>
 {% endblock %}

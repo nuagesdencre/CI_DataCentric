@@ -30,7 +30,7 @@ from amphora.main.views import main
 from amphora.users.views import users
 from amphora.entries.views import entries
 from amphora.categories.views import categories
-from amphora.error.handlers import error_pages
+from amphora.main.error.handlers import error_pages
 from amphora.search.views import searchdb
 
 # Registering blueprints
