@@ -65,21 +65,23 @@ def view_story(story_id):
     story = Story.query.get_or_404(story_id)
     comments = Comment.query.filter_by(story_id=story_id)
     form = CommentForm()
-    if form.validate_on_submit():
-        comments = Comment(subject=form.subject.data,
-                           content=form.content.data,
-                           story_id=story.id,
-                           being_id=None,
-                           user_id=current_user.id)
-        db.session.add(comments)
-        db.session.commit()
-        print('Comment created!')
-        return redirect(url_for('entries.view_story', story_id=story_id))
+    if current_user.is_authenticated:
+        if form.validate_on_submit():
+            comments = Comment(subject=form.subject.data,
+                               content=form.content.data,
+                               story_id=story.id,
+                               being_id=None,
+                               user_id=current_user.id)
+            db.session.add(comments)
+            db.session.commit()
+            print('Comment created!')
+            return redirect(url_for('entries.view_story', story_id=story_id))
     return render_template('entries/stories.html', story=story, title=story.title,
                            text=story.text, meaning=story.meaning, source=story.source, comments=comments,
                            form=form)
 
-# Todo: fix anonymoususermixin id or request login for post action
+
+
 
 @entries.route('/being/<int:being_id>', methods=['GET', 'POST'])
 def view_being(being_id):
@@ -89,17 +91,17 @@ def view_being(being_id):
     being = Being.query.get_or_404(being_id)
     comments = Comment.query.filter_by(being_id=being_id)
     form = CommentForm()
-
-    if form.validate_on_submit():
-        comments = Comment(subject=form.subject.data,
-                           content=form.content.data,
-                           being_id=being.id,
-                           story_id=None,
-                           user_id=current_user.id)
-        db.session.add(comments)
-        db.session.commit()
-        print('Comment created!')
-        return redirect(url_for('entries.view_being', being_id=being_id))
+    if current_user.is_authenticated:
+        if form.validate_on_submit():
+            comments = Comment(subject=form.subject.data,
+                               content=form.content.data,
+                               being_id=being.id,
+                               story_id=None,
+                               user_id=current_user.id)
+            db.session.add(comments)
+            db.session.commit()
+            print('Comment created!')
+            return redirect(url_for('entries.view_being', being_id=being_id))
     return render_template('entries/beings.html', being=being, name=being.name,
                            text=being.text, meaning=being.meaning,
                            source=being.source, comments=comments, form=form)
