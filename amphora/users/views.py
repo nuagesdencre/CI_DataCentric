@@ -33,10 +33,12 @@ def login():
     Where users, who are already registered, can log in. The form checks for matching passwords (hashed).
     """
     form = Login()
-    error_message=''
+    error_message = ''
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        if user.psw_check(form.password.data) and user is not None:
+        if user is None:
+            error_message = 'The login details provided are incorrect.'
+        elif user.psw_check(form.password.data) and user is not None:
             login_user(user)
             return redirect(url_for('users.account'))
         else:

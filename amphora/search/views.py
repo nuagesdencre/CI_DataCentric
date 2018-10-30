@@ -12,7 +12,6 @@ def search():
     form = SearchForm()
     if form.validate_on_submit():
         query = str(form.query.data).lower()
-        print(query)
         return redirect(url_for('searchdb.search_req', query=query))
     return render_template('search/search.html', form=form)
 
