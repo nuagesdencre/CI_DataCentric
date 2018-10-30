@@ -19,7 +19,7 @@
 <body>
 
 <nav>
-    <div class="nav-wrapper light-blue">
+    <div class="nav-wrapper blue lighten-1">
         <a href="{{ url_for('main.index')}}" class="brand-logo">Amphora <i class="material-icons">local_library</i></a>
         <a href="#" data-target="amphora_navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
@@ -30,19 +30,19 @@
             <li><a href="{{url_for('searchdb.search')}}">Search</a></li>
             <li><a href="{{url_for('main.about')}}">About</a></li>
             <li><a href="{{url_for('main.contact')}}">Contact</a></li>
-            <li><a class="btn-floating btn-large halfway-fab deep-purple lighten-2 line-46 dropdown-trigger" href='#'
+            <li><a class="btn-floating btn-large halfway-fab deep-purple line-46 dropdown-trigger" href='#'
                    data-target='user-menu'>
                 <i class="large material-icons">account_circle</i>
             </a>
                 <ul id='user-menu' class='dropdown-content'>
                     {% if current_user.is_authenticated %}
-                    <li><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
+                    <li class="title--acct"><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
                     </li>
-                    <li><a href="{{url_for('users.logout')}}" class="waves-light">Logout</a></li>
+                    <li class="title--acct"><a href="{{url_for('users.logout')}}" class="waves-light">Logout</a></li>
                     {% else %}
-                    <li><a href="{{url_for('users.login')}}" class="waves-light">Login</a>
+                    <li class="title--acct"><a href="{{url_for('users.login')}}" class="waves-light">Login</a>
                     </li>
-                    <li><a href="{{url_for('users.register')}}" class="waves-light blue lighten-3">Register</a>
+                    <li class="title--acct"><a href="{{url_for('users.register')}}" class="waves-light blue lighten-3">Register</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -75,7 +75,7 @@
 </main>
 
 <footer class="page-footer transparent">
-    <div class="footer-copyright light-blue">
+    <div class="footer-copyright blue lighten-1">
         <div class="container text-darken-3 center">
             <p><a href="https://github.com/nuagesdencre" target="_blank"><img
                     src="{{ url_for('static', filename='img/GitHub-Mark-32px.png') }}"></a></p>

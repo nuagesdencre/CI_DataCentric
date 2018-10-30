@@ -47,6 +47,10 @@ nav i, nav i.material-icons{
 p {
     overflow-wrap: break-word;
 }
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #01579b;}
+
 /* ENDTypography*/
 
 /* Material Icons */
