@@ -10,7 +10,7 @@
             <a href="{{url_for('users.user_entries', username=user.username)}}" class="Title">{{ user.username }}</a>
         </li>
         {% else %}
-    <li><em>USERS: No results found.</em></li>
+        <li><em>USERS: No results found.</em></li>
         {% endfor %}
         {% for story in stories %}
         <li class="collection-item avatar">
@@ -18,7 +18,7 @@
             <a href="{{url_for('entries.view_story', story_id=story.id)}}" class="title">{{ story.title }}</a>
         </li>
         {% else %}
-    <li><em>STORIES: No results found.</em></li>
+        <li><em>STORIES: No results found.</em></li>
         {% endfor %}
         {% for being in beings %}
         <li class="collection-item avatar">
@@ -26,7 +26,7 @@
             <a href="{{url_for('entries.view_being', being_id=being.id)}}" class="title">{{ being.name }}</a>
         </li>
         {% else %}
-    <li><em>BEINGS: No results found.</em></li>
+        <li><em>BEINGS: No results found.</em></li>
         {% endfor %}
         {% for category in categories %}
         <li class="collection-item avatar">
@@ -35,19 +35,24 @@
                 }}</a>
         </li>
         {% else %}
-    <li><em>CATEGORIES: No results found.</em></li>
+        <li><em>CATEGORIES: No results found.</em></li>
         {% endfor %}
         {% for comment in comments %}
         <li class="collection-item avatar">
-            <i class="medium material-icons circle deep-purple">add</i>
-            <a href="}}" class="title">{{ comment.subject
-                }}</a>
+            <i class="medium material-icons circle grey">record_voice_over</i>
+            {{ comment.subject }} in
+            {% if comment.story_id != None %}
+            <a href="{{url_for('entries.view_story', story_id=comment.story_id)}}">this entry</a>
+            {% endif %}
+            {% if comment.being_id != None %}
+            <a href="{{url_for('entries.view_being', being_id=comment.being_id)}}">this entry</a>
+            {% endif %}
         </li>
         {% else %}
-    <li><em>COMMENTS: No results found.</em></li>
+        <li><em>COMMENTS: No results found.</em></li>
         {% endfor %}
     </ul>
-<a href="{{url_for('searchdb.search')}}" class="btn waves-effect waves-light deep-purple lighten-2">Search again</a>
+    <a href="{{url_for('searchdb.search')}}" class="btn waves-effect waves-light deep-purple lighten-2">Search again</a>
 </div>
 
 

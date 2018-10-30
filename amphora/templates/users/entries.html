@@ -31,6 +31,30 @@
                 </ul>
             </div>
         </div>
+                <div class="row">
+            <div class="col s12 m6"><h3>Comments</h3>
+                <ul class="collection">
+                    {% for comment in comments %}
+                    <li class="collection-item avatar">
+                        <i class="medium material-icons circle grey">record_voice_over</i>
+                        <span>
+                            {{ comment.subject }} in
+                            {% if comment.story_id != None %}
+                            <a href="{{url_for('entries.view_story', story_id=comment.story_id)}}">this entry</a>
+                            {% endif %}
+                            {% if comment.being_id != None %}
+                            <a href="{{url_for('entries.view_being', being_id=comment.being_id)}}">this entry</a>
+                            {% endif %}
+                        </span>
+                    </li>
+
+                    {% else %}
+                    <li><em>No comments posted yet.</em></li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

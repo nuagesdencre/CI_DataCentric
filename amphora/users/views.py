@@ -2,7 +2,7 @@ from flask import render_template, url_for, flash, Blueprint, redirect, request
 from flask_login import current_user, login_user, logout_user, login_required
 
 from amphora import db
-from amphora.models import User, Story, Being
+from amphora.models import User, Story, Being, Comment
 from amphora.users.forms import Login, Register, Update, ResetPsw, ResetPswReq
 from amphora.users.email import send_password_reset_email
 
@@ -76,7 +76,8 @@ def user_entries(username):
     user = User.query.filter_by(username=username).first_or_404()
     stories = Story.query.filter_by(user=user)
     beings = Being.query.filter_by(user=user)
-    return render_template('users/entries.html', user=user, beings=beings, stories=stories)
+    comments = Comment.query.filter_by(user=user)
+    return render_template('users/entries.html', user=user, beings=beings, stories=stories, comments=comments)
 
 
 @users.route('/reset_password_request', methods=['GET', 'POST'])
