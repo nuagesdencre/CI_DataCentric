@@ -157,7 +157,7 @@ class Being(db.Model):
 class Category(db.Model):
     __tablename__ = 'categories'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60), nullable=False, index=True)
+    name = db.Column(db.String(60), nullable=False, unique=True, index=True)
     description = db.Column(db.Text)
     # relationships
     # many entries(story, being) per category

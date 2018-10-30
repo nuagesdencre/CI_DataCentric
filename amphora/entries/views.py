@@ -81,8 +81,6 @@ def view_story(story_id):
                            form=form)
 
 
-
-
 @entries.route('/being/<int:being_id>', methods=['GET', 'POST'])
 def view_being(being_id):
     """
