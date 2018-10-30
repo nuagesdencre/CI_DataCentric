@@ -31,20 +31,20 @@
                 </ul>
             </div>
         </div>
-                <div class="row">
+        <div class="row">
             <div class="col s12 m6"><h3>Comments</h3>
                 <ul class="collection">
                     {% for comment in comments %}
                     <li class="collection-item avatar">
                         <i class="medium material-icons circle grey">comment</i>
-            <em>{{ comment.subject }}</em> in
-            {% if comment.story_id != None %}
-            <a href="{{url_for('entries.view_story', story_id=comment.story_id)}}">this entry</a>
-            {% elif comment.being_id != None %}
-            <a href="{{url_for('entries.view_being', being_id=comment.being_id)}}">this entry</a>
-            {% else %}
-            <p> an entry that was deleted by its author</p>
-            {% endif %}
+                        <em>{{ comment.subject }}</em> in
+                        {% if comment.story_id != None %}
+                        <a href="{{url_for('entries.view_story', story_id=comment.story_id)}}">this entry</a>
+                        {% elif comment.being_id != None %}
+                        <a href="{{url_for('entries.view_being', being_id=comment.being_id)}}">this entry</a>
+                        {% else %}
+                        <p> an entry that was deleted by its author</p>
+                        {% endif %}
                     </li>
 
                     {% else %}

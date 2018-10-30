@@ -61,14 +61,14 @@
                         <li class="collection-item avatar">
                             <img src="{{ comment.user.avatar(36) }}" class="circle">
                             <p> Comment provided by<br>
-                                <a href="{{url_for('users.user_entries', username=comment.user.username)}}">{{
+                                <a href="{{url_for('users.user_entries', username=comment.user.username)}}"
+                                   class="title--acct">{{
                                     comment.user.username}}</a></p>
                         </li>
                     </ul>
 
-                    <p>{{ comment.subject }}<br>
-                        {{ comment.content }}
-                    </p>
+                    <span class="title--acct">{{ comment.subject }}</span>
+                    <p> {{ comment.content }}</p>
                 </div>
                 {% endfor %}
             </div>
@@ -101,11 +101,11 @@
         {% else %}
         <div class="row">
             <div class="col s12">
-            <div class="card-panel"><h5 class="center"><a href="{{url_for('users.login')}}">
-                Log in</a> to leave a comment.</h5></div>
+                <div class="card-panel"><h5 class="center"><a href="{{url_for('users.login')}}">
+                    Log in</a> to leave a comment.</h5></div>
             </div>
         </div>
-{% endif %}
+        {% endif %}
         <div class="row">
             <div class="col s12">
                 <p>
