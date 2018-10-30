@@ -23,8 +23,10 @@ def search_req(query):
      Query database
      """
     categories = Category.query.filter(or_(Category.name.contains(query), Category.description.contains(query)))
-    stories = Story.query.filter(or_(Story.title.contains(query), Story.meaning.contains(query), Story.text.contains(query)))
-    beings = Being.query.filter(or_(Being.name.contains(query), Being.meaning.contains(query), Being.text.contains(query)))
+    stories = Story.query.filter(or_(Story.title.contains(query), Story.meaning.contains(query),
+                                     Story.text.contains(query)))
+    beings = Being.query.filter(or_(Being.name.contains(query), Being.meaning.contains(query),
+                                    Being.text.contains(query)))
     users = User.query.filter(or_(User.username.contains(query), User.email.contains(query)))
     comments = Comment.query.filter(or_(Comment.subject.contains(query), Comment.content.contains(query)))
     return render_template('search/results.html', stories=stories, beings=beings,

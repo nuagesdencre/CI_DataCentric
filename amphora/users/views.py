@@ -33,13 +33,15 @@ def login():
     Where users, who are already registered, can log in. The form checks for matching passwords (hashed).
     """
     form = Login()
+    error_message=''
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user.psw_check(form.password.data) and user is not None:
             login_user(user)
-            flash('You are now logged in!')
             return redirect(url_for('users.account'))
-    return render_template('users/login.html', form=form)
+        else:
+            error_message = 'The login details provided are incorrect.'
+    return render_template('users/login.html', form=form, error_message=error_message)
 
 
 @users.route('/logout')

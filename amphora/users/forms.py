@@ -1,9 +1,7 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileAllowed, FileField
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms import ValidationError
 from wtforms.validators import DataRequired, Email, EqualTo,Length
-from flask_login import current_user
 from amphora.models import User
 
 
@@ -27,7 +25,7 @@ class Login(FlaskForm):
     Login Form
     """
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired(message='Password is incorrect.')])
+    password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log in!')
 
 
