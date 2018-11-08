@@ -17,9 +17,7 @@ input[type="submit" i] {
     position: absolute;
     top: 20px;
 }
-.entry--content span {
-    font-weight: bold;
-}
+
 
 .card .card-title {
     font-size: 20px;
@@ -29,6 +27,9 @@ input[type="submit" i] {
 .entry--content {
     text-transform: uppercase;
 
+}
+.entry--content span {
+    font-weight: bold;
 }
 
 ul li>span{
@@ -111,12 +112,20 @@ blockquote {
     justify-content: center;
 }
 
+.center-all {
+    display:flex;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 .btn {
     margin: 5px;
 }
 
 .waves-effect {
     display:block;
+    width: 150px;
 }
 
 .card .card-content, .card {
