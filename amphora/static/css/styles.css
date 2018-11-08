@@ -22,10 +22,16 @@ input[type="submit" i] {
     font-size: 20px;
     overflow-x: auto;
 }
+.options a{
+    font-size: 30px;
+    margin: 0 10px;
+}
+.options a:last-child {
+    color: #ff0000;
+}
 
 .entry--content {
     text-transform: uppercase;
-
 }
 .entry--content span {
     font-weight: bold;
@@ -123,16 +129,10 @@ blockquote {
     justify-content: center;
 }
 
-.entry-img{
-    position: relative;
+.entry i{
+    margin: 0 20px;
 }
-.entry-header{
-    color:#fff;
-    position: absolute;
-    padding: 24px;
-    bottom: 0;
-    right: 0;
-}
+
 .center-all {
     display:flex;
     flex-wrap:wrap;
