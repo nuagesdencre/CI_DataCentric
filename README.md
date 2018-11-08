@@ -94,6 +94,8 @@ To the best of my ability, I conducted and documented tests to ensure that all o
     - this StackOverflow article [here](https://stackoverflow.com/questions/20336665/lower-like-vs-ilike?noredirect=1&lq=1)
 - From SQLite to Postgresql
 
+- UX
+USer experience: adding breadcrumbs for an easier browsing experience
 
 ## Credits
 

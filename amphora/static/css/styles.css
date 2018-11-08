@@ -15,7 +15,7 @@ input[type="submit" i] {
 }
 .collection .collection-item.avatar .title {
     position: absolute;
-    top: 20px;
+    top: 25px;
 }
 
 .card .card-title {
@@ -31,6 +31,9 @@ input[type="submit" i] {
     font-weight: bold;
 }
 
+.map{
+    margin-top:-20px;
+}
 ul li>span{
     font-weight: bold;
     display:block;
@@ -54,7 +57,7 @@ p {
 }
 
 .text-dark{
-    color:#0D47A1;
+    color:#7c4dff;
 }
 
 /* ENDTypography*/
@@ -103,6 +106,9 @@ main {
     max-width: 800px;
 }
 
+.row{
+    margin-bottom:0;
+}
 /* ENDSections */
 
 /* Components */
@@ -121,16 +127,19 @@ blockquote {
     display:flex;
     flex-wrap:wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
+.category{
+    width:240px;
+}
 .btn {
     margin: 5px;
 }
 
 .waves-effect {
     display:block;
-    width: 150px;
+    width: 170px;
 }
 
 .card .card-content, .card {
