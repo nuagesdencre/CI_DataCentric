@@ -100,6 +100,7 @@ USer experience: adding breadcrumbs for an easier browsing experience
 ## Credits
 
 - Disclosure
+    - Reference to [Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ix-pagination), which was extreme;y helpful especially while trying to set up a reset password feature.
 - Content
 - Media
     - The background pattern was found on [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/).
