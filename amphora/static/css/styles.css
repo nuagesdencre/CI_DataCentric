@@ -106,9 +106,6 @@ main {
     max-width: 800px;
 }
 
-.row{
-    margin-bottom:0;
-}
 /* ENDSections */
 
 /* Components */
@@ -131,7 +128,7 @@ blockquote {
 }
 
 .category{
-    width:240px;
+    width:348px;
 }
 .btn {
     margin: 5px;

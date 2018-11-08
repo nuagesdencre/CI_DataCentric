@@ -16,33 +16,33 @@
             </div>
         </div>
         <div class="row">
-            <h3>Entries</h3>
             <div class="col s12 m6">
-
-                <ul class="collection">
-                    {% for story in stories %}
-                    <li class="collection-item avatar">
-                        <i class="medium material-icons circle">chrome_reader_mode</i>
-                        <a href="{{url_for('entries.view_story', story_id=story.id)}}" class="title">{{
-                            story.title }}</a>
-                    </li>
-                    {% else %}
-                    <li><em>No story was assigned this category.</em></li>
-                    {% endfor %}
-                </ul>
+                {% for story in stories%}
+                <div class="card center">
+                    <span class="card-title">{{story.title}}</span>
+                    <div class="card-content blue lighten-5">
+                        <p>{{story.category}}</p><i class="material-icons">chrome_reader_mode</i>
+                        <p>
+                            <a href="{{ url_for('entries.view_story', story_id=story.id)}}" class="btn-flat blue-text">
+                                Read
+                                more</a>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
             <div class="col s12 m6">
-                <ul class="collection">
-                    {% for being in beings %}
-                    <li class="collection-item avatar">
-                        <i class="medium material-icons circle blue">accessibility</i>
-                        <a href="{{url_for('entries.view_being', being_id=being.id)}}" class="title">{{
-                            being.name }}</a>
-                    </li>
-                    {% else %}
-                    <li><em>No being was assigned this category.</em></li>
-                    {% endfor %}
-                </ul>
+                {% for being in beings%}
+                <div class="card center">
+                    <span class="card-title">{{being.name}}</span>
+                    <div class="card-content blue lighten-5">
+                        <p>{{being.category}}</p><i class="material-icons">accessibility</i>
+                        <p><a href="{{ url_for('entries.view_being', being_id=being.id)}}" class="btn-flat blue-text">
+                            Read more</a>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="row">
