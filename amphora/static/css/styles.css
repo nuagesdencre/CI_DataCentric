@@ -229,9 +229,7 @@ table, th, tbody{
         .waves-effect {
     width:240px;
 }
-    .brand-logo, h1 {
-        letter-spacing: 0.3em;
-    }
+
 }
 
 /* EndMedia Queries*/
