@@ -52,7 +52,7 @@ class Update(FlaskForm, ValidationMixin):
 
 class ResetPswReq(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    submit = SubmitField('Request Password Reset')
+    submit = SubmitField('Send Request')
 
 
 class ResetPsw(FlaskForm):

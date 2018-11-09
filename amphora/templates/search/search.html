@@ -6,7 +6,7 @@
 
         <form method="POST">
             {{form.hidden_tag()}}
-            {{form.query.label}}{{form.query}}
+            {{form.query(placeholder="What are you looking for?")}}<br>
             {% for error in form.query.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
