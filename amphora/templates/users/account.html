@@ -19,7 +19,7 @@
                 <form method="POST" action="">
                     {{form.hidden_tag()}}
                     <!-- hidden_tag protects the form against CSRF attacks.-->
-                    {{form.email.label}}{{form.email}}
+                    {{form.email}}{{form.email.label}}
                     {% for error in form.email.errors %}
                     <span style="color: red;">{{ error }}</span>
                     {% endfor %}<br>

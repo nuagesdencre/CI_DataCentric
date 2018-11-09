@@ -11,11 +11,11 @@
                 {% endif %}
                 <form method="POST">
                     {{form.hidden_tag()}}
-                    {{form.name.label}}{{form.name}}
+                    {{form.name}}{{form.name.label}}
                     {% for error in form.name.errors %}
                     <span style="color: red;">{{ error }}</span><br>
                     {% endfor %}
-                    {{form.description.label}}{{form.description(maxlength=550, class="materialize-textarea")}}
+                    {{form.description(maxlength=550, class="materialize-textarea")}}{{form.description.label}}
                     {% for error in form.description.errors %}
                     <span style="color: red;">{{ error }}</span><br>
                     {% endfor %}

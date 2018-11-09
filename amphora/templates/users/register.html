@@ -8,19 +8,19 @@
         <form method="POST">
             {{form.hidden_tag()}}
             <!-- hidden_tag protects the form against CSRF attacks.-->
-            {{form.username.label}}{{form.username(class="validate")}}
+            {{form.username(class="validate")}}{{form.username.label}}
             {% for error in form.username.errors %}
             <span style="color: red;">{{ error }}</span>
             {% endfor %}<br>
-            {{form.email.label}}{{form.email(class="validate")}}
+            {{form.email(class="validate")}}{{form.email.label}}
              {% for error in form.email.errors %}
             <span style="color: red;">{{ error }}</span>
             {% endfor %}<br>
-            {{form.password.label}}{{form.password}}
+            {{form.password}}{{form.password.label}}
              {% for error in form.password.errors %}
             <span style="color: red;">{{ error }}</span>
             {% endfor %}<br>
-            {{form.psw_again.label}}{{form.psw_again}}
+            {{form.psw_again}}{{form.psw_again.label}}
              {% for error in form.psw_again.errors %}
             <span style="color: red;">{{ error }}</span>
             {% endfor %}<br>

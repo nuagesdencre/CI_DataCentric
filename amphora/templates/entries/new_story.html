@@ -9,24 +9,23 @@
         {% endif %}
         <form method="POST">
             {{form.hidden_tag()}}
-            {{form.title.label}}{{form.title(class="validate")}}
+            {{form.title(class="validate")}}{{form.title.label}}
             {% for error in form.title.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
-            {{form.text.label}}{{form.text(maxlength=950, class="materialize-textarea")}}
+            {{form.text(maxlength=950, class="materialize-textarea")}}{{form.text.label}}
             {% for error in form.text.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
-            {{form.meaning.label}}{{form.meaning(class="materialize-textarea")}}
+            {{form.meaning(class="materialize-textarea")}}{{form.meaning.label}}
             {% for error in form.meaning.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
-            {{form.source.label}}{{form.source}}
+            {{form.source}}{{form.source.label}}
             {% for error in form.source.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}<br>
-            {{form.category_id.label}}
-            {{form.category_id(class="input-field")}}
+            {{form.category_id(class="input-field")}}{{form.category_id.label}}
             {% for error in form.category_id.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
