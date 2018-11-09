@@ -10,11 +10,11 @@
             {% for error in form.query.errors %}
             <span style="color: red;">{{ error }}</span><br>
             {% endfor %}
-            <table>
-                <th>{{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn blue")}}</th>
-                <th><a href="{{ url_for('main.repo')}}" class="waves-effect btn deep-purple accent-2">
-            Return</a></th>
-                </table>
+            <div class="col s12 center-all">
+                {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn blue")}}
+                <a href="{{ url_for('main.repo')}}" class="waves-effect btn deep-purple accent-2">
+            Return</a></div>
+
 
         </form>
 

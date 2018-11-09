@@ -19,6 +19,7 @@
             <span style="color: red;">{{ error_message }}</span><br>
             {{form.submit(class="btn waves-effect blue")}}
         </form>
+        <h6><em>Please note the fields are case sensitive.</em></h6>
          <p>
         Forgot Your Password?
         <a href="{{ url_for('users.reset_psw_req') }}">Click to Reset It</a>

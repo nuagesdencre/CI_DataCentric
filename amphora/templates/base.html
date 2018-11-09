@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/materialize.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css"/>
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
@@ -61,7 +61,7 @@
     {% if current_user.is_authenticated %}
     <li><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
     </li>
-    <li><a href="{{url_for('users.logout')}}" class="waves-light grey lighten">Logout</a></li>
+    <li><a href="{{url_for('users.logout')}}" onclick="alert('You have been successfully logged out')" class="waves-light grey lighten">Logout</a></li>
     {% else %}
     <li><a href="{{url_for('users.login')}}" class="waves-light grey lighten-2">Login</a>
     </li>
