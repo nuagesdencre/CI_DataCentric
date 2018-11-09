@@ -22,32 +22,31 @@ input[type="submit" i] {
     font-size: 20px;
     overflow-x: auto;
 }
+
 .options a{
     font-size: 30px;
     margin: 0 10px;
 }
+
 .options a:last-child {
     color: #ff0000;
 }
 
 .entry--content {
     text-transform: uppercase;
+    margin:6px 0;
 }
+
 .entry--content span {
     font-weight: bold;
 }
 
-.map{
-    margin-top:-20px;
-}
+
 ul li>span{
     font-weight: bold;
     display:block;
 }
 
-nav .brand-logo {
-    padding: 0 10px;
-}
 
 nav i, nav i.material-icons{
     font-size: 30px;
@@ -64,6 +63,10 @@ p {
 
 .text-dark{
     color:#7c4dff;
+}
+
+.map i{
+    font-weight: bold;
 }
 
 /* ENDTypography*/
@@ -138,6 +141,16 @@ blockquote {
     margin-bottom: 15px;
     padding: 10px;
 }
+
+.map{
+    margin-top:-20px;
+    margin-bottom:20px;
+}
+
+nav .brand-logo {
+    padding: 0 10px;
+}
+
 .center-all {
     display:flex;
     flex-wrap:wrap;

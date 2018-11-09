@@ -4,48 +4,47 @@
     <div class="container">
 
         <h1>{{story.title}}</h1>
-                 <div class="row map">
+        <div class="row map">
             <div class="col s12">
                 <a href="{{url_for('main.repo')}}">Repository</a>
                 <span><i class="material-icons">chevron_right</i> Story | {{ story.title }}</span>
             </div>
         </div>
         <div class="row entry-header">
-            <div class="col s12"><div class="entry">
-                <i class="medium material-icons card-image">chrome_reader_mode</i>
-                    <div class="entry--content">
+            <div class="col s12 l4">
+                <ul class="collection card white">
+                    <li class="collection-item avatar center-all">
+                        <img src="{{ story.user.avatar(36) }}" class="circle">
+                        <p> Entry provided by<br>
+                            <a href="{{url_for('users.user_entries', username=story.user.username)}}">{{
+                                story.user.username}}</a></p>
+                        {% if story.user == current_user %}
+                        <div class="options">
 
-                        <ul>
-                            <li>
-                                <span> Category: </span><a
-                                    href="{{ url_for('categories.view_category', category_id=story.category.id)}}">
-                                {{story.categories.name}}</a>
-                            </li>
-                            <li>
-                                <span>Meaning and values associated: </span>{{story.meaning}}
-                            </li>
-                            <li><span>
-                                Source: </span>
-                                <a href="{{source}}" target="blank"> Click here (external link)</a></li>
-                            <p>{% if story.user == current_user %}
+                            <a href="{{url_for('entries.update_story', story_id=story.id)}}" class="tooltipped"
+                               data-position="bottom" data-tooltip="Update Entry"><i
+                                    class="medium material-icons" alt="Update Entry">mode_edit</i></a>
+                            <a class="modal-trigger tooltipped"
+                               href="#delete_modal" data-position="bottom" data-tooltip="Delete Entry"><i
+                                    class="medium material-icons" alt="Delete Entry">delete</i></a>
+                        </div>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
 
-                                <a href="{{url_for('entries.update_story', story_id=story.id)}}"
-                                   class="waves-effect waves-light btn">Update</a>
-                                <a class="waves-effect waves-light btn pink modal-trigger"
-                                   href="#delete_modal">Delete</a> {% endif %}</p>
-                            <ul class="collection">
-                                <li class="collection-item avatar">
-                                    <img src="{{ story.user.avatar(36) }}" class="circle">
-                                    <p> Entry provided by<br>
-                                        <a href="{{url_for('users.user_entries', username=story.user.username)}}">{{
-                                            story.user.username}}</a>
-                                    </p>
-                                </li>
-                            </ul>
-                        </ul>
-                    </div></div>
+            <div class="col s12 l4 entry--content">
+                <span>Meaning and values associated:</span> {{story.meaning}}
+            </div>
+            <div class="col s12 l4 entry--content"><span>Category: </span><a
+                    href="{{ url_for('categories.view_category', category_id=story.category.id)}}">{{story.categories.name}}</a>
+            </div>
+            <div class="col s12 l4 entry--content"><span>Source:</span>
+                <a href="{{source}}" target="blank"> External link</a>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col s12">
                 <p class="flow-text">
@@ -111,7 +110,7 @@
         </div>
         {% endif %}
         <div class="row">
-            <div class="col s12">
+            <div class="col s12 center-all">
                 <p>
                     <a href="{{url_for('main.repo')}}" class="btn waves-light waves-effect deep-purple accent-2">
                         Return</a>
@@ -123,15 +122,14 @@
             <div class="modal-content">
                 <h2>Delete Entry</h2>
                 <h3>Do you really want to delete this entry?</h3>
-            </div>
-            <div class="modal-footer">
-
-                <form action="{{url_for('entries.delete_story', story_id=story.id)}}" method="POST">
-                    <input type="submit" class="modal-close waves-effect waves-pink btn-flat" value="Delete entry">
-                </form>
-                <a href="#" class="modal-close waves-effect waves-green btn-flat">Go Back</a>
+                <div class="center-all">
+                    <form action="{{url_for('entries.delete_story', story_id=story.id)}}" method="POST">
+                        <input type="submit" class="modal-close red accent-2 btn-flat" value="Delete entry">
+                        <a href="#" class="modal-close light-blue btn-flat">Go Back</a></form>
+                </div>
             </div>
         </div>
 
     </div>
-    {% endblock %}
+</div>
+{% endblock %}

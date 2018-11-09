@@ -5,7 +5,6 @@
     <div class="container">
 
         <h1>{{being.name}}</h1>
-
         <div class="row map">
             <div class="col s12 ">
                 <a href="{{url_for('main.repo')}}">Repository</a>
@@ -15,34 +14,36 @@
 
         <div class="row entry-header">
             <div class="col s12 l4">
-                <ul class="collection">
+                <ul class="collection card white">
                     <li class="collection-item avatar center-all">
                         <img src="{{ being.user.avatar(36) }}" class="circle ">
                         <p> Entry provided by<br>
                             <a href="{{url_for('users.user_entries', username=being.user.username)}}">{{
-                                being.user.username}}</a>
-                            {% if being.user == current_user %}
+                                being.user.username}}</a></p>
+                        {% if being.user == current_user %}
                         <div class="options">
-                            <a href="{{url_for('entries.update_being', being_id=being.id)}}"><i
+                            <a href="{{url_for('entries.update_being', being_id=being.id)}}" class="tooltipped"
+                               data-position="bottom" data-tooltip="Update Entry"><i
                                     class="medium material-icons" alt="Update Entry">mode_edit</i></a>
-                            <a class="modal-trigger"
-                               href="#delete_modal"><i class="medium material-icons" alt="Delete Entry">delete</i></a>
+                            <a class="modal-trigger tooltipped"
+                               href="#delete_modal" data-position="bottom" data-tooltip="Delete Entry"><i
+                                    class="medium material-icons" alt="Delete Entry">delete</i></a>
                         </div>
                         {% endif %}
-                        </p>
+
                     </li>
 
                 </ul>
 
             </div>
-            <div class="col s12 l4">
+            <div class="col s12 l4 entry--content">
                 <span>Meaning and values associated:</span> {{being.meaning}}
             </div>
-            <div class="col s12 l4"><span>Category: </span><a
+            <div class="col s12 l4 entry--content"><span>Category: </span><a
                     href="{{ url_for('categories.view_category', category_id=being.category.id)}}">{{being.categories.name}}</a>
             </div>
-            <div class="col s12 l4"><span>Source:</span>
-                <a href="{{source}}" target="blank"> Click here (external link)</a>
+            <div class="col s12 l4 entry--content"><span>Source:</span>
+                <a href="{{source}}" target="blank"> External link</a>
             </div>
 
 
@@ -122,20 +123,18 @@
         </div>
     </div>
 
-
-</div>
-<div id="delete_modal" class="modal">
-    <div class="modal-content">
-        <h3>Delete Entry</h3>
-        <h5>Do you really want to delete this entry?</h5>
-
-        <form action="{{url_for('entries.delete_being', being_id=being.id)}}" method="POST">
-            <input type="submit" class="modal-close red accent-2 btn-flat" value="Delete entry">
-            <a href="#" class="modal-close light-blue btn-flat">Go Back</a>
-        </form>
-
+    <div id="delete_modal" class="modal">
+        <div class="modal-content">
+            <h3>Delete Entry</h3>
+            <h5>Do you really want to delete this entry?</h5>
+            <div class="center-all">
+                <form action="{{url_for('entries.delete_being', being_id=being.id)}}" method="POST">
+                    <input type="submit" class="modal-close red accent-2 btn-flat" value="Delete entry">
+                    <a href="#" class="modal-close light-blue btn-flat">Go Back</a>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 
 
 </div>
