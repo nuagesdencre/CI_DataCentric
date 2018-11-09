@@ -2,29 +2,34 @@
 {% block content%}
 <div>
     <div class="container">
-        {% if title is defined %}
-        <h1>{{ title }}</h1>
-        {% else %}
-        <h1>New category</h1>
-        {% endif %}
-        <form method="POST">
-            {{form.hidden_tag()}}
-            {{form.name.label}}{{form.name}}
-            {% for error in form.name.errors %}
-            <span style="color: red;">{{ error }}</span><br>
-            {% endfor %}
-            {{form.description.label}}{{form.description(maxlength=550, class="materialize-textarea")}}
-            {% for error in form.description.errors %}
-            <span style="color: red;">{{ error }}</span><br>
-            {% endfor %}
-            {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn deep-purple accent-2")}}
-        </form>
+        <div class="row">
+            <div class="col s12">
+                {% if title is defined %}
+                <h1>{{ title }}</h1>
+                {% else %}
+                <h1>New Category</h1>
+                {% endif %}
+                <form method="POST">
+                    {{form.hidden_tag()}}
+                    {{form.name.label}}{{form.name}}
+                    {% for error in form.name.errors %}
+                    <span style="color: red;">{{ error }}</span><br>
+                    {% endfor %}
+                    {{form.description.label}}{{form.description(maxlength=550, class="materialize-textarea")}}
+                    {% for error in form.description.errors %}
+                    <span style="color: red;">{{ error }}</span><br>
+                    {% endfor %}
+                    <div class="col s12 center-all">
+                        {{form.submit(onclick="$('.progress').toggle()", class="waves-effect
+                        btn deep-purple accent-2")}}
+                        <a href="{{ url_for('categories.all_categories' )}}" class="waves-effect btn blue accent-2">
+                            Return</a></div>
+                </form>
 
-        <a href="{{ url_for('categories.all_categories' )}}" class="waves-effect btn blue accent-2">
-            Return</a>
-
-        <div class="progress">
-            <div class="indeterminate"></div>
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

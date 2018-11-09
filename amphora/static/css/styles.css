@@ -15,10 +15,7 @@ input[type="submit" i] {
 }
 .collection .collection-item.avatar .title {
     position: absolute;
-    top: 20px;
-}
-.entry--content span {
-    font-weight: bold;
+    top: 25px;
 }
 
 .card .card-title {
@@ -26,30 +23,57 @@ input[type="submit" i] {
     overflow-x: auto;
 }
 
+.options a{
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.options a:last-child {
+    color: #ff0000;
+}
+
 .entry--content {
     text-transform: uppercase;
-
+    margin:6px 0;
 }
+
+.entry--content span {
+    font-weight: bold;
+}
+
 
 ul li>span{
     font-weight: bold;
     display:block;
 }
 
-nav .brand-logo {
-    padding: 0 10px;
-}
 
 nav i, nav i.material-icons{
     font-size: 30px;
+}
+
+.page-item.disabled{
+    display: inline-block;
+    text-align: center;
+    list-style:none;
 }
 
 p {
     overflow-wrap: break-word;
 }
 
-.dropdown-content li > a, .dropdown-content li > span {
-    color: #01579b;}
+.dropdown-content li > a, .dropdown-content li > span
+{
+    color: #01579b;
+}
+
+.text-dark{
+    color:#7c4dff;
+}
+
+.map i{
+    font-weight: bold;
+}
 
 /* ENDTypography*/
 
@@ -97,6 +121,9 @@ main {
     max-width: 800px;
 }
 
+.row{
+    margin-bottom:0;
+}
 /* ENDSections */
 
 /* Components */
@@ -111,12 +138,42 @@ blockquote {
     justify-content: center;
 }
 
+.entry i{
+    margin: 0 20px;
+}
+
+.entry-header{
+    border-bottom: 4px dotted #000;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.map{
+    margin-top:-20px;
+    margin-bottom:20px;
+}
+
+nav .brand-logo {
+    padding: 0 10px;
+}
+
+.center-all {
+    display:flex;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.category{
+    width:348px;
+}
 .btn {
     margin: 5px;
 }
 
 .waves-effect {
     display:block;
+    width: 170px;
 }
 
 .card .card-content, .card {
@@ -162,7 +219,7 @@ img {
 }
 
 .btn-floating.halfway-fab {
-  right: 44px;
+  right: 280px;
 }
 
 .btn-floating.btn-large {
@@ -206,9 +263,7 @@ table, th, tbody{
         .waves-effect {
     width:240px;
 }
-    .brand-logo, h1 {
-        letter-spacing: 0.3em;
-    }
+
 }
 
 /* EndMedia Queries*/

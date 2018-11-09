@@ -3,45 +3,38 @@
 <div class="container">
     <h1>REPOSITORY</h1>
     <div class="row">
-        <div class="col s12 l4">
-            <ul class="collapsible">
-                <li>
-                    <div class="collapsible-header blue lighten-4"><i class="material-icons">subject</i><h5>Definition
-                        of repository</h5>
-                    </div>
-                    <div class="collapsible-body grey lighten-4">
-                        <blockquote><a href="https://www.merriam-webster.com/dictionary/repository" target="_blank">Merriam-Webster</a>
-                        </blockquote>
-                        <ul>
-                            <li>1 : a place, room, or container where something is deposited or stored : DEPOSITORY</li>
-                            <li><strong>...</strong></li>
-                            <li>3 : one that contains or stores something nonmaterial<br>
-                                <em>// considered the book a repository of knowledge</em></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
+        <div class="col s12">
+            <h5><i class="material-icons">subject</i> Definition
+                of <em>repository</em></h5>
+            <div class="grey lighten-5">
+                <blockquote><a href="https://www.merriam-webster.com/dictionary/repository" target="_blank">Merriam-Webster</a>
 
+                    <ul>
+                        <li>1 : a place, room, or container where something is deposited or stored : DEPOSITORY</li>
+                        <li><strong>...</strong></li>
+                        <li>3 : one that contains or stores something nonmaterial<br>
+                            <em>// considered the book a repository of knowledge</em></li>
+                    </ul>
+                </blockquote>
+            </div>
         </div>
+        <div class="col s12 center-all">
 
-        <div class="col s12 m6 l4">
-             <!-- Dropdown Trigger -->
-  <a class='dropdown-trigger btn waves-light waves-effect blue' href='#' data-target='dropdown1'>Add a New Entry</a>
-
-  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="{{url_for('entries.create_story')}}">
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger btn waves-light waves-effect blue ' href='#' data-target='dropdown1'>
+                <i class="material-icons">playlist_add</i> New Entry</a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="{{url_for('entries.create_story')}}">
                     Add Entry: Story</a></li>
-    <li><a href="{{url_for('entries.create_being')}}">
-                        Add Entry: Being</a></li>
-  </ul>
-        </div>
-        <div class="col s12 m6 l4">
+                <li><a href="{{url_for('entries.create_being')}}">
+                    Add Entry: Being</a></li>
+            </ul>
             <a href="{{url_for('categories.all_categories')}}"
-                                                    class="btn waves-light waves-effect deep-purple lighten-1">
-                   All Categories</a>
-            <a href="{{ url_for('searchdb.search')}}" class="waves-effect btn blue lighten-2">
-            <i class="tiny material-icons">search</i> Search All</a>
+               class="btn waves-light waves-effect deep-purple accent-2">
+                All Categories</a>
+            <a href="{{ url_for('searchdb.search')}}" class="waves-effect btn white text-dark">
+                <i class="tiny material-icons">search</i> Search All</a>
         </div>
     </div>
     <div class="row">
@@ -63,17 +56,16 @@
             <ul class="pagination ">
                 {% for page_num in stories.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
                 {% if stories.page == page_num %}
-                <li class="page-item disabled">
-                    <a class="page-link  blue lighten-5" href="{{ url_for('main.repo', page=page_num) }}">{{ page_num
+                <li class="disabled deep-purple lighten-5">
+                    <a href="{{ url_for('main.repo', page=page_num) }}">{{ page_num
                         }}</a></li>
                 </li>
                 {% else %}
-                <li class="page-item waves-light blue lighten-5"><a class="page-link"
-                                                                                 href="{{ url_for('main.repo', page=page_num) }}">{{
+                <li class="blue lighten-5"><a href="{{ url_for('main.repo', page=page_num) }}">{{
                     page_num }}</a></li>
-            </ul>
-            {% endif %}
+                {% endif %}
             {% endfor %}
+            </ul>
 
         </div>
 
@@ -95,17 +87,18 @@
             <ul class="pagination">
                 {% for page_num in beings.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
                 {% if beings.page == page_num %}
-                <li class="page-item disabled">
-                    <a class="page-link blue lighten-5" href="{{ url_for('main.repo', page=page_num) }}">
+                <li class="disabled deep-purple lighten-5">
+                    <a href="{{ url_for('main.repo', page=page_num) }}">
                         {{ page_num
                         }}</a></li>
                 </li>
                 {% else %}
-                <li class="page-item blue lighten-5">
-                    <a class="page-link" href="{{ url_for('main.repo', page=page_num) }}">{{ page_num }}</a></li>
+                <li class="blue lighten-5">
+                    <a href="{{ url_for('main.repo', page=page_num) }}">{{ page_num }}</a></li>
+                {% endif %}
+                {% endfor %}
             </ul>
-            {% endif %}
-            {% endfor %}
+
         </div>
     </div>
 

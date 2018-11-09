@@ -3,35 +3,50 @@
 <div>
     <div class="container">
         <h1> {{ category.name }}</h1>
+        <div class="row map">
+            <div class="col s12 ">
+                <a href="{{url_for('main.repo')}}">Repository</a><i class="material-icons">chevron_right</i>
+                <a href="{{url_for('categories.all_categories')}}">All Categories</a>
+                <span><i class="material-icons">chevron_right</i>{{ category.name }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <img src="{{url_for('static',filename='img/amphora_entry_top.jpg')}}">
+            </div>
+        </div>
         <div class="row">
             <div class="col s12 m6">
-                <img src="{{url_for('static',filename='img/amphora_default.png')}}">
-            </div>
-            <div class="col s12 m6">
-                <div class="row"><h3>Entries</h3>
-                    <div class="col s12 m6">
-                        <ul class="collection">
-                            {% for story in stories %}
-                            <li class="collection-item avatar">
-                                <i class="medium material-icons circle">chrome_reader_mode</i>
-                                <a href="{{url_for('entries.view_story', story_id=story.id)}}" class="title">{{
-                                    story.title }}</a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="col s12 m6">
-                        <ul class="collection">
-                            {% for being in beings %}
-                            <li class="collection-item avatar">
-                                <i class="medium material-icons circle blue">accessibility</i>
-                                <a href="{{url_for('entries.view_being', being_id=being.id)}}" class="title">{{
-                                    being.name }}</a>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                {% for story in stories%}
+                <div class="card center">
+                    <span class="card-title">{{story.title}}</span>
+                    <div class="card-content blue lighten-5">
+                        <p>{{story.category}}</p><i class="material-icons">chrome_reader_mode</i>
+                        <p>
+                            <a href="{{ url_for('entries.view_story', story_id=story.id)}}" class="btn-flat blue-text">
+                                Read
+                                more</a>
+                        </p>
                     </div>
                 </div>
+                {% else %}
+                <span>No story under this category yet.</span>
+                {% endfor %}
+            </div>
+            <div class="col s12 m6">
+                {% for being in beings%}
+                <div class="card center">
+                    <span class="card-title">{{being.name}}</span>
+                    <div class="card-content blue lighten-5">
+                        <p>{{being.category}}</p><i class="material-icons">accessibility</i>
+                        <p><a href="{{ url_for('entries.view_being', being_id=being.id)}}" class="btn-flat blue-text">
+                            Read more</a>
+                        </p>
+                    </div>
+                </div>
+                {% else %}
+                <span>No being under this category yet.</span>
+                {% endfor %}
             </div>
         </div>
         <div class="row">
@@ -40,15 +55,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m6">
-                <a href="{{ url_for('categories.all_categories')}}"
-                   class="waves-effect btn blue accent-2">
-                    Return</a>
-            </div>
-            <div class="col s12 m6">
+            <div class="col s12 center-all">
                 <a href="{{ url_for('categories.update_category', category_id=category.id)}}"
                    class="waves-effect btn deep-purple accent-2">
                     Update Category</a>
+                 <a href="{{ url_for('categories.all_categories')}}"
+                   class="waves-effect btn blue accent-2">
+                    Return</a>
             </div>
         </div>
     </div>

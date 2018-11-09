@@ -2,7 +2,7 @@
 {% block content%}
 <div>
     <div class="container">
-                {% if title is defined %}
+        {% if title is defined %}
         <h1>{{ title }}</h1>
         {% else %}
         <h1>Create Being</h1>
@@ -29,18 +29,17 @@
             {{form.category_id(class="input-field")}}<br>
             {% for error in form.category_id.errors %}
             <span style="color: red;">{{ error }}</span><br>
-            {% endfor %}<br>
-            {{form.submit(onclick="$('.progress').toggle()", class="waves-effect btn deep-purple accent-2")}}
+            {% endfor %}
+            <div class="col s12 center-all">
+                {{form.submit(onclick="$('.progress').toggle()", class="waves-effect
+                btn deep-purple accent-2")}}
+                <a href="{{url_for('main.repo')}}" class="waves-effect btn blue accent-2">
+                    Return</a></div>
         </form>
         <div class="progress">
             <div class="indeterminate"></div>
         </div>
-        <p>
-                <a href="{{url_for('main.repo')}}"
-                   class="btn waves-light waves-effect blue">
-                    Cancel</a>
 
-            </p>
     </div>
 </div>
 {% endblock %}
