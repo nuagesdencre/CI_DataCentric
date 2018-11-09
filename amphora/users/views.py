@@ -18,7 +18,7 @@ def register():
     """
     form = Register()
     if form.validate_on_submit():
-        user = User(email=str(form.email.data).lower,
+        user = User(email=form.email.data,
                     username=form.username.data,
                     psw=form.password.data)
         db.session.add(user)
@@ -63,7 +63,7 @@ def account():
     """
     form = Update()
     if form.validate_on_submit():
-        current_user.email = str(form.email.data).lower
+        current_user.email = form.email.data
         db.session.commit()
         return redirect(url_for('users.account'))
     form.email.data = current_user.email

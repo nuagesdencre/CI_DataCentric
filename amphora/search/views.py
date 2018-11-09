@@ -1,6 +1,5 @@
-from flask import render_template, Blueprint, request, redirect, url_for
-from amphora import db
-from sqlalchemy import or_, func
+from flask import render_template, Blueprint, redirect, url_for
+from sqlalchemy import or_
 from amphora.models import User, Category, Story, Being, Comment
 from amphora.search.forms import SearchForm
 
