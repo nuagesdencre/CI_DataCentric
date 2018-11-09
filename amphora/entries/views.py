@@ -1,4 +1,4 @@
-from flask import render_template, url_for, Blueprint, redirect, abort, request, flash
+from flask import render_template, url_for, Blueprint, redirect, abort
 from flask_login import current_user, login_required
 
 from amphora import db
@@ -26,8 +26,6 @@ def create_story():
 
         db.session.add(story)
         db.session.commit()
-        print('Story created!')
-        flash('New story created!')
         return redirect(url_for('main.repo'))
     return render_template('entries/new_story.html', form=form)
 
@@ -50,8 +48,6 @@ def create_being():
 
         db.session.add(being)
         db.session.commit()
-        print('New being created!')
-        flash('New being created!')
         return redirect(url_for('main.repo'))
     return render_template('entries/new_being.html', form=form)
 
@@ -125,8 +121,6 @@ def update_story(story_id):
         story.source = form.source.data
         story.category_id = form.category_id.data
         db.session.commit()
-        flash('Update successful!')
-        print('Update successful!')
         return redirect(url_for('entries.view_story', story_id=story_id))
     form.title.data = story.title
     form.text.data = story.text
@@ -157,8 +151,6 @@ def update_being(being_id):
         being.category_id = form.category_id.data
         being.source = form.source.data
         db.session.commit()
-        flash('Update successful!')
-        print('Update successful!')
         return redirect(url_for('entries.view_being', being_id=being_id))
     form.name.data = being.name
     form.text.data = being.text
@@ -179,7 +171,6 @@ def delete_story(story_id):
     story = Story.query.get_or_404(story_id)
     if story.user != current_user:
         abort(403)
-        flash('Permission denied')
     db.session.delete(story)
     db.session.commit()
     print('Deleted the entry.')
@@ -196,7 +187,6 @@ def delete_being(being_id):
     being = Being.query.get_or_404(being_id)
     if being.user != current_user:
         abort(403)
-        flash('Permission denied')
     db.session.delete(being)
     db.session.commit()
     print('Deleted the entry.')

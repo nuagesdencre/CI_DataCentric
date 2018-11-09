@@ -38,7 +38,7 @@
                     {% if current_user.is_authenticated %}
                     <li class="title--acct"><a href="{{url_for('users.account')}}" class="waves-light blue lighten-3">Account</a>
                     </li>
-                    <li class="title--acct"><a href="{{url_for('users.logout')}}" class="waves-light">Logout</a></li>
+                    <li class="title--acct"><a href="{{url_for('users.logout')}}" onclick="alert('You have been successfully logged out')" class="waves-light">Logout</a></li>
                     {% else %}
                     <li class="title--acct"><a href="{{url_for('users.login')}}" class="waves-light">Login</a>
                     </li>

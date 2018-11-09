@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, Blueprint, redirect, request
+from flask import render_template, url_for, flash, Blueprint, redirect
 from flask_login import current_user, login_user, logout_user, login_required
 
 from amphora import db
@@ -52,7 +52,7 @@ def logout():
     Where users can log out.
     """
     logout_user()
-    return redirect(url_for('main.index')).then(flash('You have logged out successfully'))
+    return redirect(url_for('main.index'))
 
 
 @users.route('/account', methods=['GET', 'POST'])
