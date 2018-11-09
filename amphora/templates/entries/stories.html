@@ -7,13 +7,10 @@
                  <div class="row map">
             <div class="col s12">
                 <a href="{{url_for('main.repo')}}">Repository</a>
-                <span><i class="material-icons">chevron_right</i> Story <i class="material-icons">chevron_right</i> {{ story.title }}</span>
+                <span><i class="material-icons">chevron_right</i> Story | {{ story.title }}</span>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12"><img src="{{ url_for('static', filename='img/amphora_header_story.jpg') }}">
-
-            </div>
+        <div class="row entry-header">
             <div class="col s12"><div class="entry">
                 <i class="medium material-icons card-image">chrome_reader_mode</i>
                     <div class="entry--content">

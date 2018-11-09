@@ -133,6 +133,11 @@ blockquote {
     margin: 0 20px;
 }
 
+.entry-header{
+    border-bottom: 4px dotted #000;
+    margin-bottom: 15px;
+    padding: 10px;
+}
 .center-all {
     display:flex;
     flex-wrap:wrap;

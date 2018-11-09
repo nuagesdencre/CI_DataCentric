@@ -9,13 +9,11 @@
         <div class="row map">
             <div class="col s12 ">
                 <a href="{{url_for('main.repo')}}">Repository</a>
-                <span><i class="material-icons">chevron_right</i> Being <i class="material-icons">chevron_right</i> {{ being.name }}</span>
+                <span><i class="material-icons">chevron_right</i> Being | {{ being.name }}</span>
             </div>
         </div>
-        <div class="row">
-            <img src="{{ url_for('static', filename='img/amphora_header_being.jpg') }}">
-        </div>
-        <div class="row">
+
+        <div class="row entry-header">
             <div class="col s12 l4">
                 <ul class="collection">
                     <li class="collection-item avatar center-all">
