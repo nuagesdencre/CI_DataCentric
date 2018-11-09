@@ -87,6 +87,8 @@ To the best of my ability, I conducted and documented tests to ensure that all o
     
         This website has been tested on multiple devices and browsers to ensure utmost responsiveness.
         I have also used the website 'Browserling' for that purpose.
+
+2. Form Validation
     
 ## Hurdles
 - Search functionality
@@ -96,6 +98,8 @@ To the best of my ability, I conducted and documented tests to ensure that all o
 
 - UX
 USer experience: adding breadcrumbs for an easier browsing experience
+
+
 
 ## Credits
 

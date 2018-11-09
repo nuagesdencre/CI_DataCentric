@@ -10,34 +10,36 @@
             <div class="card-content">
                 <form id="contact_form" method="post">
 
-                    <label for="fullname">Who are you?</label>
+                    <label id="fullname">Who are you?</label>
                     <input type="text" id="from_name" name="from_name"
                            placeholder="Your name or nickname"
                            required>
 
-                    <label for="whereat">Where are you from?</label>
+                    <label id="whereat">Where are you from?</label>
                     <input type="text" id="where_at"
                            name="where_at" placeholder="Citizen of the world!">
 
-                    <label for="email">Email</label>
+                    <label id="email">Email</label>
                     <input type="email" autocomplete="shipping email" id="from_email" name="from_email"
                            placeholder="Example: 123@email.com"
                            required>
 
-                    <label for="message">Your Message</label>
+                    <label id="message">Your Message</label>
                     <textarea class="textarea" id="comments" name="comments" rows="6"
                               placeholder="Let me know what you think"></textarea>
 
-                    <input id="#button" class="btn blue lighten-2 submit" type="submit" onclick="$('.progress').toggle()" value="Send your message!">
-<div class="progress">
-            <div class="indeterminate"></div>
-        </div>
+                    <input id="#button" class="btn deep-purple accent-2 submit" type="submit"
+                           onclick="$('.progress').toggle()" value="Send your message!">
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
 
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 <script>
     //emailjs
     window.onload = function () {
@@ -47,13 +49,13 @@
                 .then(function () {
                     alert("Your message has been sent!");
                     $('.progress').toggle();
-                     window.location = '/';
+                    window.location = '/';
                 }, function (err) {
                     alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
                 });
             document.getElementById('contact_form').reset();
             return false;
-             });
-        };
+        });
+    };
 </script>
 {% endblock %}

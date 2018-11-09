@@ -52,7 +52,7 @@ def logout():
     Where users can log out.
     """
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.index')).then(flash('You have logged out successfully'))
 
 
 @users.route('/account', methods=['GET', 'POST'])
