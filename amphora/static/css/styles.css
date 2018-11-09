@@ -52,6 +52,12 @@ nav i, nav i.material-icons{
     font-size: 30px;
 }
 
+.page-item.disabled{
+    display: inline-block;
+    text-align: center;
+    list-style:none;
+}
+
 p {
     overflow-wrap: break-word;
 }
