@@ -1,21 +1,26 @@
-# Data Centric Development Milestone Project
+# [Amphora Project](https://https:/ci-vero-datacentric.herokuapp.com)
 
-Project Amphora
+### Data Centric Development Milestone Project
+
+**selling pitch!!**
 - Repository of knowledge
 - Discover Myths, Legends and fantastic creatures
-
-## Purpose
 A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+
 ## Features
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. 
+
+**description should match the one for app.json (heroku deployment button)**
 
 ## UX
 - Wireframe
 - Planning board
 - User stories
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+- Use of relevant colors for the project [(link here)](https://uxplanet.org/how-color-can-effect-emotion-ccab0431b1d) and [(link here)](https://www.toptal.com/designers/ux/color-in-ux)
+
 
 ## Installation & Deployment
+
 **How did you do it**
 
 This project has been deployed using Heroku.
@@ -25,12 +30,13 @@ Due to the limited scope of this project, the secret key was randomised and left
 
 - I prepared the Heroku required documents (Procfile and requirements.txt) according to the guidelines provided on Heroku [(link here)](https://devcenter.heroku.com/articles/deploying-python).
 These documents indicate the language of the app to be deployed, along with its dependencies. I changed the app environment to production and removed the debugging option.
-** had to change from SQLite database (file based) to Postgresql on Heroku **
 - I then logged in my Heroku account and created an app (ci-vero-datacentric). A Heroku-hosted remote that’s associated with my app was created at the same time.
 - On my PyCharm terminal, I provided my Heroku credentials, logged in and linked my existing github repository to the associated git remote hosted by Heroku.
 - I used the "git push heroku master" to bring my project into the Heroku remote git repository.
 - I entered the IP and PORT into the Heroku Config Vars fields (0.0.0.0 and 5000).
 - Once done, I opened the app to ensure everything was working properly.
+- I also created a PostgreSQL database using the heroku command "heroku addons:create heroku-postgresql:hobby-dev"
+    I had to change from SQLite database (file based) to PostgreSQL on Heroku.
 
 
 ## Technologies Used
@@ -47,14 +53,14 @@ These documents indicate the language of the app to be deployed, along with its 
     - [Flask-WTF](https://flask-wtf.readthedocs.io/en/stable/) Simple integration of Flask and WTForms, including CSRF, file upload, and reCAPTCHA.
     - [Gravatar](https://en.gravatar.com/site/implement/images) For profile pictures.
 
-    - Flask plugins? (requirements...)
 - [Jinja2]()
     - Lorem.
 - [Html & CSS]()
     - Lorem.
 - [Materialize](https://materializecss.com/)
-Both js and css files.
--[SQLite](https://sqlite.org/) SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
+    Both js and css files.
+-[SQLite](https://sqlite.org/) 
+    - SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
 ## Tests
 #### Python and Flask
    I ran the app in development mode by setting the FLASK_ENV=development environment variable in my evironment file.
@@ -97,7 +103,7 @@ To the best of my ability, I conducted and documented tests to ensure that all o
 - From SQLite to Postgresql
 
 - UX
-USer experience: adding breadcrumbs for an easier browsing experience
+User experience: adding breadcrumbs for an easier browsing experience
 
 
 
@@ -109,9 +115,11 @@ USer experience: adding breadcrumbs for an easier browsing experience
 - Media
     - The background pattern was found on [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/).
     - All original pictures were found on Pixabay. Images and Videos on Pixabay are released under Creative Commons CC0.
-        - [Amphoras](https://pixabay.com/en/amphora-historically-jugs-3700525/)
-        - [Amphora](https://pixabay.com/en/amphora-poppy-still-life-2780802/)
-        - [Amphora](https://pixabay.com/en/greece-santorini-amphora-2116470/)
+    
+|item1|item2|item3|
+|:-----:|:-----:|:-----:|
+|[Amphoras](https://pixabay.com/en/amphora-historically-jugs-3700525/)|[Amphora](https://pixabay.com/en/amphora-poppy-still-life-2780802/)|[Amphora](https://pixabay.com/en/greece-santorini-amphora-2116470/)|
+
 
 ## Acknowledgments
 * Hat tip to anyone who's code was used
