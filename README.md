@@ -1,5 +1,5 @@
 # [Amphora Project](https://https:/ci-vero-datacentric.herokuapp.com)
-
+[![Build Status](https://travis-ci.org/nuagesdencre/CI_DataCentric.svg?branch=master)](https://travis-ci.org/nuagesdencre/CI_DataCentric)
 ### Data Centric Development Milestone Project
 
 **selling pitch!!**
@@ -62,6 +62,9 @@ These documents indicate the language of the app to be deployed, along with its 
 -[SQLite](https://sqlite.org/) 
     - SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
 ## Tests
+
+#### Continuous Integration
+[![Build Status](https://travis-ci.org/nuagesdencre/CI_DataCentric.svg?branch=master)](https://travis-ci.org/nuagesdencre/CI_DataCentric)
 #### Python and Flask
    I ran the app in development mode by setting the FLASK_ENV=development environment variable in my evironment file.
    I used the [Werkzeug Javascript's in-browser debugger](http://werkzeug.pocoo.org/) at length during this project and tackled the bugs uncovered one by one.
