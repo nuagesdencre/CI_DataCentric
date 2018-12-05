@@ -5,7 +5,7 @@
     font-family: 'Abel';
 }
 
-input[type="submit" i] {
+input[type="submit"] i {
     color: #fff;
 }
 
@@ -13,6 +13,7 @@ input[type="submit" i] {
     text-transform: uppercase;
     font-weight: bold;
 }
+
 .collection .collection-item.avatar .title {
     position: absolute;
     top: 25px;
@@ -23,7 +24,7 @@ input[type="submit" i] {
     overflow-x: auto;
 }
 
-.options a{
+.options a {
     font-size: 30px;
     margin: 0 10px;
 }
@@ -34,7 +35,7 @@ input[type="submit" i] {
 
 .entry--content {
     text-transform: uppercase;
-    margin:6px 0;
+    margin: 6px 0;
 }
 
 .entry--content span {
@@ -42,49 +43,41 @@ input[type="submit" i] {
 }
 
 
-ul li>span{
+ul li > span {
     font-weight: bold;
-    display:block;
+    display: block;
 }
 
 
-nav i, nav i.material-icons{
+nav i, nav i.material-icons {
     font-size: 30px;
 }
 
-.page-item.disabled{
+.page-item.disabled {
     display: inline-block;
     text-align: center;
-    list-style:none;
+    list-style: none;
 }
 
 p {
     overflow-wrap: break-word;
 }
 
-.dropdown-content li > a, .dropdown-content li > span
-{
+.dropdown-content li > a, .dropdown-content li > span {
     color: #01579b;
 }
 
-.text-dark{
-    color:#7c4dff;
+.text-dark {
+    color: #7c4dff;
 }
 
-.map i{
+.map i {
     font-weight: bold;
 }
 
 /* ENDTypography*/
 
 /* Material Icons */
-
-@font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
-}
 
 a > .material-icons, .material-icons {
     font-family: 'Material Icons';
@@ -98,8 +91,6 @@ a > .material-icons, .material-icons {
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
 }
 
 /* ENDMaterial Icons*/
@@ -121,9 +112,10 @@ main {
     max-width: 800px;
 }
 
-.row{
-    margin-bottom:0;
+.row {
+    margin-bottom: 0;
 }
+
 /* ENDSections */
 
 /* Components */
@@ -138,19 +130,19 @@ blockquote {
     justify-content: center;
 }
 
-.entry i{
+.entry i {
     margin: 0 20px;
 }
 
-.entry-header{
+.entry-header {
     border-bottom: 4px dotted #000;
     margin-bottom: 15px;
     padding: 10px;
 }
 
-.map{
-    margin-top:-20px;
-    margin-bottom:20px;
+.map {
+    margin-top: -20px;
+    margin-bottom: 20px;
 }
 
 nav .brand-logo {
@@ -158,21 +150,22 @@ nav .brand-logo {
 }
 
 .center-all {
-    display:flex;
-    flex-wrap:wrap;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
 }
 
-.category{
-    width:348px;
+.category {
+    width: 348px;
 }
+
 .btn {
     margin: 5px;
 }
 
 .waves-effect {
-    display:block;
+    display: block;
     width: 170px;
 }
 
@@ -219,7 +212,7 @@ img {
 }
 
 .btn-floating.halfway-fab {
-  right: 280px;
+    right: 280px;
 }
 
 .btn-floating.btn-large {
@@ -227,15 +220,17 @@ img {
     height: 46px;
     padding: 0;
 }
+
 .line-46 {
     line-height: 46px;
 }
 
-table, th, tbody{
-    border-collapse:separate;
+table, th, tbody {
+    border-collapse: separate;
     box-shadow: none;
     font-weight: normal;
 }
+
 /* ENDComponents */
 
 /* Media Queries*/
@@ -254,15 +249,16 @@ table, th, tbody{
     .btn-flat {
         padding: 0 16px;
     }
+
     .waves-effect {
-    width:200px;
-}
+        width: 200px;
+    }
 }
 
 @media (min-width: 1100px) {
-        .waves-effect {
-    width:240px;
-}
+    .waves-effect {
+        width: 240px;
+    }
 
 }
 

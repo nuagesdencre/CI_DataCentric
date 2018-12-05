@@ -16,7 +16,7 @@
             <div class="col s12 l4">
                 <ul class="collection card white">
                     <li class="collection-item avatar center-all">
-                        <img src="{{ being.user.avatar(36) }}" class="circle ">
+                        <img src="{{ being.user.avatar(36) }}" class="circle" alt="profile image">
                         <p> Entry provided by<br>
                             <a href="{{url_for('users.user_entries', username=being.user.username)}}">{{
                                 being.user.username}}</a></p>
@@ -67,7 +67,7 @@
                 <div class="card-panel">
                     <ul class="collection">
                         <li class="collection-item avatar">
-                            <img src="{{ comment.user.avatar(36) }}" class="circle">
+                            <img src="{{ comment.user.avatar(36) }}" class="circle" alt="profile image">
                             <p> Comment provided by<br>
                                 <a href="{{url_for('users.user_entries', username=comment.user.username)}}"
                                    class="title--acct">{{
