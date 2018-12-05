@@ -16,7 +16,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',
         'postgresql+psycopg2://vzjbfzbiijlqzh:c6e1c31b53cf1b19a535933d770fd3e0db62ca24898f09106336fbbf9a9e6607@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4hnbmsb05gm9d')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'potatoes-can-fly-so-high')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', 25))
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None

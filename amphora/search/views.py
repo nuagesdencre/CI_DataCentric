@@ -19,7 +19,7 @@ def search():
 def search_req(query):
     """
      Query database
-     """
+    """
     categories = Category.query.filter(or_(Category.name.ilike("%{}%".format(query)), Category.description.ilike("%{}%".format(query))))
     stories = Story.query.filter(or_(Story.title.ilike("%{}%".format(query)), Story.meaning.ilike("%{}%".format(query)),
                                      Story.text.ilike("%{}%".format(query))))

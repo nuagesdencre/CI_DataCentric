@@ -1,0 +1,6 @@
+{
+  "name": "Amphora - Repository of Myths, Legends and Fantastic Beings",
+  "description": "A Python & Flask Project by Veronique Savard",
+  "repository": "https://git.heroku.com/ci-vero-datacentric.git",
+  "keywords": ["flask", "amphora", "nuagesdencre","myths","savard"]
+}

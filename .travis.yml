@@ -1,8 +1,0 @@
-language: python
-python:
-- "3.6"
-install: "pip install -r requirements.txt"
-env:
-  - Flask=1.0.2
-script:
-- SECRET_KEY="could-be-anything" ./app.py test
