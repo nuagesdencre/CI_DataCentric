@@ -111,13 +111,11 @@ link to the Heroku generated PostgreSQL database instead. I intialized the Postg
 These documents indicate the language of the app to be deployed, along with its dependencies.
 Procfile used in production:  **web: flask db upgrade; gunicorn -w 1 amphora:app**
   
-Moreover, I changed the app environment to production and removed the debugging option.
+- Moreover, I changed the app environment to production and removed the debugging option.
 
 - I manually requested the deployment from the master branch.
  I reviewed the logs via the Heroku dashboard once the deployment confirmed and opened the app using my web browser to ensure everything was working properly.
  
-- There is no difference between the development and the live version of this project.
-
 ## Technologies Used
 - [Materialize](https://materializecss.com/)
     
