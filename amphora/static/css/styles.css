@@ -5,8 +5,8 @@
     font-family: 'Abel';
 }
 
-input[type="submit"] i {
-    color: #fff;
+.blue> .waves-button-input {
+   color: #fff;
 }
 
 .title--acct {
