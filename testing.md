@@ -38,7 +38,7 @@
     
     -   **Repository main page**
         
-        I. The page displays a definition of repository, buttons and a list of the available entries split by type. These lists are paginated.
+        I. The page displays a definition of the word repository, action buttons and a list of the available entries split by type. These lists are paginated and only show 3 entries of each type par page.
         
         II. Clicking on the button 'New Entry' gives two options to select from: "Add Entry: Story" and "Add Entry: Being". 
         Regardless of my choice, as I am not logged in, proceeding with the creation of an entry is not permitted. I am redirected to the login page.
@@ -93,7 +93,7 @@
     ####  While a visitor is logged in:
    -   **Repository main page**
         
-       I. The page displays a definition of repository, buttons and a list of the available entries split by type. These lists are paginated.
+       I. The page displays a definition of the word repository, action buttons and a list of the available entries split by type. These lists are paginated and only show 3 entries of each type par page.
             
        II. Clicking on the button 'New Entry' gives two options to select from: "Add Entry: Story" and "Add Entry: Being". **see Entries below**
         
@@ -214,7 +214,7 @@
     - Search result
         
         I. The search results will be presented in a single list, preceded by an icon identifying the type of element found.
-        ![](./amphora/planning/search_results.png?raw=true)
+        ![](./amphora/planning/search_results.PNG)
         
         - Open book: Story
         - Closed book: Category.
