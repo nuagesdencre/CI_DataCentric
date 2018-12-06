@@ -47,12 +47,20 @@ This online space is reserved to the endlessly curious minds of the web who want
     Additionally, visitors who have trouble remembering their password can request a password reset via the login page. An external email will be sent with a link allowing them to set up a new password.
 
 ## UX
+- [Planning board](./amphora/planning/database_model_planning.xlsx)
+- [Database structure](./amphora/planning/database_model_planning.pdf)
+
+- Use of relevant colors for the project [(link here)](https://uxplanet.org/how-color-can-effect-emotion-ccab0431b1d) and [(link here)](https://www.toptal.com/designers/ux/color-in-ux)
+
+*Update*: After receiving comments from visitors and friends alike, breadcrumbs for an easier browsing experience. 
+    As the repository can be accessed from different pages, it is nice to see quickly where someone can return or where the page is nested within the website itself.
+
  [Meet our Users!](./amphora/static/stories/USERS_STORIES.jpg?raw=true)
 #### User stories
  
 | As a [persona] | I want to [do something]                                            | so that I can [realize a reward]                                                               |
 |----------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| Persona        | Goal                                                                | Result                                                                                         |
+| Persona        | Goal                                                                | Result   /   Motivation  / Usability                                                           |
 |----------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
 | Camille        | wants to learn more about other cultures                            | so she can have more interesting topics of conversation.                                       |
 |                | wants to give her two cents and comment                             | so she can interact with other people online with the same interests.                          |
@@ -75,13 +83,6 @@ This online space is reserved to the endlessly curious minds of the web who want
 |                | wants to track information he likes                                 | so he can return to it more easily.                                                            |
 |                | wants to see what other people think about the stories              | so he can decide if they are interesting or not, and if he wants to read further.              |
 |                | wants to know the source of his information                         | and finds reliability in the credit given on articles and posts.                               |
-- [Planning board](./amphora/planning/database_model_planning.xlsx)
-- [Database structure](./amphora/planning/database_model_planning.pdf)
-
-- Use of relevant colors for the project [(link here)](https://uxplanet.org/how-color-can-effect-emotion-ccab0431b1d) and [(link here)](https://www.toptal.com/designers/ux/color-in-ux)
-
-*Update*: After receiving comments from visitors and friends alike, breadcrumbs for an easier browsing experience. 
-    As the repository can be accessed from different pages, it is nice to see quickly where someone can return or where the page is nested within the website itself.
 
 ## Installation & Deployment
 
@@ -184,58 +185,102 @@ I used branches for major changes, features and enhancement elements.
             I have also used the website 'Browserling' for that purpose.
     
 - #### Home and Navigation
-    - navigation bar options
-    I. 
+
+    - Navigation Bar
     
-    II. 
+    I. The navigation bar at the top of the screen displays the name 'Amphora' and if I click on it at any point while I am browsing, I am brought back to the home page.
     
-    III. 
-    - information displayed
-    I. 
+        Ia. When I visit the page using a large viewport, the navigation bar is at the top of the screen and displays the options available. An user icon indicates where I have to click for user-relevant options (login or register during my first visit).
     
-    II. 
+        Ib. While visiting using my smartphone, the navigation bar is triggered when I click on the hamburger menu at the top-left of the screen. The user-related options are highlighted in the menu.
     
-    III. 
+    II. If I log in, the user options available in the navigation bar change: 'Login' and 'Register' are replaced by 'Profile' and 'Logout'.
+    If I click on 'Log Out', an alert message advises me that I successfully logged out and I am brought back to the home page, from wherever I was on the website.
+    
+    - Information displayed
+    
+    I. The home page displays an introductory paragraph along with two pictures and quotes. The webpage is responsive and the position of these elements change according to the viewport used.
+    
+    - Footer
+    
+    I. The footer remains identical on all pages of the website. It includes the Github logo and if I click on it, a new window brings me to the Github profile of **nuagesdencre**. 
     
 - #### Repository
-    - when user is anonymous:
+    - While a visitor is anonymous:
+    
+        - Repository main page
+        
+            I. The page displays a definition of repository, buttons and a list of the available entries split by type. These lists are paginated.
+            
+            II. Clicking on the button 'New Entry' gives two options to select from: "Add Entry: Story" and "Add Entry: Being". Regardless of my choice, as I am not logged in, proceeding with the creation of an entry is not permitted. I am redirected to the login page.
+            
+            III. Clicking on the button "All Categories" lead me to the Category page.
+            
+            IV. Clicking on the button "Search All" bring me to the search query page.
+            
+            V. I can use the pagination to explore the repository and see further entries.
+            
+            VI. I can click on the link "Read more" of an entry to access the entry's detailed view.
+            
+            - Entries (Story and Being)
+            
+            I. The entry detail page display the subject of the entry (name or title); the name and avatar of the post's author; 
+            the entry's meaning and associated values; the entry's category; the entry's source (external link); 
+            the entry's content; the possibility to log in the leave a comment on the entry. There is also a button at the bottom of the page letting me return to the repository's main page.
+            
+                Ia. At the top of the entry page, I can see breadcrumbs allowing me to know where exactly is the page within the repository. I can click on the active link part of the breadcrumb to go back to the entry's parent page.
+        
+            II. I can click on the post author's name to access his/her profile page and view what this person has contributed to the website.
+            
+            III. I can click on the entry's category to see the category's page, where all associated entries are listed.
+            
+            IV. I can click on the external link given as the source of the entry. A new browser window opens and bring me to the url provided by the post author.
+            
+            - categories
+            
+            I. I can access the main category page ('Categories') by clicking on the Repository's 'All Categories' button.
+                
+                Ia. If I click on a category via an entry, I am led to that specific category's page. I can access all categories via the breadcrumb path listed at the top of that page.
+            
+            II. The main category page lists all categories available using their name and an option to 'Read more' for each. A 'New Category' button is displayed at the top of the list.
+            
+            III. If I click on the 'New Category' button, I can create a new category without having to log in by providing a name and a description.
+            The name field allows for 6 to 60 characters; the description field allows between 6 and 550 characters. An error message appears if these requirements are not met when I click the submit button ('Done!').
+            If the requirements are met, a loading animation appears at the bottom of the form while the data is added to the repository's record and I am redirected to the main category page once that this action is completed.
+            The new category tops the list displayed on the main category page.
+                       
+            IV. If I click on a category's 'Read more' button, I am led to the category's detailed view. 
+            The category page displays the the category's name; the entries associated to the category (separated by types); an 'Update Category' button and a 'Return' button.
+                   IVa. At the top of the category page, I can see breadcrumbs allowing me to know where exactly is the page within the repository. I can click on the active link part of the breadcrumb to go back to the category's parent page.
+                    IVb. If no entry has been recorded against a specific category, the category's detailed page will show instead '
+No story under this category yet.' or 'No being under this category yet.'.
+            V. Clicking the 'Update Category' will present me with an editable version of the category's current name and description. I can modify both and click 'Done!' to update the records, or click 'Return' to go back to the categories main page.
+            
+    - while a visitor is logged in:
+    
         - repository main page
-        I. 
-    
-    II. 
-    
-    III. 
-        - entries
-        I. 
-    
-    II. 
-    
-    III. 
-        - categories
-        I. 
-    
-    II. 
-    
-    III. 
-    - when user is logged in:
-        - repository main page
-        I. 
-    
-    II. 
-    
-    III. 
-        - entries
-        I. 
-    
-    II. 
-    
-    III. 
-        - categories
-        I. 
-    
-    II. 
-    
-    III. 
+            
+            I. 
+        
+            II. 
+            
+            III. 
+            
+            - entries
+            
+            I. 
+        
+            II. 
+            
+            III. 
+            
+            - categories
+            
+            I. 
+        
+            II. 
+            
+            III. 
     
 - #### About
    - access identical if user is logged or anonymous
