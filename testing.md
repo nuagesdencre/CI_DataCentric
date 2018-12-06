@@ -263,7 +263,7 @@
         
         I. The logout option is only available in the navigation bar if I am logged in already.
         
-        II. If I click on 'Log Out', an alert message advises me that I successfully logged out and I am brought back to the home page, from wherever I was on the website. The user-relevant are defaulted to 'Login' and 'Register'.
+        II. If I click on 'Log Out', an alert message advises me that I successfully logged out and I am brought back to the home page, from wherever I was on the website. The user-relevant menu options are defaulted to 'Login' and 'Register'.
     
     - Password reset functionality
     
