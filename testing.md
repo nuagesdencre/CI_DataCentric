@@ -273,9 +273,12 @@
     
     III. Once I click the 'Send request' button, I am redirected to the login page. A message appears at the top of the page to let me know my request has been processed and that the next steps will be emailed to me.
     
-    IV. If I look in my email, I have a message with the title "Password Reset Request" with a link back to Amphora. I click on the click.
+    IV. If I look in my email, I have a message with the title "Password Reset Request" with a link back to Amphora. I click on the link or copy it as suggested. This brings me to a Password reset page, where I need to enter a new password and confirm it.
+    
+    V. Once the new password is submitted, I am redirected to the login page where a new message confirms my password has been reset successfully.
     
 ####Python and Flask
+
    I ran the app in development mode by setting the FLASK_ENV=development environment variable in my environment file.
    I used the [Werkzeug Javascript's in-browser debugger](http://werkzeug.pocoo.org/) at length during this project and tackled the bugs uncovered one by one.
    It was most useful especially when I worked on the final page template.

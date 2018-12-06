@@ -97,6 +97,9 @@ This project has been deployed using Heroku.
 - I created the web app using [PyCharm](https://www.jetbrains.com/pycharm/), which is a Python IDE. The app was tested in a development environment with a debugging option.
 The secret key and other config variables were stored in an environment file during development. These variables are relevant to the Flask project and the issuance of email via the reset password option.
 
+- I then logged in my Heroku account and created an app (ci-vero-datacentric). A Heroku-hosted remote that’s associated with my app was created at the same time.
+I linked my "nuagesdencre/ci-datacentric" Github repository to the Heroku app for deployment from its master branch.
+
 - On the Heroku website, using the dashboard, I entered the IP and PORT into the Heroku Config Vars fields (0.0.0.0 and 5000), along with my environment file's other variables.
 
 - I also created a PostgreSQL database using the heroku command **"heroku addons:create heroku-postgresql:hobby-dev"**.
@@ -109,9 +112,6 @@ These documents indicate the language of the app to be deployed, along with its 
  **web: flask db upgrade; gunicorn -w 1 amphora:app**
   
     I changed the app environment to production and removed the debugging option.
-
-- I then logged in my Heroku account and created an app (ci-vero-datacentric). A Heroku-hosted remote that’s associated with my app was created at the same time.
-I linked my "nuagesdencre/ci-datacentric" Github repository to the Heroku app for deployment from its master branch. 
 
 - I manually requested the deployment from the master branch.
  I reviewed the logs via the Heroku dashboard once the deployment confirmed and opened the app using my web browser to ensure everything was working properly.
@@ -174,10 +174,10 @@ I linked my "nuagesdencre/ci-datacentric" Github repository to the Heroku app fo
 I used Git & GitHub for version control.
 I used branches for major changes, features and enhancement elements.
 
-##[Testing](testing.md)
+## [Testing](testing.md)
  Due to the length of my tests' description, I have included my breakdown in another file referenced [here](testing.md).
  
-##Hurdles
+## Hurdles
 - Search functionality
 
     - It took me a while to understand I need to use ILIKE operator in order to make the search in my database case-insensitive. [(reference)](https://docs.sqlalchemy.org/en/latest/orm/internals.html?highlight=ilike#sqlalchemy.orm.attributes.QueryableAttribute.ilike)
