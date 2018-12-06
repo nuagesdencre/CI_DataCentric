@@ -1,18 +1,18 @@
-# [Amphora Project](https://https:/ci-vero-datacentric.herokuapp.com)
+# [Project Amphora](https://https:/ci-vero-datacentric.herokuapp.com)
 ### Data Centric Development Milestone Project
-If you are fascinated by impossible stories or want to share a spooky legend, this is your space!
-Amphora is a repository of knowledge allowing readers to discover myths, legends and fantastic creatures.
+**If you are fascinated by impossible stories or want to share a spooky legend, this is your space!**
+Amphora is a repository of knowledge allowing readers to discover **myths, legends and fantastic creatures**.
 You can easily browse through the available entries using their categories, or you can track the posts of 
 specific users, should they happen to have the best stories.
-This online space is reserved to the endlessly curious minds of the web who want to keep track of their favourite mysteries, and then some.
+This online space is reserved to the endlessly curious minds of the web who want to keep track of their favourite mysteries and add some more to the collection.
 
 ## Features
-- ####Home and Navigation
+- #### Home and Navigation
 
   Visitors can access the home page by clicking on the navigation bar's brand name ('Amphora') at all times.
   The navigation bar is responsive and is displayed according to the viewer's screen size (collapsible side menu or top menu.)
 
-- ####Repository
+- #### Repository
     - There are two different types of entries in Amphora's repository:
         - Stories
         - Beings
@@ -25,22 +25,22 @@ This online space is reserved to the endlessly curious minds of the web who want
     
     - Moreover, it is possible to leave comments on posts authored by others.
     
-- ####About
+- #### About
     
     The project's purpose and general information relevant to the website's functions is available via the About page.
     
-- ####Contact
+- #### Contact
     
     A contact form is available on the contact page. It allows visitors to send in comments and reach the webmaster directly.
     An alert is displayed when the form is submitted and the visitor, by providing his/her own email address, 
     will receive an auto-reply confirming the webmaster's reception of the message issued.
     
-- ####Search
+- #### Search
 
     Visitors have access to a search option with an overall scope of the website's database (lookup against entries, comments, users  and categories).
     The search results are displayed in a clear and organised manner, with a direct link to the element retrieved.
 
-- ####User identification (profile, login, logout and register)
+- #### User identification (profile, login, logout and register)
     
     Visitors can browse Amphora without login in or registering, however most features remain unavailable. Categories can be created and edited by anonymous visitors, and Amphora's visitors are invited to do in good faith.
     Visitors, once registered and logged in, are able to view their own profile; access their own entries easily; submit and edit entries in the repository; add comments to entries authored by other visitors.
@@ -48,13 +48,39 @@ This online space is reserved to the endlessly curious minds of the web who want
 
 ## UX
  [Meet our Users!](./amphora/static/stories/USERS_STORIES.jpg?raw=true)
-- User stories 
-
+#### User stories
+ 
+| As a [persona] | I want to [do something]                                            | so that I can [realize a reward]                                                               |
+|----------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| Persona        | Goal                                                                | Result                                                                                         |
+|----------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| Camille        | wants to learn more about other cultures                            | so she can have more interesting topics of conversation.                                       |
+|                | wants to give her two cents and comment                             | so she can interact with other people online with the same interests.                          |
+|                | wants to use her smartphone to go on the internet                   | so she can access websites on the go.                                                          |
+|                | wants to use a nickname online                                      | so she can have a personalised browsing experience.                                            |
+|----------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| Harry          | wants to access information easily                                  | so he can help his son with his assignments.                                                   |
+|                | wants to browse online without having to log in                     | so he does not have to remember a password or username.                                        |
+|                | wants to visit the website by browsing categories                   | so he can find a story he can't quite remember, but knows is related to the Chinese mythology. |
+|                | wants to send messages to the webmaster without leaving the website | so he does not forget the purpose of his message and stay focused.                               |
+|                | wants to be able to access a website on his iMac                    | so he can browse from his computer at home.                                                    |
+|----------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| Mike           | wants to find specific information using a search function          | so he can access them directly.                                                                |
+|                | wants a reset password option                                       | so he can retrieve and update his login details.                                               |
+|                | wants to find original stories                                      | so he can get inspiration for his creative and school-related projects.                                           |
+|                | wants to browse the content of a website for free                   | so he can afford using all the features and recommend them to his friends.                               |
+|----------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| Lou            | wants to discover more stories                                      | so he can have more fun things to tell his daughters at bedtime.                               |
+|                | wants to avoid going on big commercial websites                     | because he does not like ads and popups distracting him in his browsing.                       |
+|                | wants to track information he likes                                 | so he can return to it more easily.                                                            |
+|                | wants to see what other people think about the stories              | so he can decide if they are interesting or not, and if he wants to read further.              |
+|                | wants to know the source of his information                         | and finds reliability in the credit given on articles and posts.                               |
 - [Planning board](./amphora/planning/database_model_planning.xlsx)
+- [Database structure](./amphora/planning/database_model_planning.pdf)
 
 - Use of relevant colors for the project [(link here)](https://uxplanet.org/how-color-can-effect-emotion-ccab0431b1d) and [(link here)](https://www.toptal.com/designers/ux/color-in-ux)
 
--   After receiving comments from visitors and friends alike, breadcrumbs for an easier browsing experience. 
+*Update*: After receiving comments from visitors and friends alike, breadcrumbs for an easier browsing experience. 
     As the repository can be accessed from different pages, it is nice to see quickly where someone can return or where the page is nested within the website itself.
 
 ## Installation & Deployment
@@ -149,32 +175,79 @@ I used branches for major changes, features and enhancement elements.
 
 
 ## Testing
-
-- ####Home and Navigation
-    - navigation bar options
-    - information displayed
+- #### Website Responsiveness
+    - Overall Responsiveness and browser compatibility
     
-- ####Repository
+        - [Browserling](www.browserling.com/)
+        
+            This website has been tested on multiple devices and browsers to ensure utmost responsiveness.
+            I have also used the website 'Browserling' for that purpose.
+    
+- #### Home and Navigation
+    - navigation bar options
+    I. 
+    
+    II. 
+    
+    III. 
+    - information displayed
+    I. 
+    
+    II. 
+    
+    III. 
+    
+- #### Repository
     - when user is anonymous:
         - repository main page
+        I. 
+    
+    II. 
+    
+    III. 
         - entries
+        I. 
+    
+    II. 
+    
+    III. 
         - categories
+        I. 
+    
+    II. 
+    
+    III. 
     - when user is logged in:
         - repository main page
-        - entries
-        - categories
+        I. 
     
-- ####About
+    II. 
+    
+    III. 
+        - entries
+        I. 
+    
+    II. 
+    
+    III. 
+        - categories
+        I. 
+    
+    II. 
+    
+    III. 
+    
+- #### About
    - access identical if user is logged or anonymous
    
-- ####Contact
+- #### Contact
     - contact form
  
-- ####Search
+- #### Search
     - query page
     - search result
     
-- ####User identification 
+- #### User identification 
     - register
     - profile
     - login
@@ -211,13 +284,6 @@ To the best of my ability, I conducted and documented tests to ensure that all o
 
     - I used the Nu checker to catch unintended mistakes in my Html documents, such as stand-alone tags.      
 
-- Overall Responsiveness and browser compatibility
-
-    - [Browserling](www.browserling.com/)
-    
-        This website has been tested on multiple devices and browsers to ensure utmost responsiveness.
-        I have also used the website 'Browserling' for that purpose.
-    
 ## Hurdles
 - Search functionality
 
