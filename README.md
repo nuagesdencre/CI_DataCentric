@@ -82,7 +82,7 @@ This online space is reserved to the endlessly curious minds of the web who want
 |                | wants to avoid going on big commercial websites                     | because he does not like ads and popups distracting him in his browsing.                       |
 |                | wants to track information he likes                                 | so he can return to it more easily.                                                            |
 |                | wants to see what other people think about the stories              | so he can decide if they are interesting or not, and if he wants to read further.              |
-|                | wants to know the source of his information                         | and finds reliability in the credit given on articles and posts.                               |
+|                | wants to know the source of his information                         | so he can find reliability in the credit given on articles and posts.                               |
 
 ## Installation & Deployment
 
@@ -109,12 +109,14 @@ link to the Heroku generated PostgreSQL database instead. I intialized the Postg
 
 - According to the guidelines provided on Heroku [(link here)](https://devcenter.heroku.com/articles/deploying-python), I prepared the Heroku required files (Procfile and requirements.txt).
 These documents indicate the language of the app to be deployed, along with its dependencies.
- **web: flask db upgrade; gunicorn -w 1 amphora:app**
+Procfile used in production:  **web: flask db upgrade; gunicorn -w 1 amphora:app**
   
-    I changed the app environment to production and removed the debugging option.
+Moreover, I changed the app environment to production and removed the debugging option.
 
 - I manually requested the deployment from the master branch.
  I reviewed the logs via the Heroku dashboard once the deployment confirmed and opened the app using my web browser to ensure everything was working properly.
+ 
+- There is no difference between the development and the live version of this project.
 
 ## Technologies Used
 - [Materialize](https://materializecss.com/)
@@ -183,7 +185,8 @@ I used branches for major changes, features and enhancement elements.
     - It took me a while to understand I need to use ILIKE operator in order to make the search in my database case-insensitive. [(reference)](https://docs.sqlalchemy.org/en/latest/orm/internals.html?highlight=ilike#sqlalchemy.orm.attributes.QueryableAttribute.ilike)
     - I also consulted this StackOverflow article [here](https://stackoverflow.com/questions/20336665/lower-like-vs-ilike?noredirect=1&lq=1)
 
-- Transition from SQLAlchemy to Postgresql 
+- Transition from SQLAlchemy to PostgreSQL
+    I had to look up different approaches before figuring out how to proceed. I t turned out to be much simpler than expected, thanks to Heroku Postgres.
     - [Making a Flask app using a PostgreSQL database and deploying to Heroku](http://blog.sahildiwan.com/posts/flask-and-postgresql-app-deployed-on-heroku/)
     -[Heroku Postgres](https://www.heroku.com/postgres)
     
@@ -198,6 +201,7 @@ I used branches for major changes, features and enhancement elements.
     - [Flask - SQLAlchemy full text search](https://stackoverflow.com/questions/41000855/flask-sqlalchemy-full-text-search)
     - [Making a Flask app using a PostgreSQL database and deploying to Heroku](http://blog.sahildiwan.com/posts/flask-and-postgresql-app-deployed-on-heroku/)
     - [Flask by Example – Setting up Postgres, SQLAlchemy, and Alembic](https://realpython.com/flask-by-example-part-2-postgres-sqlalchemy-and-alembic/)
+    
 - Amphora's Content
     - Amphora's many entries have content sourced from various websites. In order to give credit where it is due, the posts include an URL field where the source of the content is listed.
 - Media
@@ -211,7 +215,7 @@ I used branches for major changes, features and enhancement elements.
 
 ## Acknowledgements
 
-I thank my friends and family who visited Amphora, posted entries, tried to break the website and gave me feedback.
+I thank my friends and family who visited Amphora, posted entries, tried to 'break' the website and gave me feedback.
 Once again, my mentor provided pointers, constructive criticism and advice that led me in the right direction.
  #### Thank you!
  ###

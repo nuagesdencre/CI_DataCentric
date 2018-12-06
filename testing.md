@@ -89,13 +89,16 @@
         No story under this category yet.' or 'No being under this category yet.'.
         
         V. Clicking the 'Update Category' will present me with an editable version of the category's current name and description. I can modify both and click 'Done!' to update the records, or click 'Return' to go back to the categories main page.
-           
-    ####  While a visitor is logged in:
+    
+ ************************************
+    
+   ####  While a visitor is logged in:
    -   **Repository main page**
         
        I. The page displays a definition of the word repository, action buttons and a list of the available entries split by type. These lists are paginated and only show 3 entries of each type par page.
             
-       II. Clicking on the button 'New Entry' gives two options to select from: "Add Entry: Story" and "Add Entry: Being". **see Entries below**
+       II. Clicking on the button 'New Entry' gives two options to select from: "Add Entry: Story" and "Add Entry: Being". 
+       **see Entries below**
         
        III. Clicking on the button "All Categories" leads me to the Category page.
         
@@ -112,12 +115,12 @@
        - New Entry: Story
             - The required fields are: title; text; associated meanings and values; reference (url); category.
             - The category field is pre-populated with a selection of available categories (all currently in the database).
-            - An error message appears if the requirements for various fields are not met when I click the submit button ('Done!').
+            - An error message appears if the requirements for the new entry fields are not met when I click the submit button ('Done!').
         
        - New Entry: Being
             - The required fields are: name; text; associated meanings and values; reference (url); category.
             - The category field is pre-populated with a selection of available categories (all currently in the database).
-            - An error message appears if the requirements for various fields are not met when I click the submit button ('Done!').
+            - An error message appears if the requirements for the new entry fields are not met when I click the submit button ('Done!').
         
        Both pages have been manually tested with incorrect data to ensure relevance of the error messages.
         
@@ -137,7 +140,7 @@
        - III.I. If the post author is me, additional options are available next to my username. I am able to edit my entry or delete it.
             
        - III.II. If I choose to edit my entry, I click on the blue pen (which has a tooltip confirming its purpose on hover). It brings me
-        to a page where all of the entry's fields are pre-populated with the current data. The fields are editable and changes are confirmed if their requirements are met when I click 'Done'. 
+        to a page where all of the entry's fields are pre-populated with the current data. The fields' content can be edited and changes are confirmed if their requirements are met when I click 'Done'. 
             
             - III.II.I. When I click 'Done', I am redirected to the entry's detailed view.
             
@@ -157,7 +160,7 @@
        - VI.II. An error message appears if the requirements for the comments fields (subject and comments)are not met when I click the submit button ('Done!').
              These fields been manually tested with incorrect data to ensure relevance of the error messages.
 
-    - **Categories**
+   - **Categories**
 
         I. I can access the main category page ('Categories') by clicking on the Repository's 'All Categories' button.
             
@@ -178,7 +181,7 @@
         - V.II. If no entry has been recorded against a specific category, the category's detailed page will show instead '
         No story under this category yet.' or 'No being under this category yet.'.
         
-        V. Clicking the 'Update Category' will present me with an editable version of the category's current name and description. I can modify both and click 'Done!' to update the records, or click 'Return' to go back to the categories main page.
+        V. Clicking the 'Update Category' will present me with an editable version of the category's current name and description fields. I can modify either or both, and validate the changes by clicking 'Done!' to update the records. If I click the 'Return' button, I go back to the categories main page.
 
 
 - ### About
@@ -216,12 +219,12 @@
         I. The search results will be presented in a single list, preceded by an icon identifying the type of element found.
         ![](./amphora/planning/search_results.PNG)
         
-        - Open book: Story
-        - Closed book: Category.
-        - Human form: Being
-        - Message bubble: Comments
+        - Open book (grey): Story
+        - Closed book with bookmark (purple): Category.
+        - Humanoid (blue): Being
+        - Message bubble (grey): Comments
         
-        The results will have a direct link to their current position in Amphora and I can click on them to see them in context.
+        The results will have a direct link to their current location in Amphora's repository. I can click on this link to see the search results selected in context.
     
 - ### User identification 
 
@@ -276,8 +279,11 @@
     IV. If I look in my email, I have a message with the title "Password Reset Request" with a link back to Amphora. I click on the link or copy it as suggested. This brings me to a Password reset page, where I need to enter a new password and confirm it.
     
     V. Once the new password is submitted, I am redirected to the login page where a new message confirms my password has been reset successfully.
+#### Error handling
+
+I integrated a custom error 404 page to the project in order to direct visitors back to the home page should they encounter a problem.
     
-####Python and Flask
+#### Python and Flask
 
    I ran the app in development mode by setting the FLASK_ENV=development environment variable in my environment file.
    I used the [Werkzeug Javascript's in-browser debugger](http://werkzeug.pocoo.org/) at length during this project and tackled the bugs uncovered one by one.

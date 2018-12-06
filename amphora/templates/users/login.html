@@ -27,13 +27,11 @@
             </form>
             <h6><em>Please note the fields are case sensitive.</em></h6>
             <p>
-                Forgot Your Password?
-                <a href="{{ url_for('users.reset_psw_req') }}">Click to Reset It</a>
-            </p>
-            <p>
-                First time visitor?
+                <a href="{{ url_for('users.reset_psw_req') }}">Forgot Your Password?</a>
+               | First time visitor?
                 <a href="{{ url_for('users.register') }}" class="">Register</a>
             </p>
+
         </div>
     </div>
 {% endblock %}
