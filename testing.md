@@ -98,7 +98,7 @@
        I. The page displays a definition of the word repository, action buttons and a list of the available entries split by type. These lists are paginated and only show 3 entries of each type par page.
             
        II. Clicking on the button 'New Entry' gives two options to select from: "Add Entry: Story" and "Add Entry: Being". 
-       **see Entries below**
+       (**refer to 'Entries'**)
         
        III. Clicking on the button "All Categories" leads me to the Category page.
         
@@ -127,7 +127,7 @@
        - I.I. If the requirements are met, a loading animation appears at the bottom of the form while the data is added to the repository's record and I am redirected to the main repository page once that this action is completed.
         The new entry tops its respective list on the main repository page. Newer entries are shown before the older ones.
         
-         I.II. Clicking on the 'Return' button while creating a new entry brings me back to the main repository page.
+       -  I.II. Clicking on the 'Return' button while creating a new entry brings me back to the main repository page.
             
        II. When I access an entry detail page, it display the subject of the entry (name or title); the name and avatar of the post's author; 
         the entry's meaning and associated values; the entry's category; the entry's source (external link); 
@@ -239,8 +239,7 @@
        
         I.I. If I registered before, I can click on the link below the 'Register now' button to access the login page instead.       
         
-        II. Once registered, I am redirected to the login page, where I need to provide my email and password. 
-        **see Login page below**
+        II. Once registered, I am redirected to the login page, where I need to provide my email and password. (**refer to Login page below**)
         
     - Account and profile
     
@@ -280,8 +279,8 @@
     
     V. Once the new password is submitted, I am redirected to the login page where a new message confirms my password has been reset successfully.
 #### Error handling
-
-I integrated a custom error 404 page to the project in order to direct visitors back to the home page should they encounter a problem.
+A 404 error is returned by a web server (the machine where a website is hosted) when it cannot find the page requested. This error is often due to an incorrect or non-existent URL.
+I integrated a custom error 404 page to the project in order to direct visitors back to the home page should they encounter this specific issue. However, the website is conceived in a way that encourages visitors to use the website features and navigation options.
     
 #### Python and Flask
 

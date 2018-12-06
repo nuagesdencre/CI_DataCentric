@@ -193,6 +193,7 @@ I used branches for major changes, features and enhancement elements.
 ## Credits
 
 - Disclosure
+
     I consulted the following websites and articles while working on this project.
     They were extremely helpful resources, especially while I attempted to transition the database type from SQLite to PostgreSQL to set up pagination, and to implement a reset password feature.
     As per usual, Stack Overflow was a regular source of information whenever I encountered a hurdle.
