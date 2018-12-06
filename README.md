@@ -176,7 +176,7 @@ I used branches for major changes, features and enhancement elements.
 
 
 ## Testing
-- #### Website Responsiveness
+- ### Website Responsiveness
     - Overall Responsiveness and browser compatibility
     
         - [Browserling](www.browserling.com/)
@@ -184,7 +184,7 @@ I used branches for major changes, features and enhancement elements.
             This website has been tested on multiple devices and browsers to ensure utmost responsiveness.
             I have also used the website 'Browserling' for that purpose.
     
-- #### Home and Navigation
+- ### Home and Navigation
 
     **Navigation Bar**
     
@@ -194,7 +194,7 @@ I used branches for major changes, features and enhancement elements.
     
     - I.II. While visiting using my smartphone, the navigation bar is triggered when I click on the hamburger menu at the top-left of the screen. The user-related options are highlighted in the menu.
     
-    ##### Elements affected by user status
+    #### Elements affected by user status
     II. If I am logged in, the user options available in the navigation bar change: 'Login' and 'Register' are replaced by 'Profile' and 'Logout'.
     If I click on 'Log Out', an alert message advises me that I successfully logged out and I am brought back to the home page, from wherever I was on the website. The user-relevant are defaulted to 'Login' and 'Register'.
     
@@ -206,9 +206,9 @@ I used branches for major changes, features and enhancement elements.
     
     I. The footer remains identical on all pages of the website. It includes the Github logo and if I click on it, a new window brings me to the Github profile of **nuagesdencre**. 
     
-- #### Repository
+- ### Repository
 
-    ##### While a visitor is anonymous:
+    #### While a visitor is anonymous:
     
     **Repository main page**
     
@@ -262,7 +262,7 @@ I used branches for major changes, features and enhancement elements.
     
     V. Clicking the 'Update Category' will present me with an editable version of the category's current name and description. I can modify both and click 'Done!' to update the records, or click 'Return' to go back to the categories main page.
        
-    #####  While a visitor is logged in:
+    ####  While a visitor is logged in:
     
     **Repository main page**
 
@@ -354,22 +354,22 @@ I used branches for major changes, features and enhancement elements.
     V. Clicking the 'Update Category' will present me with an editable version of the category's current name and description. I can modify both and click 'Done!' to update the records, or click 'Return' to go back to the categories main page.
     
 
-- #### About
+- ### About
 
-   ##### This page's features are not affected by the visitor' status (if user is logged or anonymous).
+   #### This page's features are not affected by the visitor' status (if user is logged or anonymous).
    
-- #### Contact
+- ### Contact
 
-    ##### This page's features are not affected by the visitor' status (if user is logged or anonymous).
+    #### This page's features are not affected by the visitor' status (if user is logged or anonymous).
     - contact form
  
-- #### Search
+- ### Search
 
-    ##### This page's features are not affected by the visitor' status (if user is logged or anonymous).
+    #### This page's features are not affected by the visitor' status (if user is logged or anonymous).
     - query page
     - search result
     
-- #### User identification 
+- ### User identification 
     - Register
     
     - Account and profile
@@ -399,14 +399,14 @@ I used branches for major changes, features and enhancement elements.
     
     - Password reset functionality
     
-#### Python and Flask
+####Python and Flask
    I ran the app in development mode by setting the FLASK_ENV=development environment variable in my environment file.
    I used the [Werkzeug Javascript's in-browser debugger](http://werkzeug.pocoo.org/) at length during this project and tackled the bugs uncovered one by one.
    It was most useful especially when I worked on the final page template.
    
    PyCharm was a wonderful tool to keep track of indentation and typos as well.
 
-#### Javascript, CSS & HTML Validation
+### Javascript, CSS & HTML Validation
 
 To the best of my ability, I conducted and documented tests to ensure that all of my website's functionality work well, while taking in account the user stories.
 
