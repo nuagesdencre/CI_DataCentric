@@ -1,33 +1,39 @@
 {% extends "base.html" %}
-{% block content%}
-<div>
-    <div class="container">
-    <h1>Login</h1>
+{% block content %}
+    <div>
+        <div class="container">
+            <h1>Login</h1>
 
-
-        <form method="POST">
-            {{form.hidden_tag()}}
-            <!-- hidden_tag protects the form against CSRF attacks.-->
-            {{form.email}}{{form.email.label}}
-            {% for error in form.email.errors %}
-            <span style="color: red;">{{ error }}</span>
-            {% endfor %}<br>
-            {{form.password}}{{form.password.label}}
-            {% for error in form.password.errors %}
-            <span style="color: red;">{{ error }}</span>
-            {% endfor %}<br>
-            <span style="color: red;">{{ error_message }}</span><br>
-            {{form.submit(class="btn waves-effect blue")}}
-        </form>
-        <h6><em>Please note the fields are case sensitive.</em></h6>
-         <p>
-        Forgot Your Password?
-        <a href="{{ url_for('users.reset_psw_req') }}">Click to Reset It</a>
-    </p>
-        <p>
-            First time visitor?
-        <a href="{{url_for('users.register')}}" class="">Register</a>
-        </p>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <!-- hidden_tag protects the form against CSRF attacks.-->
+                {{ form.email }}{{ form.email.label }}
+                {% for error in form.email.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}<br>
+                {{ form.password }}{{ form.password.label }}
+                {% for error in form.password.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}<br>
+                <span style="color: red;">{{ error_message }}</span><br>
+                {{ form.submit(class="btn waves-effect blue") }}
+            </form>
+            <h6><em>Please note the fields are case sensitive.</em></h6>
+            <p>
+                Forgot Your Password?
+                <a href="{{ url_for('users.reset_psw_req') }}">Click to Reset It</a>
+            </p>
+            <p>
+                First time visitor?
+                <a href="{{ url_for('users.register') }}" class="">Register</a>
+            </p>
+        </div>
     </div>
-</div>
 {% endblock %}

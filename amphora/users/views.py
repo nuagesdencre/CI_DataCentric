@@ -93,7 +93,7 @@ def reset_psw_req():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             send_password_reset_email(user)
-        flash('Your password reset has been requested.')
+        flash('Your password reset has been requested. Please check your email inbox for the next step.')
         return redirect(url_for('users.login'))
     return render_template('users/reset_psw_req.html',
                            title='Reset Password', form=form)
